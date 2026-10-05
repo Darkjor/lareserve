@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "title": "Grand Mayahual La Reserve | Residences in Mahahual",
+    "description": "Limited collection of residences in Mahahual, from 86 m² and MXN 2.54 M. Lock-Off suites, roof garden, legal backing. Book a private presentation.",
+    "ogTitle": "Grand Mayahual La Reserve: a different way to live the Caribbean",
+    "ogDescription": "Residences from 928 to 1,709 sq ft around an interior lagoon in Mahahual, Mexico. Lock-Off suites, a roof garden and legal backing.",
+    "ogAlt": "Night rendering of the Grand Mayahual La Reserve towers in Mahahual. Illustrative image."
+  },
+  "common": {
+    "skip": "Skip to content",
+    "close": "Close",
+    "imageCaption": "Illustrative image, subject to project changes and adaptations.",
+    "planNote": "Layout subject to change; ask your advisor for the full spec sheet.",
+    "priceNote": "2026 list prices in MXN, subject to change without notice.",
+    "whatsappAria": "Message us on WhatsApp",
+    "units": "{n} units",
+    "from": "From"
+  },
+  "cta": {
+    "book": "Book a presentation",
+    "quote": "Quote on WhatsApp",
+    "brochure": "Request brochure",
+    "legal": "Request Legal Pack",
+    "brokers": "Register as a partner",
+    "residences": "See residences"
+  },
+  "nav": {
+    "label": "Main",
+    "home": "Grand Mayahual La Reserve, home",
+    "residences": "Residences",
+    "amenities": "Amenities",
+    "availability": "Availability",
+    "location": "Location",
+    "legal": "Legal",
+    "brokers": "Partners",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "lang": "Change language",
+    "langEs": "Español",
+    "langEn": "English"
+  },
+  "hero": {
+    "eyebrow": "Mahahual, Quintana Roo",
+    "title": "A different way to live the <em>Caribbean</em>",
+    "subtitle": "Residences from 86 to 159 m² with a Lock-Off suite. From MXN 2.54 M.",
+    "alt": "La Reserve facade at sunset with an illuminated rooftop and pool"
+  },
+  "manifesto": {
+    "title": "When was the last time a place changed the way you see life?",
+    "body": "This is not just a property in Mahahual. It is a way of living the Caribbean: privacy, design and nature in a limited collection of residences, for those who know the difference between visiting an extraordinary place and belonging to it.",
+    "closing": "Luxury, privacy, design, nature and lifestyle, in a single collection.",
+    "alt": "Woman holding a coconut at sunset by the sea in Mahahual"
+  },
+  "destination": {
+    "word": "Mahahual",
+    "lead": "A destination that still has the privilege of evolving without losing its essence.",
+    "alt": "Sea turtle swimming under Caribbean water",
+    "facts": {
+      "f1": { "value": "1.7 km", "text": "of boardwalk lined with restaurants, bars and hotels." },
+      "f2": { "value": "< 10 min", "text": "by boat to reef dive sites." },
+      "f3": { "value": "~30 km", "text": "offshore, Banco Chinchorro: Mexico's largest atoll." }
+    },
+    "sources": "Sources: CONANP, WWF, Mexico Desconocido."
+  },
+  "residences": {
+    "eyebrow": "Residences",
+    "title": "Residences that evolve with you",
+    "intro": "From 86 to 159 m². Every one includes a Lock-Off suite, so your space adapts to each stage of life.",
+    "tabs": "Layouts",
+    "type": "Type {letter}",
+    "rooms": "{beds} bed · {baths} bath",
+    "sleep": "Sleep",
+    "live": "Live",
+    "expand": "Enlarge plan",
+    "lockoffShow": "See Lock-Off",
+    "lockoffHide": "Hide Lock-Off",
+    "dNote": "Available in the Estrella, Sol and Jungla towers.",
+    "dLink": "See availability",
+    "planAlt": "Floor plan of Type {letter}",
+    "a": {
+      "tagline": "Architecture that blends with nature.",
+      "beds": "2",
+      "baths": "2",
+      "sleep": ["1 bedroom", "1 Lock-Off bedroom", "Lock-Off bath", "Lock-Off dressing area", "1 bath"],
+      "live": ["Kitchen", "Living-dining room", "Laundry room", "Lock-Off kitchenette"]
+    },
+    "b": {
+      "tagline": "Privacy in every space.",
+      "beds": "3",
+      "baths": "3",
+      "sleep": ["Primary bedroom with bath", "1 bedroom", "1 bath", "Lock-Off with bath", "Lock-Off dressing area"],
+      "live": ["Kitchen", "Living-dining room", "Laundry room", "Terrace", "Lock-Off kitchenette"]
+    },
+    "c": {
+      "tagline": "Every detail finds its place.",
+      "beds": "3",
+      "baths": "3",
+      "sleep": ["1 bedroom with bath", "1 bedroom", "1 bath", "Lock-Off with bath", "Lock-Off dressing area"],
+      "live": ["Kitchen-bar", "Living-dining room", "Laundry room", "Terrace and bar", "Lock-Off kitchenette"]
+    },
+    "d": {
+      "tagline": "An architecture that invites you to stay.",
+      "beds": "2 + Lock-Off",
+      "baths": "3.5",
+      "sleep": ["2 bedrooms", "1 Lock-Off bedroom", "3 full baths", "Half bath"],
+      "live": ["Open living-dining-kitchen", "Laundry room", "Bar", "Terrace"]
+    }
+  },
+  "lockoff": {
+    "title": "Three ways to live La Reserve",
+    "stepsLabel": "Steps",
+    "s1": { "title": "A complete residence", "text": "The whole plan, open, as a single home." },
+    "s2": { "title": "Room for guests", "text": "A line separates the suite and gives both sides privacy." },
+    "s3": { "title": "A suite to rent", "text": "The suite works on its own, with its two entrances, bath, kitchenette and dressing area." },
+    "suite": "Lock-Off suite",
+    "access": "Suite entrance",
+    "contents": ["Bedroom", "Private bath", "Kitchenette", "Dressing area"],
+    "toggleLabel": "Plan view",
+    "full": "Whole",
+    "split": "Split",
+    "closing": "Ask your advisor about the rental conditions.",
+    "disclaimer": "The Lock-Off provides flexibility of use and is not a promise or guarantee of income or returns."
+  },
+  "amenities": {
+    "title": "Panoramic Roof Garden. Jacuzzi. Pools and more.",
+    "roof": { "title": "Roof Garden", "text": "At the top of every tower, a garden open to the landscape.", "alt": "Panoramic roof garden with jacuzzi at sunset" },
+    "pools": { "title": "Pools", "text": "Water to slow the pace of the day.", "alt": "Daytime facade with a pool" },
+    "terraces": { "title": "Private terraces with jacuzzi", "text": "Your own outdoor space, right at home. Varies by layout.", "alt": "Terrace with jacuzzi in the Type B layout" }
+  },
+  "availability": {
+    "eyebrow": "Availability",
+    "title": "Find your residence",
+    "intro": "Sixteen towers around an interior lagoon: {residencias} residences and {locales} commercial spaces.",
+    "alt": "Site plan of the 16 towers around the interior lagoon",
+    "note": "Availability subject to confirmation with your advisor.",
+    "summary": "{torres} towers · {n} units",
+    "ask": "Ask about availability"
+  },
+  "legal": {
+    "title": "Trust is part of luxury, too.",
+    "items": {
+      "mia": { "title": "Environmental Impact Statement", "text": "The project has its Environmental Impact Statement (Manifestación de Impacto Ambiental, MIA)." },
+      "land": { "title": "Authorized land use", "text": "Land use authorized for the development." },
+      "deed": { "title": "Deeding", "text": "A deed for every owner." }
+    },
+    "closing": "Because an extraordinary home begins long before you open its door.",
+    "note": "Provided on request."
+  },
+  "location": {
+    "title": "Costa Maya, Quintana Roo",
+    "intro": "A setting where the village, the reef and the marine reserve are close at hand.",
+    "listLabel": "Reference distances",
+    "p1": { "name": "Chetumal and its airport", "value": "142 km by road" },
+    "p2": { "name": "Banco Chinchorro", "value": "30 km offshore" },
+    "p3": { "name": "Reef dive sites", "value": "under 10 min by boat" },
+    "caption": "Approximate location.",
+    "ask": "Ask your advisor for the exact location",
+    "expand": "Enlarge map",
+    "alt": "Night map showing the location of La Reserve in Mahahual",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out"
+  },
+  "brokers": {
+    "eyebrow": "Partners",
+    "title": "Partnering with advisors and brokers",
+    "intro": "If you represent buyers looking for a residence on Mexico's Caribbean coast, we will share the materials and connect you with the Mexo Company team.",
+    "bullets": ["Brochure and spec sheets", "Price list and availability", "Legal Pack on request", "A private presentation for your clients"],
+    "alt": "Hammock facing the sea at sunset"
+  },
+  "final": {
+    "title": "Some places are discovered. La Reserve is lived.",
+    "body": "Book a private presentation with your advisor and see every detail of this new residential address in Mahahual.",
+    "alt": "Front facade of La Reserve at sunset"
+  },
+  "form": {
+    "name": "Name",
+    "namePh": "Your full name",
+    "phone": "WhatsApp",
+    "phoneHelp": "Include area code, 10 digits.",
+    "phonePh": "+1 555 000 0000",
+    "email": "Email",
+    "emailOptional": "(optional)",
+    "emailPh": "you@email.com",
+    "agency": "Agency or company",
+    "agencyPh": "Your company name",
+    "message": "Message",
+    "messageOptional": "(optional)",
+    "messagePh": "Tell us about your clients",
+    "contact": "How would you like us to reach you",
+    "contactWhatsapp": "WhatsApp",
+    "contactCall": "Phone call",
+    "contactEmail": "Email",
+    "schedule": "Preferred time",
+    "sched0": "No preference",
+    "sched1": "Morning",
+    "sched2": "Afternoon",
+    "sched3": "Evening",
+    "interest": "I'm interested in",
+    "interestPh": "Select an option",
+    "interestA": "Type A, 86 m²",
+    "interestB": "Type B, 136 m²",
+    "interestC": "Type C, 136 m²",
+    "interestD": "Type D, 159 m²",
+    "interestRetail": "Commercial space",
+    "interestUnknown": "Not sure yet",
+    "consentBefore": "I accept the ",
+    "consentLink": "Privacy Notice",
+    "consentAfter": " and agree that Mexo Company may contact me about my request.",
+    "sending": "Sending",
+    "errNombre": "Please enter your name.",
+    "errTelefono": "Please enter a 10-digit number.",
+    "errEmail": "Please check your email.",
+    "errEmailRequerido": "Enter your email so we can reach you there.",
+    "errConsent": "Please accept the Privacy Notice to continue.",
+    "errSummary": "Please review the marked fields.",
+    "errNetwork": "We could not send your request. Please try again or message us on WhatsApp.",
+    "successTitle": "Thank you, we received your request",
+    "successBody": "A La Reserve advisor will be in touch shortly. If you prefer, start the conversation on WhatsApp.",
+    "successSummary": "Your request",
+    "successCta": "Message us on WhatsApp",
+    "retry": "Try again",
+    "waAlt": "Or message us directly on WhatsApp"
+  },
+  "panel": {
+    "title": "Book a presentation",
+    "intro": "Leave your details and an advisor will get in touch. You can also message us on WhatsApp.",
+    "legalTitle": "Request the Legal Pack",
+    "legalIntro": "An advisor will send it to you. Leave your details below.",
+    "brochureTitle": "Request the brochure",
+    "brochureIntro": "We will send it by WhatsApp or email."
+  },
+  "footer": {
+    "about": "Grand Mayahual La Reserve is a limited collection of residences in Mahahual, Quintana Roo.",
+    "developer": "Developed by Mexo Company.",
+    "explore": "Explore",
+    "contact": "Contact",
+    "legal": "Legal",
+    "sales": "Sales on WhatsApp",
+    "privacy": "Privacy Notice",
+    "disclaimer": "Images are illustrative and subject to project changes and adaptations. Prices, areas and availability are subject to change without notice. This site does not constitute a binding offer.",
+    "copyright": "© 2026 Mexo Company. All rights reserved."
+  },
+  "wa": {
+    "general": "Hello, I visited lareservemahahual.com and would like more information about Grand Mayahual La Reserve.",
+    "presentation": "Hello, I would like to book a private presentation of Grand Mayahual La Reserve.",
+    "type": "Hello, I'm interested in Type {tipologia} at Grand Mayahual La Reserve. Could you send me more information?",
+    "brochure": "Hello, I would like to receive the Grand Mayahual La Reserve brochure.",
+    "legal": "Hello, I would like to request the Legal Pack for Grand Mayahual La Reserve (environmental impact statement, land use and deeding).",
+    "brokers": "Hello, I'm a real estate advisor and would like information on Grand Mayahual La Reserve for my clients.",
+    "location": "Hello, I would like to know the exact location of Grand Mayahual La Reserve.",
+    "availability": "Hello, I would like to ask about availability at Grand Mayahual La Reserve.",
+    "lockoff": "Hello, I'm interested in Type B with Lock-Off at Grand Mayahual La Reserve. Could you send me more information?"
+  },
+  "privacy": {
+    "title": "Privacy Notice",
+    "draft": "Draft pending legal review by Mexo Company.",
+    "back": "Back to home",
+    "updated": "Last updated: October 2026.",
+    "sections": [
+      { "title": "Data controller", "text": "Mexo Company, developer of Grand Mayahual La Reserve, is responsible for processing your personal data. Address: to be confirmed. Contact: +52 998 704 2445." },
+      { "title": "Data we collect", "text": "Name, WhatsApp or phone number, email address, layout of interest, contact preference and time, and any message you choose to write. We do not collect sensitive data." },
+      { "title": "How we use it", "text": "To contact you and follow up on your request for a presentation, brochure, Legal Pack or broker information; to send you commercial information about Grand Mayahual La Reserve; and to improve this site with aggregate statistics." },
+      { "title": "Who we share it with", "text": "With the Mexo Company sales team and with providers that host or process data on its behalf. We do not sell your data." },
+      { "title": "Your rights", "text": "You may access, correct or delete your data, object to its use or withdraw your consent (ARCO rights) by writing to us on WhatsApp at +52 998 704 2445. We will reply within the periods set by law." },
+      { "title": "Cookies and analytics", "text": "This site may use cookies and measurement tools to understand how it is used. You can block them in your browser settings." },
+      { "title": "Changes to this notice", "text": "If this notice changes, we will publish the current version on this page." }
+    ]
+  },
+  "notFound": {
+    "title": "This page does not exist",
+    "back": "Back to home"
+  }
+}

@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "title": "Grand Mayahual La Reserve | Residencias en Mahahual",
+    "description": "Colección limitada de residencias en Mahahual desde 86 m² y $2.54 M MXN. Lock-Off, roof garden y respaldo legal. Agenda una presentación privada.",
+    "ogTitle": "Grand Mayahual La Reserve: una forma de vivir el Caribe",
+    "ogDescription": "Residencias de 86 a 159 m² alrededor de una laguna interior, en Mahahual. Suites Lock-Off, roof garden y respaldo legal.",
+    "ogAlt": "Render nocturno de las torres de Grand Mayahual La Reserve en Mahahual. Imagen ilustrativa."
+  },
+  "common": {
+    "skip": "Saltar al contenido",
+    "close": "Cerrar",
+    "imageCaption": "Imagen ilustrativa sujeta a modificaciones y adaptaciones de proyecto.",
+    "planNote": "Distribución sujeta a cambios; solicita la ficha técnica completa a tu asesor.",
+    "priceNote": "Precios de lista 2026 en MXN, sujetos a cambio sin previo aviso.",
+    "whatsappAria": "Escribir por WhatsApp",
+    "units": "{n} unidades",
+    "from": "Desde"
+  },
+  "cta": {
+    "book": "Agenda tu presentación",
+    "quote": "Cotizar por WhatsApp",
+    "brochure": "Pedir brochure",
+    "legal": "Solicitar Pack Legal",
+    "brokers": "Registrarme como aliado",
+    "residences": "Ver residencias"
+  },
+  "nav": {
+    "label": "Principal",
+    "home": "Grand Mayahual La Reserve, inicio",
+    "residences": "Residencias",
+    "amenities": "Amenidades",
+    "availability": "Disponibilidad",
+    "location": "Ubicación",
+    "legal": "Legal",
+    "brokers": "Aliados",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "lang": "Cambiar idioma",
+    "langEs": "Español",
+    "langEn": "English"
+  },
+  "hero": {
+    "eyebrow": "Mahahual, Quintana Roo",
+    "title": "Una forma de vivir el <em>Caribe</em>",
+    "subtitle": "Residencias de 86 a 159 m² con suite Lock-Off. Desde $2.54 M MXN.",
+    "alt": "Fachada de La Reserve al atardecer con azotea iluminada y alberca"
+  },
+  "manifesto": {
+    "title": "¿Cuándo fue la última vez que un lugar cambió tu manera de ver la vida?",
+    "body": "No es solamente una propiedad en Mahahual. Es una forma de vivir el Caribe: privacidad, diseño y naturaleza en una colección limitada de residencias, para quienes distinguen entre visitar un lugar extraordinario y pertenecer a él.",
+    "closing": "Lujo, privacidad, diseño, naturaleza y estilo de vida, en una sola colección.",
+    "alt": "Mujer con un coco al atardecer frente al mar de Mahahual"
+  },
+  "destination": {
+    "word": "Mahahual",
+    "lead": "Un destino que todavía conserva el privilegio de evolucionar sin perder su esencia.",
+    "alt": "Tortuga marina nadando bajo el agua del Caribe",
+    "facts": {
+      "f1": { "value": "1.7 km", "text": "de malecón con restaurantes, bares y hoteles." },
+      "f2": { "value": "< 10 min", "text": "en lancha a los puntos de buceo en arrecife." },
+      "f3": { "value": "~30 km", "text": "mar adentro, Banco Chinchorro, el atolón más grande de México." }
+    },
+    "sources": "Fuentes: CONANP, WWF, México Desconocido."
+  },
+  "residences": {
+    "eyebrow": "Residencias",
+    "title": "Residencias que evolucionan contigo",
+    "intro": "De 86 a 159 m². Todas incluyen una suite Lock-Off para que tu espacio se adapte a cada etapa.",
+    "tabs": "Tipologías",
+    "type": "Tipología {letter}",
+    "rooms": "{beds} rec · {baths} baños",
+    "sleep": "Dormir",
+    "live": "Vivir",
+    "expand": "Ampliar planta",
+    "lockoffShow": "Ver Lock-Off",
+    "lockoffHide": "Ocultar Lock-Off",
+    "dNote": "Disponible en torres Estrella, Sol y Jungla.",
+    "dLink": "Ver disponibilidad",
+    "planAlt": "Planta de la tipología {letter}",
+    "a": {
+      "tagline": "Arquitectura que se integra a la naturaleza.",
+      "beds": "2",
+      "baths": "2",
+      "sleep": ["1 recámara", "1 recámara Lock-Off", "Baño Lock-Off", "Vestidor Lock-Off", "1 baño"],
+      "live": ["Cocina", "Sala-comedor", "Cuarto de lavado", "Cocineta Lock-Off"]
+    },
+    "b": {
+      "tagline": "Privacidad en cada espacio.",
+      "beds": "3",
+      "baths": "3",
+      "sleep": ["Recámara principal con baño", "1 recámara", "1 baño", "Lock-Off con baño", "Vestidor Lock-Off"],
+      "live": ["Cocina", "Sala-comedor", "Cuarto de lavado", "Terraza", "Cocineta Lock-Off"]
+    },
+    "c": {
+      "tagline": "Cada detalle encuentra su lugar.",
+      "beds": "3",
+      "baths": "3",
+      "sleep": ["1 recámara con baño", "1 recámara", "1 baño", "Lock-Off con baño", "Vestidor Lock-Off"],
+      "live": ["Cocina-bar", "Sala-comedor", "Cuarto de lavado", "Terraza y barra", "Cocineta Lock-Off"]
+    },
+    "d": {
+      "tagline": "Una arquitectura que invita a quedarse.",
+      "beds": "2 + Lock-Off",
+      "baths": "3 y medio",
+      "sleep": ["2 recámaras", "1 recámara Lock-Off", "3 baños completos", "Medio baño"],
+      "live": ["Sala-comedor-cocina", "Cuarto de lavado", "Barra", "Terraza"]
+    }
+  },
+  "lockoff": {
+    "title": "Tres formas de vivir La Reserve",
+    "stepsLabel": "Pasos",
+    "s1": { "title": "Una residencia completa", "text": "La planta entera, abierta, como una sola casa." },
+    "s2": { "title": "Con espacio para invitados", "text": "Una línea separa la suite y le da privacidad a ambos lados." },
+    "s3": { "title": "Una suite para rentar", "text": "La suite funciona sola, con sus dos accesos, baño, cocineta y vestidor." },
+    "suite": "Suite Lock-Off",
+    "access": "Acceso de la suite",
+    "contents": ["Recámara", "Baño propio", "Cocineta", "Vestidor"],
+    "toggleLabel": "Vista de la planta",
+    "full": "Completa",
+    "split": "Dividida",
+    "closing": "Consulta con tu asesor las condiciones de renta.",
+    "disclaimer": "El Lock-Off ofrece flexibilidad de uso y no constituye promesa ni garantía de ingresos o rendimientos."
+  },
+  "amenities": {
+    "title": "Roof Garden panorámico. Jacuzzi. Albercas y más.",
+    "roof": { "title": "Roof Garden", "text": "En lo alto de cada torre, un jardín abierto al paisaje.", "alt": "Roof garden panorámico con jacuzzi al atardecer" },
+    "pools": { "title": "Albercas", "text": "Agua para bajar el ritmo del día.", "alt": "Fachada diurna con alberca" },
+    "terraces": { "title": "Terrazas privadas con jacuzzi", "text": "Aire libre propio, sin salir de casa. Según tipología.", "alt": "Terraza con jacuzzi de la tipología B" }
+  },
+  "availability": {
+    "eyebrow": "Disponibilidad",
+    "title": "Encuentra tu residencia",
+    "intro": "Dieciséis torres alrededor de una laguna interior: {residencias} residencias y {locales} locales comerciales.",
+    "alt": "Plano de las 16 torres alrededor de la laguna interior",
+    "note": "Disponibilidad sujeta a confirmación con tu asesor.",
+    "summary": "{torres} torres · {n} unidades",
+    "ask": "Consultar disponibilidad"
+  },
+  "legal": {
+    "title": "La confianza también forma parte del lujo.",
+    "items": {
+      "mia": { "title": "Manifestación de Impacto Ambiental", "text": "El proyecto cuenta con su Manifestación de Impacto Ambiental (MIA)." },
+      "land": { "title": "Uso de suelo autorizado", "text": "Uso de suelo autorizado para el desarrollo." },
+      "deed": { "title": "Escrituración", "text": "Escrituración para cada propietario." }
+    },
+    "closing": "Porque un patrimonio extraordinario comienza mucho antes de abrir la puerta.",
+    "note": "Se entrega a solicitud."
+  },
+  "location": {
+    "title": "Costa Maya, Quintana Roo",
+    "intro": "Un entorno donde el pueblo, el arrecife y la reserva marina están cerca.",
+    "listLabel": "Distancias de referencia",
+    "p1": { "name": "Chetumal y su aeropuerto", "value": "142 km por carretera" },
+    "p2": { "name": "Banco Chinchorro", "value": "30 km mar adentro" },
+    "p3": { "name": "Arrecife de buceo", "value": "menos de 10 min en lancha" },
+    "caption": "Ubicación referencial.",
+    "ask": "Pide la ubicación exacta a tu asesor",
+    "expand": "Ampliar mapa",
+    "alt": "Mapa nocturno de ubicación de La Reserve en Mahahual",
+    "zoomIn": "Acercar",
+    "zoomOut": "Alejar"
+  },
+  "brokers": {
+    "eyebrow": "Aliados",
+    "title": "Alianzas con asesores y brokers",
+    "intro": "Si representas a compradores que buscan una residencia en el Caribe mexicano, te compartimos la información y te conectamos con el equipo de Mexo Company.",
+    "bullets": ["Brochure y fichas técnicas", "Lista de precios y disponibilidad", "Pack Legal a solicitud", "Presentación privada para tus clientes"],
+    "alt": "Hamaca frente al mar al atardecer"
+  },
+  "final": {
+    "title": "Algunos lugares se descubren. La Reserve se vive.",
+    "body": "Agenda una presentación privada con tu asesor y conoce cada detalle de este nuevo referente residencial en Mahahual.",
+    "alt": "Fachada frontal de La Reserve al atardecer"
+  },
+  "form": {
+    "name": "Nombre",
+    "namePh": "Tu nombre completo",
+    "phone": "WhatsApp",
+    "phoneHelp": "Con lada, 10 dígitos.",
+    "phonePh": "+52 998 000 0000",
+    "email": "Correo",
+    "emailOptional": "(opcional)",
+    "emailPh": "tu@correo.com",
+    "agency": "Inmobiliaria o empresa",
+    "agencyPh": "Nombre de tu empresa",
+    "message": "Mensaje",
+    "messageOptional": "(opcional)",
+    "messagePh": "Cuéntanos sobre tus clientes",
+    "contact": "Cómo prefieres que te contactemos",
+    "contactWhatsapp": "WhatsApp",
+    "contactCall": "Llamada",
+    "contactEmail": "Correo",
+    "schedule": "Horario preferido",
+    "sched0": "Sin preferencia",
+    "sched1": "Mañana",
+    "sched2": "Tarde",
+    "sched3": "Noche",
+    "interest": "Me interesa",
+    "interestPh": "Elige una opción",
+    "interestA": "Tipología A, 86 m²",
+    "interestB": "Tipología B, 136 m²",
+    "interestC": "Tipología C, 136 m²",
+    "interestD": "Tipología D, 159 m²",
+    "interestRetail": "Local comercial",
+    "interestUnknown": "Aún no lo sé",
+    "consentBefore": "Acepto el ",
+    "consentLink": "Aviso de privacidad",
+    "consentAfter": " y que Mexo Company me contacte para dar seguimiento a mi solicitud.",
+    "sending": "Enviando",
+    "errNombre": "Escribe tu nombre.",
+    "errTelefono": "Escribe un número de 10 dígitos.",
+    "errEmail": "Revisa tu correo.",
+    "errEmailRequerido": "Escribe tu correo para que te contactemos por ahí.",
+    "errConsent": "Acepta el aviso de privacidad para continuar.",
+    "errSummary": "Revisa los campos marcados.",
+    "errNetwork": "No pudimos enviar tu solicitud. Inténtalo de nuevo o escríbenos por WhatsApp.",
+    "successTitle": "Gracias, recibimos tu solicitud",
+    "successBody": "Un asesor de La Reserve te escribirá pronto. Si prefieres, adelanta la conversación por WhatsApp.",
+    "successSummary": "Tu solicitud",
+    "successCta": "Escribir por WhatsApp",
+    "retry": "Reintentar",
+    "waAlt": "O escríbenos directo por WhatsApp"
+  },
+  "panel": {
+    "title": "Agenda tu presentación",
+    "intro": "Déjanos tus datos y un asesor te contacta. También puedes escribirnos por WhatsApp.",
+    "legalTitle": "Solicita el Pack Legal",
+    "legalIntro": "Te lo hacemos llegar a través de un asesor. Déjanos tus datos.",
+    "brochureTitle": "Pide el brochure",
+    "brochureIntro": "Te lo enviamos por WhatsApp o correo."
+  },
+  "footer": {
+    "about": "Grand Mayahual La Reserve es una colección limitada de residencias en Mahahual, Quintana Roo.",
+    "developer": "Desarrolla Mexo Company.",
+    "explore": "Explorar",
+    "contact": "Contacto",
+    "legal": "Legal",
+    "sales": "Ventas por WhatsApp",
+    "privacy": "Aviso de privacidad",
+    "disclaimer": "Imágenes ilustrativas sujetas a modificaciones y adaptaciones de proyecto. Precios, superficies y disponibilidad sujetos a cambio sin previo aviso. Este sitio no constituye oferta vinculante.",
+    "copyright": "© 2026 Mexo Company. Todos los derechos reservados."
+  },
+  "wa": {
+    "general": "Hola, vi lareservemahahual.com y me gustaría recibir información sobre Grand Mayahual La Reserve.",
+    "presentation": "Hola, me gustaría agendar una presentación privada de Grand Mayahual La Reserve.",
+    "type": "Hola, me interesa la tipología {tipologia} de Grand Mayahual La Reserve. ¿Me pueden dar más información?",
+    "brochure": "Hola, quisiera recibir el brochure de Grand Mayahual La Reserve.",
+    "legal": "Hola, quisiera solicitar el Pack Legal de Grand Mayahual La Reserve (MIA, uso de suelo y escrituración).",
+    "brokers": "Hola, soy asesor inmobiliario y me gustaría recibir información de Grand Mayahual La Reserve para mis clientes.",
+    "location": "Hola, me gustaría conocer la ubicación exacta de Grand Mayahual La Reserve.",
+    "availability": "Hola, me gustaría consultar la disponibilidad de Grand Mayahual La Reserve.",
+    "lockoff": "Hola, me interesa la tipología B con Lock-Off de Grand Mayahual La Reserve. ¿Me pueden dar más información?"
+  },
+  "privacy": {
+    "title": "Aviso de privacidad",
+    "draft": "Borrador pendiente de revisión legal por parte de Mexo Company.",
+    "back": "Volver al inicio",
+    "updated": "Última actualización: octubre de 2026.",
+    "sections": [
+      { "title": "Responsable", "text": "Mexo Company, desarrolladora de Grand Mayahual La Reserve, es responsable del tratamiento de tus datos personales. Domicilio: por confirmar. Contacto: +52 998 704 2445." },
+      { "title": "Datos que recabamos", "text": "Nombre, número de WhatsApp o teléfono, correo electrónico, tipología de interés, preferencia y horario de contacto, y el mensaje que decidas escribirnos. No recabamos datos sensibles." },
+      { "title": "Para qué los usamos", "text": "Para contactarte y dar seguimiento a tu solicitud de presentación, brochure, Pack Legal o información para brokers; para enviarte información comercial de Grand Mayahual La Reserve; y para mejorar este sitio con estadísticas agregadas." },
+      { "title": "Con quién los compartimos", "text": "Con el equipo comercial de Mexo Company y con proveedores que alojan o procesan los datos en su nombre. No vendemos tus datos." },
+      { "title": "Tus derechos", "text": "Puedes acceder, rectificar o cancelar tus datos, oponerte a su uso o revocar tu consentimiento (derechos ARCO) escribiéndonos por WhatsApp al +52 998 704 2445. Responderemos en los plazos que marca la ley." },
+      { "title": "Cookies y analítica", "text": "Este sitio puede usar cookies y herramientas de medición para entender cómo se usa. Puedes bloquearlas desde la configuración de tu navegador." },
+      { "title": "Cambios a este aviso", "text": "Si este aviso cambia, publicaremos la versión vigente en esta página." }
+    ]
+  },
+  "notFound": {
+    "title": "Esta página no existe",
+    "back": "Volver al inicio"
+  }
+}
