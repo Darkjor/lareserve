@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { ArrowUpRight, MagnifyingGlassPlus } from "@phosphor-icons/react/ssr";
 import type { Tipologia } from "@/lib/inventory";
 import { PLANS } from "@/lib/plans";
-import { fillMessage, formatM2, formatMXN, whatsappLink } from "@/lib/site";
+import { formatM2, formatMXN, whatsappLink } from "@/lib/site";
 import { Lightbox, ZoomPane } from "./Lightbox";
 import { PlanViewer } from "./PlanViewer";
 
@@ -22,7 +22,7 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
   const d = data[active];
   const sleep = t.raw(`residences.${key}.sleep`) as string[];
   const live = t.raw(`residences.${key}.live`) as string[];
-  const wa = whatsappLink(fillMessage(t("wa.type"), { tipologia: active }));
+  const wa = whatsappLink(t("wa.type", { tipologia: active }));
 
   const onKey = (e: React.KeyboardEvent, i: number) => {
     const move = e.key === "ArrowDown" || e.key === "ArrowRight" ? 1 : e.key === "ArrowUp" || e.key === "ArrowLeft" ? -1 : 0;
