@@ -55,7 +55,7 @@ export async function Hero({ locale }: { locale: string }) {
                 <span>{t.rich("title", { em: (c) => <em>{c}</em> })}</span>
               </span>
             </h1>
-            <p className="hero-fade mt-6 max-w-[34ch] text-body-l text-marfil-200" style={{ ["--d" as string]: "1000ms" }}>
+            <p className="hero-fade mt-6 max-w-[40ch] text-body-l text-marfil-200" style={{ ["--d" as string]: "1000ms" }}>
               {t("subtitle")}
             </p>
             <div className="hero-fade mt-9 flex flex-col gap-3 sm:flex-row" style={{ ["--d" as string]: "1250ms" }}>
