@@ -59,10 +59,11 @@ jobs.push(
   sharp(P("p02_0_1828x860")).extract({ left: 95, top: 0, width: 1638, height: 860 }).resize(1200, 630).jpeg({ quality: 82 }).toFile(out("img/og.jpg")),
 );
 jobs.push(webp(B("p03_0_1011x1313"), "img/manifiesto.webp", 82));
-jobs.push(webp(B("p04_0_1276x1647"), "img/mahahual-tortuga.webp", 82, (s) => s.extract({ left: 0, top: 296, width: 1276, height: 547 })));
-jobs.push(webp(B("p04_0_1276x1647"), "img/mahahual-tortuga-43.webp", 82, (s) => s.extract({ left: 0, top: 98, width: 1276, height: 957 })));
+jobs.push(webp(B("p04_0_1276x1647"), "img/mahahual-tortuga.webp", 82, (s) => s.extract({ left: 0, top: 690, width: 1276, height: 547 })));
+jobs.push(webp(B("p04_0_1276x1647"), "img/mahahual-tortuga-43.webp", 82, (s) => s.extract({ left: 0, top: 300, width: 1276, height: 957 })));
 jobs.push(webp(P("p04_0_1661x947"), "img/albercas.webp", 82));
-jobs.push(webp(B("p06_0_977x1272"), "img/roof-garden.webp", 82));
+// Sin la franja alta de cielo: el recorte arranca en y=220 para que se vea el roof y el jacuzzi.
+jobs.push(webp(B("p06_0_977x1272"), "img/roof-garden.webp", 82, (s) => s.extract({ left: 0, top: 220, width: 977, height: 1052 })));
 jobs.push(webp(B("p07_0_1274x1647"), "img/hamaca.webp", 80));
 jobs.push(webp(P("p03_0_1672x941"), "img/cta-final.webp", 82));
 jobs.push(webp(P("p03_0_1672x941"), "img/cta-final-45.webp", 82, (s) => s.extract({ left: 460, top: 0, width: 753, height: 941 })));

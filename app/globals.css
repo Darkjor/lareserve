@@ -568,3 +568,86 @@ body::after {
   fill: none;
   stroke: none;
 }
+
+/* Disponibilidad interactiva: transiciones de lamina, patrones de estado y esqueleto */
+@keyframes stage-in {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes stage-back {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade-only {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes skeleton-shine {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+.stage-enter {
+  animation: stage-in 700ms var(--ease-soft) both;
+  transform-origin: var(--ox, 50%) var(--oy, 50%);
+}
+.stage-enter-back {
+  animation: stage-back 520ms var(--ease-soft) both;
+  transform-origin: var(--ox, 50%) var(--oy, 50%);
+}
+.card-enter {
+  animation: fade-only 240ms linear both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage-enter,
+  .stage-enter-back {
+    animation: fade-only 120ms linear both;
+  }
+  .skeleton {
+    animation: none !important;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--color-selva-800) 0%, oklch(0.36 0.05 150) 50%, var(--color-selva-800) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shine 1.6s linear infinite;
+}
+/* El estado nunca va solo por color: patron + texto + ARIA. */
+.pat-apartado {
+  background-image: radial-gradient(oklch(0.95 0.015 95 / 0.55) 1px, transparent 1.6px);
+  background-size: 6px 6px;
+}
+.pat-vendido {
+  background-image: repeating-linear-gradient(135deg, oklch(0.95 0.015 95 / 0.4) 0 1.5px, transparent 1.5px 6px);
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* La hoja de unidad en movil oculta el boton flotante de WhatsApp para no tapar su CTA. */
+html[data-sheet="open"] .wa-float {
+  opacity: 0 !important;
+  visibility: hidden;
+  pointer-events: none !important;
+}

@@ -13,7 +13,7 @@ export async function Amenities() {
           <figure className="reveal flex flex-col lg:col-span-5 lg:row-span-2">
             <div className="bezel flex min-h-0 flex-1 flex-col">
               <div className="bezel-core relative aspect-[4/5] flex-1 lg:aspect-auto lg:min-h-[420px]">
-                <Image src="/img/roof-garden.webp" alt={t("roof.alt")} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+                <Image src="/img/roof-garden.webp" alt={t("roof.alt")} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover object-[22%_100%]" />
               </div>
             </div>
             <figcaption className="mt-4">
