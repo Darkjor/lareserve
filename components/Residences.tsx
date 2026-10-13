@@ -27,9 +27,10 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
 
   const onKey = (e: React.KeyboardEvent, i: number) => {
     const move = e.key === "ArrowDown" || e.key === "ArrowRight" ? 1 : e.key === "ArrowUp" || e.key === "ArrowLeft" ? -1 : 0;
-    if (!move) return;
+    const edge = e.key === "Home" ? 0 : e.key === "End" ? LETTERS.length - 1 : -1;
+    if (!move && edge < 0) return;
     e.preventDefault();
-    const next = LETTERS[(i + move + LETTERS.length) % LETTERS.length];
+    const next = LETTERS[edge >= 0 ? edge : (i + move + LETTERS.length) % LETTERS.length];
     setActive(next);
     document.getElementById(`${uid}-tab-${next}`)?.focus();
   };
