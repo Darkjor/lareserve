@@ -11,7 +11,7 @@ const ITEMS = [
   { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947, fit: "cover" },
   { k: "terraces", src: "/img/plantas/terraza-b.webp", w: 850, h: 205, fit: "contain" },
   { k: "lockoff", src: "/img/plantas/planta-b.webp", w: 945, h: 941, fit: "contain" },
-  { k: "mahahual", src: "/img/mahahual-tortuga.webp", w: 1276, h: 547, fit: "cover" },
+  { k: "mahahual", src: "/img/mahahual-tortuga-43.webp", w: 1276, h: 957, fit: "cover" },
 ] as const;
 
 type Item = (typeof ITEMS)[number];
