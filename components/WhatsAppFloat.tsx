@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { WhatsappLogo } from "@phosphor-icons/react/ssr";
 import { whatsappLink } from "@/lib/site";
 
-/** FAB de WhatsApp: aparece tras 600 px de scroll (centinela + IntersectionObserver). */
+/** FAB de WhatsApp: aparece tras 600 px de scroll (centinela + IntersectionObserver). Verde, icono y anillo papel. */
 export function WhatsAppFloat() {
   const t = useTranslations();
   const sentinel = useRef<HTMLDivElement>(null);
@@ -28,7 +28,7 @@ export function WhatsAppFloat() {
         rel="noopener noreferrer"
         aria-label={t("common.whatsappAria")}
         data-show={show}
-        className="wa-float fixed right-4 bottom-4 z-30 grid size-14 place-items-center rounded-full bg-[image:var(--gold-grad)] text-selva-950 opacity-0 shadow-[var(--shadow-tint)] transition-[opacity,transform] duration-[320ms] data-[show=true]:opacity-100 pointer-events-none data-[show=true]:pointer-events-auto hover:scale-105 active:scale-95 md:right-6 md:bottom-6"
+        className="wa-float fixed right-4 bottom-4 z-30 grid size-14 place-items-center rounded-ui bg-verde-700 text-paper opacity-0 ring-2 ring-paper shadow-photo transition-[opacity,transform] duration-[320ms] data-[show=true]:opacity-100 pointer-events-none data-[show=true]:pointer-events-auto hover:scale-105 active:scale-95 md:right-6 md:bottom-6"
         tabIndex={show ? 0 : -1}
       >
         <WhatsappLogo size={28} weight="light" aria-hidden />

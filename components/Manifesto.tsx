@@ -1,26 +1,29 @@
-import Image from "next/image";
+import { DownloadSimple } from "@phosphor-icons/react/ssr";
 import { getTranslations } from "next-intl/server";
+import { site } from "@/lib/site";
+import { ContactButton } from "./ContactProvider";
 import { ManifestoTitle } from "./ManifestoTitle";
 
+/** Familia B: declaracion tipografica, sin imagen. Pregunta del manifiesto, parrafo y enlace al brochure. */
 export async function Manifesto() {
   const t = await getTranslations("manifesto");
-  const tc = await getTranslations("common");
+  const tcta = await getTranslations("cta");
   return (
     <section id="concepto" className="relative z-[1] section-y">
-      <div className="wrap grid-12 items-start gap-y-14">
-        <div className="col-span-12 lg:col-span-7">
+      <div className="wrap">
+        <div className="max-w-[1100px]">
           <ManifestoTitle text={t("title")} />
-          <p className="reveal mt-12 max-w-[44ch] text-body-l text-marfil-200">{t("body")}</p>
-          <p className="reveal mt-8 max-w-[44ch] font-display text-h4 text-oro-300">{t("closing")}</p>
         </div>
-        <figure className="col-span-12 sm:col-span-8 lg:col-span-4 lg:col-start-9 lg:-mt-[calc(14vh+9rem)]">
-          <div className="bezel reveal-clip">
-            <div className="bezel-core relative aspect-[4/5]">
-              <Image src="/img/manifiesto.webp" alt={t("alt")} fill sizes="(min-width: 1024px) 28vw, (min-width: 640px) 66vw, 100vw" className="object-cover" />
-            </div>
+        <div className="grid-12 mt-12 items-start gap-y-8 lg:mt-14">
+          <p className="reveal col-span-12 max-w-[48ch] text-body-l text-ink-2 lg:col-span-5">{t("body")}</p>
+          <div className="reveal col-span-12 flex flex-col items-start gap-3 lg:col-span-5 lg:col-start-8">
+            <span className="font-display text-[1.75rem] leading-none text-ink-3">{site.developer}</span>
+            <ContactButton kind="brochure" variant="link">
+              <DownloadSimple size={20} weight="light" aria-hidden />
+              {tcta("brochure")}
+            </ContactButton>
           </div>
-          <figcaption className="caption mt-3">{tc("imageCaption")}</figcaption>
-        </figure>
+        </div>
       </div>
     </section>
   );

@@ -1,37 +1,42 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { FileText, Leaf, Scales } from "@phosphor-icons/react/ssr";
 import { ContactButton } from "./ContactProvider";
 
-const ITEMS = [
-  ["mia", Scales],
-  ["land", Leaf],
-  ["deed", FileText],
-] as const;
+const ITEMS = ["mia", "land", "deed"] as const;
 
+/** Familia G: dos fotos escalonadas + lista de certezas con hilo dorado. Fotos provisionales (decorativas). */
 export async function Legal() {
   const t = await getTranslations("legal");
+  const tn = await getTranslations("nav");
   const tcta = await getTranslations("cta");
   return (
-    <section id="legal" className="bg-selva-950 py-[clamp(4rem,3rem+4vw,6rem)]">
-      <div className="wrap grid-12 gap-y-14">
-        <div className="col-span-12 lg:col-span-6">
-          <h2 className="reveal text-display-l text-marfil-50">{t("title")}</h2>
-          <p className="reveal mt-8 max-w-[40ch] text-body-l text-marfil-200">{t("closing")}</p>
-        </div>
-        <div className="col-span-12 lg:col-span-5 lg:col-start-8">
-          <ul className="grid gap-10">
-            {ITEMS.map(([k, Icon], i) => (
-              <li key={k} className="reveal flex gap-5" style={{ ["--d" as string]: `${i * 90}ms` }}>
-                <Icon size={32} weight="light" className="mt-1 shrink-0 text-oro-300" aria-hidden />
-                <div>
-                  <h3 className="font-display text-[1.375rem] leading-tight font-medium text-marfil-50">{t(`items.${k}.title`)}</h3>
-                  <p className="mt-2 max-w-[40ch] text-small text-marfil-200">{t(`items.${k}.text`)}</p>
-                </div>
+    <section id="legal" className="section-y">
+      <div className="wrap grid-12 items-start gap-y-12">
+        <figure className="reveal-clip col-span-6 lg:col-span-3">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-surface">
+            <Image src="/img/manifiesto.webp" alt="" fill sizes="(min-width: 1024px) 25vw, 46vw" className="object-cover" />
+          </div>
+        </figure>
+        <figure className="reveal-clip col-span-6 mt-8 lg:col-span-3 lg:mt-[72px]">
+          <div className="relative aspect-square overflow-hidden rounded-surface">
+            <Image src="/img/fachada-tipo2.webp" alt="" fill sizes="(min-width: 1024px) 25vw, 46vw" className="object-cover" />
+          </div>
+        </figure>
+        <div className="col-span-12 lg:col-span-5 lg:col-start-8 lg:self-center">
+          <p className="eyebrow reveal">{tn("legal")}</p>
+          <h2 className="reveal mt-4 text-display-l text-ink">{t("title")}</h2>
+          <p className="reveal mt-5 max-w-[44ch] text-body-l text-ink-2">{t("closing")}</p>
+          <ul className="mt-9 grid gap-7">
+            {ITEMS.map((k, i) => (
+              <li key={k} className="reveal" style={{ ["--d" as string]: `${i * 140}ms` }}>
+                <span className="thread" aria-hidden />
+                <h3 className="mt-4 font-display text-h4 text-ink">{t(`items.${k}.title`)}</h3>
+                <p className="mt-1 max-w-[44ch] text-small text-ink-2">{t(`items.${k}.text`)}</p>
               </li>
             ))}
           </ul>
-          <div className="reveal mt-12">
-            <ContactButton kind="legal" variant="secondary" className="w-full sm:w-auto">
+          <div className="reveal mt-10">
+            <ContactButton kind="legal" className="w-full sm:w-auto">
               {tcta("legal")}
             </ContactButton>
             <p className="caption mt-3">{t("note")}</p>

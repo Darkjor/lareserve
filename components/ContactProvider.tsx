@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useMemo, useRef, useState, type
 import { useTranslations } from "next-intl";
 import { ArrowUpRight, X } from "@phosphor-icons/react/ssr";
 import { LeadForm, type LeadTipo } from "./LeadForm";
+import { buttonClass, type ButtonVariant } from "./ui/LinkButton";
 import { useDialog } from "./ui/useDialog";
 
 type Kind = Exclude<LeadTipo, "broker">;
@@ -34,34 +35,30 @@ function ContactPanel({ kind, onClose }: { kind: Kind; onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50">
-      <div className="absolute inset-0 bg-selva-950/70" onClick={onClose} aria-hidden />
+      <div className="absolute inset-0 bg-veil/55" onClick={onClose} aria-hidden />
       <div
         ref={ref}
         role="dialog"
         aria-modal="true"
         aria-labelledby="contact-title"
-        className="sheet absolute inset-x-0 bottom-0 max-h-[85dvh] md:inset-y-0 md:right-0 md:left-auto md:max-h-none md:w-[440px]"
+        className="sheet absolute inset-x-0 bottom-0 flex max-h-[85dvh] flex-col rounded-t-surface bg-paper shadow-photo md:inset-y-0 md:right-0 md:left-auto md:max-h-none md:w-[440px] md:rounded-none md:rounded-l-surface"
       >
-        <div className="bezel flex h-full flex-col md:rounded-r-none">
-          <div className="bezel-core flex min-h-0 flex-1 flex-col bg-selva-900">
-            <div className="flex items-start justify-between gap-4 px-6 pt-6">
-              <h2 id="contact-title" className="text-h3 text-marfil-50">
-                {title}
-              </h2>
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label={tc("close")}
-                className="grid size-11 shrink-0 place-items-center rounded-full border border-marfil-50/25 text-marfil-50 transition-colors hover:border-oro-300"
-              >
-                <X size={20} weight="light" aria-hidden />
-              </button>
-            </div>
-            <p className="px-6 pt-2 text-small text-marfil-200">{intro}</p>
-            <div className="min-h-0 flex-1 overflow-y-auto px-6 pt-6 pb-8">
-              <LeadForm variant="panel" tipo={kind} />
-            </div>
-          </div>
+        <div className="flex items-start justify-between gap-4 px-6 pt-6">
+          <h2 id="contact-title" className="text-h3 text-ink">
+            {title}
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label={tc("close")}
+            className="grid size-11 shrink-0 place-items-center rounded-ui border border-line-strong text-ink transition-colors hover:border-oro-500"
+          >
+            <X size={20} weight="light" aria-hidden />
+          </button>
+        </div>
+        <p className="px-6 pt-2 text-small text-ink-2">{intro}</p>
+        <div className="min-h-0 flex-1 overflow-y-auto px-6 pt-6 pb-8">
+          <LeadForm variant="panel" tipo={kind} />
         </div>
       </div>
     </div>
@@ -76,13 +73,13 @@ export function ContactButton({
   children,
 }: {
   kind?: Kind;
-  variant?: "primary" | "secondary";
+  variant?: ButtonVariant;
   className?: string;
   children: ReactNode;
 }) {
   const { open } = useContact();
   return (
-    <button type="button" onClick={() => open(kind)} className={`btn ${variant === "primary" ? "btn-primary" : "btn-secondary"} ${className}`}>
+    <button type="button" onClick={() => open(kind)} className={`${buttonClass(variant)} ${className}`}>
       {children}
       {variant === "primary" && (
         <span className="btn-icon" aria-hidden>

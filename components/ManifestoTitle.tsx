@@ -31,7 +31,7 @@ export function ManifestoTitle({ text }: { text: string }) {
   }, []);
 
   return (
-    <h2 ref={ref} className="text-display-l text-marfil-50">
+    <h2 ref={ref} className="text-display-l text-ink">
       {words.map((w, i) => (
         <span key={i} className="m-word">
           {w}

@@ -1,10 +1,20 @@
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
 
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "link";
+
+/** Clases por variante: primario (oro), secundario (borde), ghost (sobre foto o verde) y enlace terciario. */
+export function buttonClass(variant: ButtonVariant) {
+  if (variant === "primary") return "btn btn-primary";
+  if (variant === "secondary") return "btn btn-secondary";
+  if (variant === "ghost") return "btn btn-ghost-light";
+  return "link-gold inline-flex min-h-11 items-center gap-2";
+}
+
 type Props = {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "secondary";
+  variant?: ButtonVariant;
   external?: boolean;
   className?: string;
 };
@@ -14,7 +24,7 @@ export function LinkButton({ href, children, variant = "primary", external, clas
   return (
     <a
       href={href}
-      className={`btn ${variant === "primary" ? "btn-primary" : "btn-secondary"} ${className}`}
+      className={`${buttonClass(variant)} ${className}`}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       {children}

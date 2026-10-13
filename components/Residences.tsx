@@ -12,6 +12,7 @@ import { PlanViewer } from "./PlanViewer";
 const LETTERS: Tipologia[] = ["A", "B", "C", "D"];
 export type TypeSummary = { unidades: number; m2: number; precioDesde: number };
 
+/** Residencias: pestanas A-D, planta y ficha. Solo tema claro; el dev 2 la recompone (pestanas .seg y tarjeta Lock-Off). */
 export function Residences({ data, locale }: { data: Record<Tipologia, TypeSummary>; locale: string }) {
   const t = useTranslations();
   const uid = useId();
@@ -34,11 +35,10 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
   };
 
   return (
-    <section id="residencias" className="section-y">
+    <section id="residencias" className="section-y bg-wash">
       <div className="wrap">
-        <p className="eyebrow reveal">{t("residences.eyebrow")}</p>
-        <h2 className="reveal mt-5 max-w-[16ch] text-display-l text-marfil-50">{t("residences.title")}</h2>
-        <p className="reveal mt-6 max-w-[44ch] text-body-l text-marfil-200">{t("residences.intro")}</p>
+        <h2 className="reveal max-w-[16ch] text-display-l text-ink">{t("residences.title")}</h2>
+        <p className="reveal mt-6 max-w-[44ch] text-body-l text-ink-2">{t("residences.intro")}</p>
 
         <div className="reveal mt-14 grid gap-8 xl:grid-cols-12 xl:gap-x-6">
           {/* Rail / tabs */}
@@ -61,15 +61,15 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
                   tabIndex={on ? 0 : -1}
                   onClick={() => setActive(l)}
                   onKeyDown={(e) => onKey(e, i)}
-                  className={`min-h-12 min-w-[44%] snap-start rounded-full border px-5 py-3 text-left transition-colors sm:min-w-[22%] xl:min-w-0 xl:rounded-[6px] xl:px-6 xl:py-5 ${
-                    on ? "border-oro-300 bg-selva-800" : "border-oliva-500/60 hover:border-marfil-200"
+                  className={`min-h-12 min-w-[44%] snap-start rounded-ui border px-5 py-3 text-left transition-colors sm:min-w-[22%] xl:min-w-0 xl:rounded-surface xl:px-6 xl:py-5 ${
+                    on ? "border-ink bg-ink text-paper" : "border-line-strong text-ink hover:border-ink-3"
                   }`}
                 >
                   <span className="flex items-baseline gap-4 xl:grid xl:grid-cols-[auto_1fr] xl:gap-x-6">
-                    <span className={`font-name text-[2rem] leading-none xl:row-span-3 xl:text-[3.5rem] ${on ? "text-oro-300" : "text-marfil-50"}`}>{l}</span>
-                    <span className="font-figure text-[1.125rem] font-medium leading-tight tabular-nums text-marfil-50 xl:text-[1.75rem]">{formatM2(data[l].m2, locale)}</span>
-                    <span className="hidden text-small text-marfil-200 xl:block">{t("residences.rooms", { beds: t(`residences.${l.toLowerCase()}.beds`), baths: t(`residences.${l.toLowerCase()}.baths`) })}</span>
-                    <span className="hidden text-small text-piedra-400 xl:block">{t("common.units", { n: data[l].unidades })}</span>
+                    <span className={`font-name text-[2rem] leading-none xl:row-span-3 xl:text-[3.5rem] ${on ? "text-oro-300" : "text-ink"}`}>{l}</span>
+                    <span className="font-figure text-[1.125rem] leading-tight font-semibold tabular-nums xl:text-[1.75rem]">{formatM2(data[l].m2, locale)}</span>
+                    <span className={`hidden text-small xl:block ${on ? "text-paper/85" : "text-ink-2"}`}>{t("residences.rooms", { beds: t(`residences.${l.toLowerCase()}.beds`), baths: t(`residences.${l.toLowerCase()}.baths`) })}</span>
+                    <span className={`hidden text-small xl:block ${on ? "text-paper/70" : "text-ink-3"}`}>{t("common.units", { n: data[l].unidades })}</span>
                   </span>
                 </button>
               );
@@ -78,21 +78,19 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
 
           {/* Visor */}
           <div id={`${uid}-panel`} role="tabpanel" aria-labelledby={`${uid}-tab-${active}`} className="xl:col-span-5">
-            <div className="bezel">
-              <div className="bezel-core bg-selva-900 p-4 md:p-6">
-                <div className="grid h-[clamp(300px,56dvh,560px)] [container-type:size]">
-                  {LETTERS.map((l) => (
-                    <div
-                      key={l}
-                      aria-hidden={l !== active}
-                      className={`grid place-items-center [grid-area:1/1] transition-[opacity,transform] duration-[320ms] ease-[var(--ease-soft)] ${
-                        l === active ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
-                      }`}
-                    >
-                      <PlanViewer id={l} step={l === active && lockoff ? 2 : 1} priority={l === "A"} />
-                    </div>
-                  ))}
-                </div>
+            <div className="rounded-surface border border-line bg-paper p-4 md:p-6">
+              <div className="grid h-[clamp(300px,56dvh,560px)] [container-type:size]">
+                {LETTERS.map((l) => (
+                  <div
+                    key={l}
+                    aria-hidden={l !== active}
+                    className={`grid place-items-center [grid-area:1/1] transition-[opacity,transform] duration-[320ms] ease-[var(--ease-soft)] ${
+                      l === active ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
+                    }`}
+                  >
+                    <PlanViewer id={l} step={l === active && lockoff ? 2 : 1} priority={l === "A"} />
+                  </div>
+                ))}
               </div>
             </div>
             <p className="caption mt-3 max-w-[60ch]">{t("common.planNote")}</p>
@@ -100,23 +98,23 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
 
           {/* Ficha */}
           <div className="xl:col-span-4 xl:pl-4">
-            <h3 className="font-display text-h3 text-marfil-50">
-              <span className="font-name text-oro-300">{t("residences.type", { letter: active })}</span>
+            <h3 className="font-display text-h3 text-ink">
+              <span className="font-name text-oro-700">{t("residences.type", { letter: active })}</span>
             </h3>
-            <p className="mt-3 text-body-l text-marfil-200">{t(`residences.${key}.tagline`)}</p>
+            <p className="mt-3 text-body-l text-ink-2">{t(`residences.${key}.tagline`)}</p>
 
             <div className="mt-8 grid gap-8 sm:grid-cols-2">
               <div>
-                <h4 className="font-sans text-small font-semibold text-marfil-50">{t("residences.sleep")}</h4>
-                <ul className="mt-3 grid gap-1.5 text-small text-marfil-200">
+                <h4 className="font-sans text-small font-semibold text-ink">{t("residences.sleep")}</h4>
+                <ul className="mt-3 grid gap-1.5 text-small text-ink-2">
                   {sleep.map((s) => (
                     <li key={s}>{s}</li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h4 className="font-sans text-small font-semibold text-marfil-50">{t("residences.live")}</h4>
-                <ul className="mt-3 grid gap-1.5 text-small text-marfil-200">
+                <h4 className="font-sans text-small font-semibold text-ink">{t("residences.live")}</h4>
+                <ul className="mt-3 grid gap-1.5 text-small text-ink-2">
                   {live.map((s) => (
                     <li key={s}>{s}</li>
                   ))}
@@ -125,15 +123,15 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
             </div>
 
             <div className="mt-10">
-              <p className="text-small text-piedra-400">{t("common.from")}</p>
-              <p className="mt-1 font-figure text-[clamp(1.75rem,1.2rem+1.6vw,2.5rem)] leading-none font-medium tabular-nums text-oro-300">{formatMXN(d.precioDesde, locale)}</p>
+              <p className="text-small text-ink-3">{t("common.from")}</p>
+              <p className="mt-1 font-figure text-[clamp(1.75rem,1.2rem+1.6vw,2.5rem)] leading-none font-semibold tabular-nums text-ink">{formatMXN(d.precioDesde, locale)}</p>
               <p className="caption mt-3 max-w-[40ch]">{t("common.priceNote")}</p>
             </div>
 
             {active === "D" && (
-              <p className="mt-6 text-small text-marfil-200">
+              <p className="mt-6 text-small text-ink-2">
                 {t("residences.dNote")}{" "}
-                <a href={`/${locale}#disponibilidad`} className="link-gold text-marfil-50">
+                <a href={`/${locale}#disponibilidad`} className="link-gold text-ink">
                   {t("residences.dLink")}
                 </a>
               </p>
@@ -146,11 +144,16 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
                   <ArrowUpRight size={18} weight="light" />
                 </span>
               </a>
-              <button type="button" aria-pressed={lockoff} onClick={() => setLockoff((v) => !v)} className="btn btn-secondary w-full">
+              <button
+                type="button"
+                aria-pressed={lockoff}
+                onClick={() => setLockoff((v) => !v)}
+                className={`btn btn-secondary w-full ${lockoff ? "!border-ink" : ""}`}
+              >
                 {lockoff ? t("residences.lockoffHide") : t("residences.lockoffShow")}
               </button>
             </div>
-            <button type="button" onClick={() => setZoom(true)} className="link-gold mt-5 inline-flex min-h-11 items-center gap-2 text-small text-marfil-50">
+            <button type="button" onClick={() => setZoom(true)} className="link-gold mt-5 inline-flex min-h-11 items-center gap-2 text-small text-ink">
               <MagnifyingGlassPlus size={18} weight="light" aria-hidden />
               {t("residences.expand")}
             </button>

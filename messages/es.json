@@ -17,6 +17,7 @@
     "from": "Desde"
   },
   "cta": {
+    "whatsapp": "WhatsApp",
     "book": "Agenda tu presentación",
     "quote": "Cotizar por WhatsApp",
     "brochure": "Pedir brochure",
@@ -25,6 +26,7 @@
     "residences": "Ver residencias"
   },
   "nav": {
+    "faq": "FAQ",
     "label": "Principal",
     "home": "Grand Mayahual La Reserve, inicio",
     "residences": "Residencias",
@@ -128,6 +130,8 @@
     "terraces": { "title": "Terrazas privadas con jacuzzi", "text": "Aire libre propio, sin salir de casa. Según tipología.", "alt": "Terraza con jacuzzi de la tipología B" }
   },
   "availability": {
+    "expand": "Ampliar plano",
+    "stats": { "torres": "torres", "residencias": "residencias", "locales": "locales" },
     "eyebrow": "Disponibilidad",
     "title": "Encuentra tu residencia",
     "intro": "Dieciséis torres alrededor de una laguna interior: {residencias} residencias y {locales} locales comerciales.",

@@ -60,8 +60,8 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0A150E",
-  colorScheme: "dark",
+  themeColor: "#FCFDFC",
+  colorScheme: "light",
 };
 
 export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {
@@ -97,7 +97,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           <ContactProvider>
             <a
               href="#contenido"
-              className="fixed top-3 left-3 z-[80] -translate-y-[200%] rounded-full bg-oro-300 px-5 py-3 text-small font-semibold text-selva-950 focus:translate-y-0"
+              className="fixed top-3 left-3 z-[80] -translate-y-[200%] rounded-ui bg-oro-400 px-5 py-3 text-small font-semibold text-ink focus:translate-y-0"
             >
               {t("skip")}
             </a>

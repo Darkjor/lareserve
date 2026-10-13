@@ -1,13 +1,10 @@
 import { setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/Hero";
 import { Manifesto } from "@/components/Manifesto";
-import { Destination } from "@/components/Destination";
 import { Residences } from "@/components/Residences";
-import { LockOff } from "@/components/LockOff";
-import { Amenities } from "@/components/Amenities";
-import { Availability } from "@/components/Availability";
-import { Legal } from "@/components/Legal";
 import { Location } from "@/components/Location";
+import { Legal } from "@/components/Legal";
+import { Availability } from "@/components/Availability";
 import { Brokers } from "@/components/Brokers";
 import { FinalCta } from "@/components/FinalCta";
 import { resumenTipologia, type Tipologia } from "@/lib/inventory";
@@ -23,18 +20,19 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     }),
   ) as Record<Tipologia, { unidades: number; m2: number; precioDesde: number }>;
 
+  // Orden de ZAMA (spec de Direccion 2026-10-12). Los huecos 3, 6 y 10 los monta el dev 2.
   return (
     <>
       <Hero locale={locale} />
       <Manifesto />
-      <Destination />
+      {/* 3 vivir (id="vivir"): pendiente. Reutiliza partes de Amenities, LockOff y Destination (desmontados, siguen en components/). */}
       <Residences data={data} locale={locale} />
-      <LockOff />
-      <Amenities />
-      <Availability />
-      <Legal />
       <Location />
+      {/* 6 galeria (id="galeria"): pendiente. Reutiliza Lightbox. */}
+      <Legal />
+      <Availability />
       <Brokers />
+      {/* 10 faq (id="faq"): pendiente. */}
       <FinalCta />
     </>
   );

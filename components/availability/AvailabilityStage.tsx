@@ -15,9 +15,9 @@ export async function AvailabilityStage() {
   return (
     <div>
       <figure>
-        <div className="bezel">
-          <div className="passepartout rounded-[4px] p-3 md:p-6">
-            <div className="relative aspect-[2/1] overflow-hidden rounded-[2px]">
+        <div className="">
+          <div className="rounded-[4px] p-3 md:p-6">
+            <div className="relative aspect-[2/1] overflow-hidden rounded-surface">
               <Image src="/img/plano-modulos.webp" alt={t("alt")} fill sizes="(min-width: 1360px) 1200px, 92vw" className="object-cover" />
             </div>
           </div>
@@ -26,7 +26,7 @@ export async function AvailabilityStage() {
       </figure>
       <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="font-figure text-[1.75rem] leading-none font-medium tabular-nums text-marfil-50">
+          <p className="font-figure text-[1.75rem] leading-none font-medium tabular-nums text-ink">
             {t("summary", { torres: totalTorres, n: totalUnidades })}
           </p>
           <p className="caption mt-3">{t("note")}</p>

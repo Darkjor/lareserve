@@ -53,12 +53,12 @@ export function LockOff() {
   }, []);
 
   const contents = (
-    <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-small text-marfil-200 sm:grid-cols-4 lg:grid-cols-2">
+    <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-small text-ink-2 sm:grid-cols-4 lg:grid-cols-2">
       {(t.raw("lockoff.contents") as string[]).map((c, i) => {
         const Icon = ICONS[i];
         return (
           <li key={c} className="flex items-center gap-3">
-            <Icon size={22} weight="light" className="text-turquesa-500" aria-hidden />
+            <Icon size={22} weight="light" className="text-oro-700" aria-hidden />
             {c}
           </li>
         );
@@ -68,7 +68,7 @@ export function LockOff() {
 
   const closing = (
     <div>
-      <p className="font-display text-h4 text-marfil-50">{t("lockoff.closing")}</p>
+      <p className="font-display text-h4 text-ink">{t("lockoff.closing")}</p>
       <a href={wa} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-6 w-full justify-between sm:w-auto">
         {t("cta.quote")}
         <span className="btn-icon" aria-hidden>
@@ -85,12 +85,12 @@ export function LockOff() {
       <div ref={scene} data-step="1" className="hidden h-dvh overflow-hidden lg:motion-safe:block">
         <div className="wrap grid h-full grid-cols-12 items-center gap-x-6">
           <div className="col-span-5 xl:col-span-4">
-            <h2 className="text-display-l text-marfil-50">{t("lockoff.title")}</h2>
+            <h2 className="text-display-l text-ink">{t("lockoff.title")}</h2>
             <ol aria-label={t("lockoff.stepsLabel")} className="mt-10 grid gap-6">
               {STEPS.map((s, i) => (
                 <li key={s} data-for={i + 1} className="lo-text">
-                  <h3 className="font-display text-h3 text-marfil-50">{t(`lockoff.${s}.title`)}</h3>
-                  <p className="mt-1 max-w-[34ch] text-small text-marfil-200">{t(`lockoff.${s}.text`)}</p>
+                  <h3 className="font-display text-h3 text-ink">{t(`lockoff.${s}.title`)}</h3>
+                  <p className="mt-1 max-w-[34ch] text-small text-ink-2">{t(`lockoff.${s}.text`)}</p>
                 </li>
               ))}
             </ol>
@@ -98,8 +98,8 @@ export function LockOff() {
             <div className="mt-8">{closing}</div>
           </div>
           <div className="col-span-7 xl:col-span-8">
-            <div className="bezel">
-              <div className="bezel-core bg-selva-900 p-6">
+            <div className="">
+              <div className="bg-wash p-6">
                 <div className="grid h-[min(72dvh,680px)] place-items-center [container-type:size]">
                   <PlanViewer id="B" priority />
                 </div>
@@ -112,7 +112,7 @@ export function LockOff() {
       {/* Movil y movimiento reducido: pasos apilados */}
       <div className="section-y lg:motion-safe:hidden">
         <div className="wrap">
-          <h2 className="max-w-[16ch] text-display-l text-marfil-50">{t("lockoff.title")}</h2>
+          <h2 className="max-w-[16ch] text-display-l text-ink">{t("lockoff.title")}</h2>
           <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-x-8">
             <div className="lg:col-span-7">
               <div className="seg mb-4" role="group" aria-label={t("lockoff.toggleLabel")}>
@@ -123,8 +123,8 @@ export function LockOff() {
                   {t("lockoff.split")}
                 </button>
               </div>
-              <div className="bezel">
-                <div className="bezel-core bg-selva-900 p-3 md:p-6">
+              <div className="">
+                <div className="bg-wash p-3 md:p-6">
                   <div className="grid h-[clamp(300px,52dvh,560px)] place-items-center [container-type:size]">
                     <PlanViewer id="B" step={mstep} />
                   </div>
@@ -135,8 +135,8 @@ export function LockOff() {
               <ol aria-label={t("lockoff.stepsLabel")} className="grid gap-6">
                 {STEPS.map((s) => (
                   <li key={s}>
-                    <h3 className="font-display text-h3 text-marfil-50">{t(`lockoff.${s}.title`)}</h3>
-                    <p className="mt-1 max-w-[40ch] text-small text-marfil-200">{t(`lockoff.${s}.text`)}</p>
+                    <h3 className="font-display text-h3 text-ink">{t(`lockoff.${s}.title`)}</h3>
+                    <p className="mt-1 max-w-[40ch] text-small text-ink-2">{t(`lockoff.${s}.text`)}</p>
                   </li>
                 ))}
               </ol>

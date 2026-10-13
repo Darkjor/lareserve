@@ -18,18 +18,18 @@ export default async function PrivacyPage({ params }: PageProps<"/[locale]/priva
   return (
     <article className="wrap pt-36 pb-24 md:pt-44">
       <div className="max-w-[66ch]">
-        <h1 className="text-display-l text-marfil-50">{t("title")}</h1>
-        <p className="mt-6 rounded-[2px] border border-oro-300/50 px-4 py-3 text-small text-oro-300">{t("draft")}</p>
+        <h1 className="text-display-l text-ink">{t("title")}</h1>
+        <p className="mt-6 rounded-surface border border-oro-500 px-4 py-3 text-small text-oro-700">{t("draft")}</p>
         <p className="caption mt-4">{t("updated")}</p>
         <div className="mt-12 grid gap-10">
           {sections.map((s) => (
             <section key={s.title}>
-              <h2 className="font-display text-h3 text-marfil-50">{s.title}</h2>
-              <p className="mt-3 text-body text-marfil-200">{s.text}</p>
+              <h2 className="font-display text-h3 text-ink">{s.title}</h2>
+              <p className="mt-3 text-body text-ink-2">{s.text}</p>
             </section>
           ))}
         </div>
-        <a href={`/${locale}`} className="link-gold mt-14 inline-flex min-h-11 items-center text-marfil-50">
+        <a href={`/${locale}`} className="link-gold mt-14 inline-flex min-h-11 items-center text-ink">
           {t("back")}
         </a>
       </div>

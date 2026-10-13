@@ -30,7 +30,7 @@ export function PlanViewer({ id, step, priority, sizes = "(min-width: 1280px) 40
         fill
         sizes={sizes}
         priority={priority}
-        className="object-contain drop-shadow-[0_24px_32px_oklch(0.1_0.04_153/0.6)]"
+        className="object-contain drop-shadow-[0_18px_24px_rgb(21_26_23/0.18)]"
       />
       <svg className="lo-layer pointer-events-none absolute inset-0 size-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
         {plan.zones.map((z, i) => (
@@ -39,7 +39,7 @@ export function PlanViewer({ id, step, priority, sizes = "(min-width: 1280px) 40
         <path d={linePath(plan.line)} pathLength={100} className="lo-line" fill="none" />
       </svg>
       <span
-        className="lo-layer pointer-events-none absolute rounded-[2px] bg-selva-950/90 px-2 py-1 text-caption font-semibold text-turquesa-500"
+        className="lo-layer pointer-events-none absolute rounded-surface bg-paper/90 px-2 py-1 text-caption font-semibold text-oro-700"
         style={{ left: `${plan.label[0]}%`, top: `${plan.label[1]}%` }}
       >
         {t("lockoff.suite")}
@@ -51,7 +51,7 @@ export function PlanViewer({ id, step, priority, sizes = "(min-width: 1280px) 40
       ))}
       {plan.accessLabel && (
         <span
-          className="lo-access pointer-events-none absolute rounded-[2px] bg-selva-950/90 px-2 py-1 text-caption font-semibold text-oro-300"
+          className="lo-access pointer-events-none absolute rounded-surface bg-paper/90 px-2 py-1 text-caption font-semibold text-oro-700"
           style={{ left: `${plan.accessLabel[0]}%`, top: `${plan.accessLabel[1]}%` }}
         >
           {t("lockoff.access")}
