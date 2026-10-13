@@ -8,6 +8,7 @@ import { PLANS } from "@/lib/plans";
 import { formatM2, formatMXN, whatsappLink } from "@/lib/site";
 import { Lightbox, ZoomPane } from "./Lightbox";
 import { PlanViewer } from "./PlanViewer";
+import { DrawFrame } from "./ui/DrawFrame";
 
 const LETTERS: Tipologia[] = ["A", "B", "C", "D"];
 const ICONS = [Bed, Bathtub, CookingPot, CoatHanger];
@@ -68,15 +69,15 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
         <div className="reveal mt-8 grid gap-10 xl:grid-cols-12 xl:gap-x-8">
           {/* Planta */}
           <div id={`${uid}-panel`} role="tabpanel" aria-labelledby={`${uid}-tab-${active}`} className="xl:col-span-7">
-            <div className="rounded-surface border border-line bg-paper p-4 md:p-6">
+            <div className="relative rounded-surface border border-line bg-paper p-4 md:p-6">
+              <DrawFrame key={active} inset={10} mode="load" delay={300} />
               <div className="grid h-[clamp(300px,56dvh,560px)] [container-type:size]">
                 {LETTERS.map((l) => (
                   <div
                     key={l}
                     aria-hidden={l !== active}
-                    className={`grid place-items-center [grid-area:1/1] transition-[opacity,transform] duration-[320ms] ease-[var(--ease-soft)] ${
-                      l === active ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
-                    }`}
+                    data-on={l === active}
+                    className="plan-layer grid place-items-center [grid-area:1/1]"
                   >
                     <PlanViewer id={l} step={l === active && split ? 3 : 1} priority={l === "A"} />
                   </div>
@@ -124,7 +125,8 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
               </p>
             )}
 
-            <div className="frame-out mt-12 rounded-surface bg-paper p-6 md:p-7">
+            <div className="relative mt-12 rounded-surface bg-paper p-6 md:p-7">
+              <DrawFrame inset={-7} />
               <h4 className="font-display text-h4 text-ink">{t("lockoff.title")}</h4>
               <p className="mt-2 max-w-[40ch] text-small text-ink-2">{t("lockoff.text")}</p>
               <div className="seg mt-5" role="group" aria-label={t("lockoff.toggleLabel")}>

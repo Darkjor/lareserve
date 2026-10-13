@@ -83,7 +83,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "document.documentElement.classList.add('reveal-ready');setTimeout(function(){if(!window.__reveal){document.querySelectorAll('.reveal,.reveal-clip').forEach(function(e){e.classList.add('is-visible')})}},3000);",
+              "document.documentElement.classList.add('reveal-ready');setTimeout(function(){if(!window.__reveal){document.querySelectorAll('.reveal,.reveal-clip,.reveal-thread,.reveal-frame').forEach(function(e){e.classList.add('is-visible')})}},3000);",
           }}
         />
       </head>

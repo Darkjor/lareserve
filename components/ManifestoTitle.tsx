@@ -16,17 +16,19 @@ export function ManifestoTitle({ text }: { text: string }) {
     loadGsap().then(({ gsap }) => {
       if (cancelled) return;
       ctx = gsap.context(() => {
-        const spans = el.querySelectorAll(".m-word");
-        gsap.fromTo(
-          spans,
-          { opacity: 0.22 },
-          { opacity: 1, ease: "none", stagger: 0.12, scrollTrigger: { trigger: el, start: "top 70%", end: "bottom 35%", scrub: true } },
-        );
+        // Cada palabra: gris tenue a oro (0.5) y de oro a tinta (0.5), desfase 0.35 entre palabras. Scrub, sin pin.
+        el.classList.add("m-armed");
+        const tl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: { trigger: el, start: "top 72%", end: "bottom 40%", scrub: true } });
+        el.querySelectorAll(".m-word").forEach((w, i) => {
+          tl.fromTo(w, { "--a": 0 }, { "--a": 1, duration: 0.5 }, i * 0.35);
+          tl.fromTo(w, { "--b": 0 }, { "--b": 1, duration: 0.5 }, i * 0.35 + 0.5);
+        });
       }, el);
     });
     return () => {
       cancelled = true;
       ctx?.revert();
+      el?.classList.remove("m-armed");
     };
   }, []);
 

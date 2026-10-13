@@ -12,18 +12,18 @@ export async function Legal() {
   return (
     <section id="legal" className="section-y">
       <div className="wrap grid-12 items-start gap-y-12">
-        <figure className="reveal-clip col-span-6 lg:col-span-3">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-surface">
-            <Image src="/img/hero-aerea.webp" alt={t("cards.limited.alt")} fill sizes="(min-width: 1024px) 25vw, 46vw" className="object-cover object-[55%_50%]" />
+        <figure className="col-span-6 lg:col-span-3">
+          <div className="reveal-clip relative aspect-[3/4] overflow-hidden rounded-surface">
+            <Image src="/img/hero-aerea.webp" alt={t("cards.limited.alt")} fill sizes="(min-width: 1024px) 25vw, 46vw" className="clip-img object-cover object-[55%_50%]" />
           </div>
           <figcaption className="mt-4">
             <h3 className="font-display text-h4 text-ink">{t("cards.limited.title")}</h3>
             <p className="mt-1 text-small text-ink-2">{t("cards.limited.text")}</p>
           </figcaption>
         </figure>
-        <figure className="reveal-clip col-span-6 mt-8 lg:col-span-3 lg:mt-[72px]">
-          <div className="relative aspect-square overflow-hidden rounded-surface">
-            <Image src="/img/cta-final.webp" alt={t("cards.developer.alt")} fill sizes="(min-width: 1024px) 25vw, 46vw" className="object-cover" />
+        <figure className="col-span-6 mt-8 lg:col-span-3 lg:mt-[72px]">
+          <div className="reveal-clip relative aspect-square overflow-hidden rounded-surface" style={{ ["--d" as string]: "180ms" }}>
+            <Image src="/img/cta-final.webp" alt={t("cards.developer.alt")} fill sizes="(min-width: 1024px) 25vw, 46vw" className="clip-img object-cover" />
           </div>
           <figcaption className="mt-4">
             <h3 className="font-display text-h4 text-ink">{t("cards.developer.title")}</h3>
@@ -37,7 +37,7 @@ export async function Legal() {
           <ul className="mt-9 grid gap-7">
             {ITEMS.map((k, i) => (
               <li key={k} className="reveal" style={{ ["--d" as string]: `${i * 140}ms` }}>
-                <span className="thread" aria-hidden />
+                <span className="thread reveal-thread" style={{ ["--d" as string]: `${i * 140 + 200}ms` }} aria-hidden />
                 <h3 className="mt-4 font-display text-h4 text-ink">{t(`items.${k}`)}</h3>
               </li>
             ))}

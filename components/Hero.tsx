@@ -2,6 +2,7 @@ import { getImageProps } from "next/image";
 import { getTranslations } from "next-intl/server";
 import { HeroEffects } from "./HeroEffects";
 import { LeadForm } from "./LeadForm";
+import { DrawFrame } from "./ui/DrawFrame";
 import { LinkButton } from "./ui/LinkButton";
 
 /**
@@ -45,11 +46,13 @@ export async function Hero({ locale }: { locale: string }) {
         </div>
         {/* Velo fijo (alfa >= .66 bajo el texto) y capa extra que oscurece al salir (la anima HeroEffects). */}
         <div aria-hidden className="hero-veil absolute inset-0" />
+        <div aria-hidden className="hero-emerge absolute inset-0 bg-veil opacity-0" />
         <div aria-hidden data-hero-dim className="absolute inset-0 bg-veil opacity-0" />
       </div>
 
       <div className="wrap relative lg:grid lg:min-h-dvh lg:grid-cols-12 lg:items-end lg:gap-x-6 lg:pt-28 lg:pb-16">
         <div className="on-dark flex min-h-[86dvh] flex-col justify-end pt-28 pb-14 lg:col-span-6 lg:min-h-0 lg:p-0">
+          <span aria-hidden className="thread hero-thread mb-6 !w-16" />
           <h1 className="text-display-xl text-paper">
             <span className="hero-line">
               <span>{t.rich("title", { em: (c) => <em className="text-oro-300">{c}</em> })}</span>
@@ -70,7 +73,8 @@ export async function Hero({ locale }: { locale: string }) {
         </div>
 
         <div className="relative -mt-10 md:max-w-[560px] lg:col-span-5 lg:col-start-8 lg:mt-0 lg:w-[440px] lg:max-w-none lg:justify-self-end">
-          <div id="agenda" className="hero-card hero-fade frame-in scroll-mt-24 rounded-surface bg-paper shadow-photo" style={{ ["--d" as string]: "900ms" }}>
+          <div id="agenda" className="hero-card hero-fade relative scroll-mt-24 rounded-surface bg-paper shadow-photo" style={{ ["--d" as string]: "900ms" }}>
+            <DrawFrame inset={10} mode="load" delay={900} duration={1100} />
             <h2 className="text-h4 text-ink">{tp("heroTitle")}</h2>
             <div className="mt-5">
               <LeadForm variant="panel" tipo="presentacion" layout="compact" />

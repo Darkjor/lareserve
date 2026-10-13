@@ -34,5 +34,5 @@ export function formatMXN(value: number, locale: string) {
 }
 
 export function formatM2(value: number, locale: string) {
-  return `${new Intl.NumberFormat(locale === "en" ? "en-US" : "es-MX", { maximumFractionDigits: 2 }).format(value)} m²`;
+  return `${new Intl.NumberFormat(locale === "en" ? "en-US" : "es-MX", { maximumFractionDigits: 0 }).format(value)} m²`;
 }

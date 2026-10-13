@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/ssr";
 import { Lightbox, ZoomPane } from "./Lightbox";
+import { DrawFrame } from "./ui/DrawFrame";
 
 /** Carrusel de imagenes propias: orden de Marketing, proporciones alternadas para dar ritmo. */
 const ITEMS = [
@@ -77,12 +78,13 @@ export function Gallery() {
         className="no-scrollbar reveal mt-10 flex snap-x snap-mandatory gap-8 overflow-x-auto px-[var(--gutter)] py-3 scroll-px-[var(--gutter)] md:mt-12"
       >
         {ITEMS.map((it, i) => (
-          <li key={it.k} className="shrink-0 snap-start">
+          <li key={it.k} className="relative shrink-0 snap-start">
+            <DrawFrame inset={-7} duration={1200} delay={(i % 3) * 120} />
             <button
               type="button"
               onClick={() => setOpen(i)}
               aria-label={`${t("open")}: ${t(`items.${it.k}.alt`)}`}
-              className="frame-out group block w-[78vw] cursor-zoom-in overflow-hidden rounded-surface md:h-[460px] md:w-auto"
+              className="group block w-[78vw] cursor-zoom-in overflow-hidden rounded-surface md:h-[460px] md:w-auto"
               style={{ aspectRatio: it.r }}
             >
               <span className="relative block size-full overflow-hidden">

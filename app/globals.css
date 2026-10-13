@@ -177,14 +177,6 @@
   .frame-in {
     position: relative;
   }
-  .frame-in::after {
-    content: "";
-    position: absolute;
-    inset: 10px;
-    border: 1px solid var(--color-oro-500);
-    border-radius: var(--radius-surface);
-    pointer-events: none;
-  }
 
   /* Botones: pill. Primario con circulo de icono anidado. */
   .btn {
@@ -451,23 +443,119 @@
   opacity: 1;
   transform: none;
 }
+/* P2 mascara vertical: la caja crece desde abajo; la imagen interior se asienta. */
 .reveal-ready .reveal-clip {
-  opacity: 0;
-  clip-path: inset(8% 0 0 0);
-  transition:
-    clip-path 1100ms var(--ease-out-expo),
-    opacity 700ms var(--ease-out-expo);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1200ms var(--ease-out-expo);
+  transition-delay: var(--d, 0ms);
 }
 .reveal-ready .reveal-clip.is-visible {
-  opacity: 1;
-  clip-path: inset(0 0 0 0);
+  clip-path: inset(0);
+}
+.reveal-ready .reveal-clip .clip-img {
+  transform: translateY(5%) scale(1.06);
+  transition: transform 1500ms var(--ease-out-expo);
+  transition-delay: var(--d, 0ms);
+}
+.reveal-ready .reveal-clip.is-visible .clip-img {
+  transform: none;
+}
+/* P3 hilo dorado (--w de 28 a 64 px): scaleX 0 a 1 desde la izquierda. */
+.reveal-ready .reveal-thread {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 700ms var(--ease-soft);
+  transition-delay: var(--d, 0ms);
+}
+.reveal-ready .reveal-thread.is-visible {
+  transform: none;
+}
+/* P4 marco que se dibuja. */
+.draw-frame {
+  position: absolute;
+  inset: var(--i, 0px);
+  width: calc(100% - 2 * var(--i, 0px));
+  height: calc(100% - 2 * var(--i, 0px));
+  overflow: visible;
+  pointer-events: none;
+}
+.draw-frame rect {
+  width: calc(100% - 1px);
+  height: calc(100% - 1px);
+  fill: none;
+  stroke: var(--color-oro-500);
+  stroke-width: 1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.reveal-ready .reveal-frame rect {
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset var(--dur, 1400ms) var(--ease-draw);
+  transition-delay: var(--d, 0ms);
+}
+.reveal-ready .reveal-frame.is-visible rect {
+  stroke-dashoffset: 0;
+}
+@keyframes frame-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes veil-out {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .draw-load rect {
+    animation: frame-draw var(--dur, 900ms) var(--ease-draw) var(--d, 0ms) both;
+  }
+  .hero-emerge {
+    animation: veil-out 1800ms var(--ease-out-expo) both;
+  }
+  .hero-thread {
+    transform-origin: left;
+    animation: thread-in 700ms var(--ease-soft) 1100ms both;
+  }
+}
+@keyframes thread-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal-ready .reveal,
-  .reveal-ready .reveal-clip {
+  .reveal-ready .reveal-clip,
+  .reveal-ready .reveal-clip .clip-img,
+  .reveal-ready .reveal-thread {
     transform: none;
     clip-path: none;
+    transition: none;
+  }
+  .reveal-ready .reveal {
     transition: opacity 160ms linear;
+  }
+  .reveal-ready .reveal-clip,
+  .reveal-ready .reveal-thread {
+    opacity: 0;
+  }
+  .reveal-ready .reveal-clip.is-visible,
+  .reveal-ready .reveal-thread.is-visible {
+    opacity: 1;
+    transition: opacity 160ms linear;
+  }
+  .reveal-ready .reveal-frame rect {
+    stroke-dashoffset: 0;
+    transition: none;
   }
 }
 
@@ -755,4 +843,81 @@
   .faq-plus {
     transition: none;
   }
+}
+
+/* ---- Parte 3: planta que se dibuja, manifiesto que se enciende, anillos de disponibilidad ---- */
+.plan-layer {
+  clip-path: inset(0);
+  opacity: 1;
+  transition:
+    clip-path 1000ms var(--ease-out-expo),
+    opacity 0s;
+}
+.plan-layer[data-on="false"] {
+  clip-path: inset(100% 0 0 0);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    clip-path 0s linear 160ms,
+    opacity 160ms linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .plan-layer,
+  .plan-layer[data-on="false"] {
+    clip-path: none;
+    transition: opacity 160ms linear;
+  }
+}
+.m-armed .m-word {
+  --a: 0;
+  --b: 0;
+  color: color-mix(
+    in oklab,
+    var(--color-ink) calc(var(--b) * 100%),
+    color-mix(in oklab, var(--color-oro-500) calc(var(--a) * 100%), color-mix(in oklab, var(--color-ink) 24%, var(--color-paper)))
+  );
+}
+.mk-paper {
+  opacity: 0;
+}
+.mk-ring,
+.mk-dot {
+  fill: none;
+}
+.mk-ring {
+  stroke: var(--color-oro-500);
+  stroke-width: 1.5;
+  stroke-dasharray: 1;
+}
+.mk-dot {
+  fill: var(--color-oro-400);
+}
+.reveal-ready .mk-armed .mk-paper {
+  opacity: 0.5;
+}
+.reveal-ready .mk-armed .mk-ring {
+  stroke-dashoffset: 1;
+}
+.reveal-ready .mk-armed .mk-dot {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready .mk-armed .mk-paper {
+    opacity: 0;
+  }
+  .reveal-ready .mk-armed .mk-ring {
+    stroke-dashoffset: 0;
+  }
+  .reveal-ready .mk-armed .mk-dot {
+    opacity: 1;
+  }
+}
+
+/* Un fieldset no debe imponer su ancho minimo al formulario (a 320 px empujaba 13 px de scroll horizontal). */
+fieldset {
+  min-inline-size: 0;
+}
+.seg.w-full > * {
+  min-width: 0;
+  padding-inline: 8px;
 }

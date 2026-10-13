@@ -5,6 +5,7 @@ import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowsOutSimple } from "@phosphor-icons/react/ssr";
 import { Lightbox, ZoomPane } from "./Lightbox";
+import { PlanMarkers } from "./PlanMarkers";
 
 /** Plano de modulos a ancho de contenedor (2:1). Movil: scroll horizontal. Ampliar abre el Lightbox. Recibe el CTA como hijo. */
 export function ModulesPlan({ children }: { children: ReactNode }) {
@@ -15,6 +16,7 @@ export function ModulesPlan({ children }: { children: ReactNode }) {
       <div role="region" aria-label={t("alt")} tabIndex={0} className="overflow-x-auto rounded-surface border border-line bg-paper md:overflow-visible">
         <div className="relative aspect-[2/1] min-w-[760px] md:min-w-0">
           <Image src="/img/plano-modulos.webp" alt={t("alt")} fill sizes="(min-width: 1360px) 1328px, (min-width: 768px) 92vw, 760px" className="object-cover" />
+          <PlanMarkers />
         </div>
       </div>
       <p className="caption mt-3">{t("note")}</p>
