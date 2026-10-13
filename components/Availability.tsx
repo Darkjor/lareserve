@@ -5,9 +5,9 @@ import { ModulesPlan } from "./ModulesPlan";
 import { LinkButton } from "./ui/LinkButton";
 
 const STATS = [
-  ["torres", totalTorres],
-  ["residencias", totalResidencias],
-  ["locales", totalLocales],
+  ["towers", totalTorres],
+  ["residences", totalResidencias],
+  ["retail", totalLocales],
 ] as const;
 
 /** Familia H: cifras en linea + plano ancho. Disponibilidad estatica (no hay explorador interactivo). */

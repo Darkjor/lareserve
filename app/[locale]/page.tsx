@@ -1,4 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
+import { Vivir } from "@/components/Vivir";
+import { Gallery } from "@/components/Gallery";
+import { Faq } from "@/components/Faq";
 import { Hero } from "@/components/Hero";
 import { Manifesto } from "@/components/Manifesto";
 import { Residences } from "@/components/Residences";
@@ -20,19 +23,19 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
     }),
   ) as Record<Tipologia, { unidades: number; m2: number; precioDesde: number }>;
 
-  // Orden de ZAMA (spec de Direccion 2026-10-12). Los huecos 3, 6 y 10 los monta el dev 2.
+  // Orden de ZAMA (spec de Direccion 2026-10-12). Vivir, Galeria y FAQ montados en la parte 2.
   return (
     <>
       <Hero locale={locale} />
       <Manifesto />
-      {/* 3 vivir (id="vivir"): pendiente. Reutiliza partes de Amenities, LockOff y Destination (desmontados, siguen en components/). */}
+      <Vivir />
       <Residences data={data} locale={locale} />
       <Location />
-      {/* 6 galeria (id="galeria"): pendiente. Reutiliza Lightbox. */}
+      <Gallery />
       <Legal />
       <Availability />
       <Brokers />
-      {/* 10 faq (id="faq"): pendiente. */}
+      <Faq />
       <FinalCta />
     </>
   );

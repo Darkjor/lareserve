@@ -673,3 +673,86 @@
     animation-delay: calc(var(--i, 0) * 60ms + 80ms);
   }
 }
+/* ---- Parte 2: marco dorado, Vivir (escena fijada) y FAQ ---- */
+.frame-out {
+  outline: 1px solid var(--color-oro-500);
+  outline-offset: 7px;
+  border-radius: var(--radius-surface);
+}
+/* Vivir: arbol fijado solo en escritorio, con JS y movimiento permitido; si no, piezas apiladas. */
+.vz-stage {
+  display: none;
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .reveal-ready .vz-stage {
+    display: block;
+  }
+  .reveal-ready .vz-stack {
+    display: none;
+  }
+}
+.vz-img {
+  clip-path: inset(100% 0 0 0);
+  opacity: 0;
+  transition:
+    clip-path 0s linear 1200ms,
+    opacity 400ms var(--ease-soft) 800ms;
+}
+.vz-img[data-on="true"] {
+  clip-path: inset(0);
+  opacity: 1;
+  z-index: 1;
+  transition:
+    clip-path 1100ms var(--ease-out-expo),
+    opacity 0s;
+}
+.vz-thread {
+  display: block;
+  flex: none;
+  width: 40px;
+  height: 1px;
+  background: var(--color-oro-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 600ms var(--ease-soft);
+}
+[aria-current="true"] > .vz-thread {
+  transform: scaleX(1);
+}
+.vz-phrase {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms var(--ease-soft);
+}
+.vz-phrase > * {
+  overflow: hidden;
+}
+[data-on="true"] > .vz-phrase {
+  grid-template-rows: 1fr;
+}
+/* FAQ */
+.faq details {
+  interpolate-size: allow-keywords;
+}
+.faq-plus {
+  transition: rotate 300ms var(--ease-soft);
+}
+.faq details[open] .faq-plus {
+  rotate: 45deg;
+}
+.faq details::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 450ms var(--ease-soft),
+    content-visibility 450ms allow-discrete;
+}
+.faq details[open]::details-content {
+  block-size: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq details::details-content,
+  .faq-plus {
+    transition: none;
+  }
+}

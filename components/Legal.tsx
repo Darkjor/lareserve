@@ -14,13 +14,21 @@ export async function Legal() {
       <div className="wrap grid-12 items-start gap-y-12">
         <figure className="reveal-clip col-span-6 lg:col-span-3">
           <div className="relative aspect-[3/4] overflow-hidden rounded-surface">
-            <Image src="/img/manifiesto.webp" alt="" fill sizes="(min-width: 1024px) 25vw, 46vw" className="object-cover" />
+            <Image src="/img/hero-aerea.webp" alt={t("cards.limited.alt")} fill sizes="(min-width: 1024px) 25vw, 46vw" className="object-cover object-[55%_50%]" />
           </div>
+          <figcaption className="mt-4">
+            <h3 className="font-display text-h4 text-ink">{t("cards.limited.title")}</h3>
+            <p className="mt-1 text-small text-ink-2">{t("cards.limited.text")}</p>
+          </figcaption>
         </figure>
         <figure className="reveal-clip col-span-6 mt-8 lg:col-span-3 lg:mt-[72px]">
           <div className="relative aspect-square overflow-hidden rounded-surface">
-            <Image src="/img/fachada-tipo2.webp" alt="" fill sizes="(min-width: 1024px) 25vw, 46vw" className="object-cover" />
+            <Image src="/img/cta-final.webp" alt={t("cards.developer.alt")} fill sizes="(min-width: 1024px) 25vw, 46vw" className="object-cover" />
           </div>
+          <figcaption className="mt-4">
+            <h3 className="font-display text-h4 text-ink">{t("cards.developer.title")}</h3>
+            <p className="mt-1 text-small text-ink-2">{t("cards.developer.text")}</p>
+          </figcaption>
         </figure>
         <div className="col-span-12 lg:col-span-5 lg:col-start-8 lg:self-center">
           <p className="eyebrow reveal">{tn("legal")}</p>
@@ -30,8 +38,7 @@ export async function Legal() {
             {ITEMS.map((k, i) => (
               <li key={k} className="reveal" style={{ ["--d" as string]: `${i * 140}ms` }}>
                 <span className="thread" aria-hidden />
-                <h3 className="mt-4 font-display text-h4 text-ink">{t(`items.${k}.title`)}</h3>
-                <p className="mt-1 max-w-[44ch] text-small text-ink-2">{t(`items.${k}.text`)}</p>
+                <h3 className="mt-4 font-display text-h4 text-ink">{t(`items.${k}`)}</h3>
               </li>
             ))}
           </ul>

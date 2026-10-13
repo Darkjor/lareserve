@@ -71,7 +71,7 @@ export async function Hero({ locale }: { locale: string }) {
 
         <div className="relative -mt-10 md:max-w-[560px] lg:col-span-5 lg:col-start-8 lg:mt-0 lg:w-[440px] lg:max-w-none lg:justify-self-end">
           <div id="agenda" className="hero-card hero-fade frame-in scroll-mt-24 rounded-surface bg-paper shadow-photo" style={{ ["--d" as string]: "900ms" }}>
-            <h2 className="text-h4 text-ink">{tp("title")}</h2>
+            <h2 className="text-h4 text-ink">{tp("heroTitle")}</h2>
             <div className="mt-5">
               <LeadForm variant="panel" tipo="presentacion" layout="compact" />
             </div>

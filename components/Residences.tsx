@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowUpRight, MagnifyingGlassPlus } from "@phosphor-icons/react/ssr";
+import { ArrowUpRight, Bathtub, Bed, CoatHanger, CookingPot, MagnifyingGlassPlus } from "@phosphor-icons/react/ssr";
 import type { Tipologia } from "@/lib/inventory";
 import { PLANS } from "@/lib/plans";
 import { formatM2, formatMXN, whatsappLink } from "@/lib/site";
@@ -10,19 +10,18 @@ import { Lightbox, ZoomPane } from "./Lightbox";
 import { PlanViewer } from "./PlanViewer";
 
 const LETTERS: Tipologia[] = ["A", "B", "C", "D"];
+const ICONS = [Bed, Bathtub, CookingPot, CoatHanger];
 export type TypeSummary = { unidades: number; m2: number; precioDesde: number };
 
-/** Residencias: pestanas A-D, planta y ficha. Solo tema claro; el dev 2 la recompone (pestanas .seg y tarjeta Lock-Off). */
+/** Familia D: banco de trabajo. Pestanas A-D (.seg), planta, ficha y tarjeta protagonista Lock-Off con interruptor Completa/Dividida. */
 export function Residences({ data, locale }: { data: Record<Tipologia, TypeSummary>; locale: string }) {
   const t = useTranslations();
   const uid = useId();
   const [active, setActive] = useState<Tipologia>("A");
-  const [lockoff, setLockoff] = useState(false);
+  const [split, setSplit] = useState(false);
   const [zoom, setZoom] = useState(false);
   const key = active.toLowerCase();
   const d = data[active];
-  const sleep = t.raw(`residences.${key}.sleep`) as string[];
-  const live = t.raw(`residences.${key}.live`) as string[];
   const wa = whatsappLink(t("wa.type", { tipologia: active }));
 
   const onKey = (e: React.KeyboardEvent, i: number) => {
@@ -40,14 +39,8 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
         <h2 className="reveal max-w-[16ch] text-display-l text-ink">{t("residences.title")}</h2>
         <p className="reveal mt-6 max-w-[44ch] text-body-l text-ink-2">{t("residences.intro")}</p>
 
-        <div className="reveal mt-14 grid gap-8 xl:grid-cols-12 xl:gap-x-6">
-          {/* Rail / tabs */}
-          <div
-            role="tablist"
-            aria-label={t("residences.tabs")}
-            aria-orientation="vertical"
-            className="no-scrollbar -mx-[var(--gutter)] flex snap-x gap-2 overflow-x-auto px-[var(--gutter)] xl:col-span-3 xl:mx-0 xl:grid xl:content-start xl:gap-2 xl:overflow-visible xl:px-0"
-          >
+        <div className="reveal no-scrollbar -mx-[var(--gutter)] mt-12 overflow-x-auto px-[var(--gutter)]">
+          <div role="tablist" aria-label={t("residences.tabs")} className="seg">
             {LETTERS.map((l, i) => {
               const on = l === active;
               return (
@@ -57,27 +50,24 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
                   role="tab"
                   type="button"
                   aria-selected={on}
+                  data-active={on}
                   aria-controls={`${uid}-panel`}
                   tabIndex={on ? 0 : -1}
                   onClick={() => setActive(l)}
                   onKeyDown={(e) => onKey(e, i)}
-                  className={`min-h-12 min-w-[44%] snap-start rounded-ui border px-5 py-3 text-left transition-colors sm:min-w-[22%] xl:min-w-0 xl:rounded-surface xl:px-6 xl:py-5 ${
-                    on ? "border-ink bg-ink text-paper" : "border-line-strong text-ink hover:border-ink-3"
-                  }`}
+                  className="gap-3 !px-5"
                 >
-                  <span className="flex items-baseline gap-4 xl:grid xl:grid-cols-[auto_1fr] xl:gap-x-6">
-                    <span className={`font-name text-[2rem] leading-none xl:row-span-3 xl:text-[3.5rem] ${on ? "text-oro-300" : "text-ink"}`}>{l}</span>
-                    <span className="font-figure text-[1.125rem] leading-tight font-semibold tabular-nums xl:text-[1.75rem]">{formatM2(data[l].m2, locale)}</span>
-                    <span className={`hidden text-small xl:block ${on ? "text-paper/85" : "text-ink-2"}`}>{t("residences.rooms", { beds: t(`residences.${l.toLowerCase()}.beds`), baths: t(`residences.${l.toLowerCase()}.baths`) })}</span>
-                    <span className={`hidden text-small xl:block ${on ? "text-paper/70" : "text-ink-3"}`}>{t("common.units", { n: data[l].unidades })}</span>
-                  </span>
+                  <span className="font-name text-[1.25rem] leading-none">{l}</span>
+                  <span className="hidden font-figure tabular-nums sm:inline">{formatM2(data[l].m2, locale)}</span>
                 </button>
               );
             })}
           </div>
+        </div>
 
-          {/* Visor */}
-          <div id={`${uid}-panel`} role="tabpanel" aria-labelledby={`${uid}-tab-${active}`} className="xl:col-span-5">
+        <div className="reveal mt-8 grid gap-10 xl:grid-cols-12 xl:gap-x-8">
+          {/* Planta */}
+          <div id={`${uid}-panel`} role="tabpanel" aria-labelledby={`${uid}-tab-${active}`} className="xl:col-span-7">
             <div className="rounded-surface border border-line bg-paper p-4 md:p-6">
               <div className="grid h-[clamp(300px,56dvh,560px)] [container-type:size]">
                 {LETTERS.map((l) => (
@@ -88,48 +78,45 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
                       l === active ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
                     }`}
                   >
-                    <PlanViewer id={l} step={l === active && lockoff ? 2 : 1} priority={l === "A"} />
+                    <PlanViewer id={l} step={l === active && split ? 3 : 1} priority={l === "A"} />
                   </div>
                 ))}
               </div>
             </div>
-            <p className="caption mt-3 max-w-[60ch]">{t("common.planNote")}</p>
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
+              <p className="caption max-w-[60ch]">{t("common.planNote")}</p>
+              <button type="button" onClick={() => setZoom(true)} className="link-gold inline-flex min-h-11 items-center gap-2 text-small text-ink">
+                <MagnifyingGlassPlus size={18} weight="light" aria-hidden />
+                {t("residences.expand")}
+              </button>
+            </div>
           </div>
 
-          {/* Ficha */}
-          <div className="xl:col-span-4 xl:pl-4">
-            <h3 className="font-display text-h3 text-ink">
-              <span className="font-name text-oro-700">{t("residences.type", { letter: active })}</span>
-            </h3>
+          {/* Ficha + Lock-Off */}
+          <div className="xl:col-span-5">
+            <h3 className="font-display text-h3 text-oro-700">{t("residences.type", { letter: active })}</h3>
             <p className="mt-3 text-body-l text-ink-2">{t(`residences.${key}.tagline`)}</p>
+            <p className="mt-5 flex flex-wrap items-baseline gap-x-6 gap-y-1 font-figure text-[1.125rem] font-semibold tabular-nums text-ink">
+              <span>{formatM2(d.m2, locale)}</span>
+              <span>{t("residences.rooms", { beds: t(`residences.${key}.beds`), baths: t(`residences.${key}.baths`) })}</span>
+            </p>
+            <p className="mt-4 max-w-[46ch] text-small text-ink-2">{t(`residences.${key}.spaces`)}</p>
 
-            <div className="mt-8 grid gap-8 sm:grid-cols-2">
+            <div className="mt-8 flex flex-wrap items-end justify-between gap-x-8 gap-y-5">
               <div>
-                <h4 className="font-sans text-small font-semibold text-ink">{t("residences.sleep")}</h4>
-                <ul className="mt-3 grid gap-1.5 text-small text-ink-2">
-                  {sleep.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
+                <p className="text-small text-ink-3">{t("common.from")}</p>
+                <p className="mt-1 font-figure text-[clamp(1.75rem,1.2rem+1.6vw,2.5rem)] leading-none font-semibold tabular-nums text-ink">{formatMXN(d.precioDesde, locale)}</p>
               </div>
-              <div>
-                <h4 className="font-sans text-small font-semibold text-ink">{t("residences.live")}</h4>
-                <ul className="mt-3 grid gap-1.5 text-small text-ink-2">
-                  {live.map((s) => (
-                    <li key={s}>{s}</li>
-                  ))}
-                </ul>
-              </div>
+              <a href={wa} target="_blank" rel="noopener noreferrer" className="btn btn-primary justify-between">
+                {t("cta.quote")}
+                <span className="btn-icon" aria-hidden>
+                  <ArrowUpRight size={18} weight="light" />
+                </span>
+              </a>
             </div>
-
-            <div className="mt-10">
-              <p className="text-small text-ink-3">{t("common.from")}</p>
-              <p className="mt-1 font-figure text-[clamp(1.75rem,1.2rem+1.6vw,2.5rem)] leading-none font-semibold tabular-nums text-ink">{formatMXN(d.precioDesde, locale)}</p>
-              <p className="caption mt-3 max-w-[40ch]">{t("common.priceNote")}</p>
-            </div>
-
+            <p className="caption mt-3 max-w-[44ch]">{t("common.priceNote")}</p>
             {active === "D" && (
-              <p className="mt-6 text-small text-ink-2">
+              <p className="mt-4 text-small text-ink-2">
                 {t("residences.dNote")}{" "}
                 <a href={`/${locale}#disponibilidad`} className="link-gold text-ink">
                   {t("residences.dLink")}
@@ -137,26 +124,35 @@ export function Residences({ data, locale }: { data: Record<Tipologia, TypeSumma
               </p>
             )}
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-              <a href={wa} target="_blank" rel="noopener noreferrer" className="btn btn-primary w-full justify-between">
-                {t("cta.quote")}
-                <span className="btn-icon" aria-hidden>
-                  <ArrowUpRight size={18} weight="light" />
-                </span>
-              </a>
-              <button
-                type="button"
-                aria-pressed={lockoff}
-                onClick={() => setLockoff((v) => !v)}
-                className={`btn btn-secondary w-full ${lockoff ? "!border-ink" : ""}`}
-              >
-                {lockoff ? t("residences.lockoffHide") : t("residences.lockoffShow")}
-              </button>
+            <div className="frame-out mt-12 rounded-surface bg-paper p-6 md:p-7">
+              <h4 className="font-display text-h4 text-ink">{t("lockoff.title")}</h4>
+              <p className="mt-2 max-w-[40ch] text-small text-ink-2">{t("lockoff.text")}</p>
+              <div className="seg mt-5" role="group" aria-label={t("lockoff.toggleLabel")}>
+                <button type="button" aria-pressed={!split} onClick={() => setSplit(false)}>
+                  {t("lockoff.full")}
+                </button>
+                <button type="button" aria-pressed={split} onClick={() => setSplit(true)}>
+                  {t("lockoff.split")}
+                </button>
+              </div>
+              <p className="mt-3 text-small text-ink-2" aria-live="polite">
+                {split ? t("lockoff.splitText") : t("lockoff.fullText")}
+              </p>
+              <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2 text-small text-ink-2">
+                {(t.raw("lockoff.contents") as string[]).map((c, i) => {
+                  const Icon = ICONS[i];
+                  return (
+                    <li key={c} className="flex items-center gap-3">
+                      <Icon size={20} weight="light" className="text-ink" aria-hidden />
+                      {c}
+                    </li>
+                  );
+                })}
+              </ul>
+              <p className="caption mt-2">{t("lockoff.contentsNote")}</p>
+              <p className="mt-5 text-small font-semibold text-ink">{t("lockoff.closing")}</p>
+              <p className="caption mt-2">{t("lockoff.disclaimer")}</p>
             </div>
-            <button type="button" onClick={() => setZoom(true)} className="link-gold mt-5 inline-flex min-h-11 items-center gap-2 text-small text-ink">
-              <MagnifyingGlassPlus size={18} weight="light" aria-hidden />
-              {t("residences.expand")}
-            </button>
           </div>
         </div>
       </div>
