@@ -38,9 +38,9 @@ export async function Hero({ locale }: { locale: string }) {
         <div data-hero-img className="absolute inset-x-0 top-0 -bottom-[8%] will-change-transform">
           <div className="hero-sun size-full">
             <picture>
-              <source media="(min-width: 768px)" srcSet={desktop} />
-              <source media="(max-width: 767px)" srcSet={mobile} />
-              <img {...img} alt={t("alt")} className="size-full object-cover object-[28%_40%] md:object-[52%_50%]" />
+              <source media="(min-width: 1101px)" srcSet={desktop} />
+              <source media="(max-width: 1100px)" srcSet={mobile} />
+              <img {...img} alt={t("alt")} className="size-full object-cover object-[28%_40%] min-[1101px]:object-[52%_50%]" />
             </picture>
           </div>
         </div>

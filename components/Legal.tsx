@@ -13,7 +13,7 @@ export async function Legal() {
     <section id="legal" className="section-y">
       <div className="wrap grid-12 items-start gap-y-12">
         <figure className="col-span-6 lg:col-span-3">
-          <div className="reveal-clip relative aspect-[3/4] overflow-hidden rounded-surface">
+          <div className="reveal-clip relative aspect-[4/3] overflow-hidden rounded-surface">
             <Image src="/img/hero-aerea.webp" alt={t("cards.limited.alt")} fill sizes="(min-width: 1024px) 25vw, 46vw" className="clip-img object-cover object-[55%_50%]" />
           </div>
           <figcaption className="mt-4">
@@ -22,7 +22,7 @@ export async function Legal() {
           </figcaption>
         </figure>
         <figure className="col-span-6 mt-8 lg:col-span-3 lg:mt-[72px]">
-          <div className="reveal-clip relative aspect-square overflow-hidden rounded-surface" style={{ ["--d" as string]: "180ms" }}>
+          <div className="reveal-clip relative aspect-[5/4] overflow-hidden rounded-surface" style={{ ["--d" as string]: "180ms" }}>
             <Image src="/img/cta-final.webp" alt={t("cards.developer.alt")} fill sizes="(min-width: 1024px) 25vw, 46vw" className="clip-img object-cover" />
           </div>
           <figcaption className="mt-4">

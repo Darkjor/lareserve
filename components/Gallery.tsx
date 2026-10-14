@@ -11,11 +11,11 @@ import { DrawFrame } from "./ui/DrawFrame";
 const ITEMS = [
   { k: "aerial", src: "/img/hero-aerea.webp", w: 1828, h: 860, r: "3 / 2" },
   { k: "roof", src: "/img/roof-garden.webp", w: 977, h: 1272, r: "4 / 5" },
-  { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947, r: "1 / 1" },
+  { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947, r: "3 / 2" },
   { k: "type1", src: "/img/fachada-tipo1.webp", w: 1920, h: 1080, r: "16 / 9" },
   { k: "type2", src: "/img/fachada-tipo2.webp", w: 1920, h: 1080, r: "16 / 9" },
   { k: "hammock", src: "/img/hamaca.webp", w: 1274, h: 1647, r: "4 / 5" },
-  { k: "coconut", src: "/img/manifiesto.webp", w: 1011, h: 1313, r: "1 / 1" },
+  { k: "coconut", src: "/img/manifiesto.webp", w: 1011, h: 1313, r: "4 / 5" },
 ] as const;
 
 /** Familia F: tira horizontal con snap nativo (sin JS funciona), marcos finos dorados y Lightbox. */

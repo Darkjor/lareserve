@@ -7,11 +7,11 @@ import { loadGsap } from "@/lib/gsap";
 
 /** Cinco piezas de Vivir. Imagenes y textos reutilizados de Amenidades, Lock-Off y Destino. */
 const ITEMS = [
-  { k: "roof", src: "/img/roof-garden.webp", w: 977, h: 1272, fit: "cover" },
-  { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947, fit: "cover" },
+  { k: "roof", src: "/img/roof-garden.webp", w: 977, h: 1272, fit: "cover", r: 0.8 },
+  { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947, fit: "cover", r: 1.5 },
   { k: "terraces", src: "/img/plantas/terraza-b.webp", w: 850, h: 205, fit: "contain" },
   { k: "lockoff", src: "/img/plantas/planta-b.webp", w: 945, h: 941, fit: "contain" },
-  { k: "mahahual", src: "/img/mahahual-tortuga-43.webp", w: 1276, h: 957, fit: "cover" },
+  { k: "mahahual", src: "/img/mahahual-tortuga-43.webp", w: 1276, h: 957, fit: "cover", r: 4 / 3 },
 ] as const;
 
 type Item = (typeof ITEMS)[number];
@@ -113,10 +113,20 @@ export function Vivir() {
             </ol>
           </div>
           <div className="col-span-7">
-            <div className="frame-out relative h-[min(calc(100dvh-168px),700px)] w-full">
+            <div className="frame-out relative h-[min(calc(100dvh-168px),700px)] w-full [container-type:size]">
               {ITEMS.map((it, i) => (
                 <div key={it.k} className="vz-img absolute inset-0" data-on={i === active} aria-hidden={i !== active}>
-                  {frame(it)}
+                  {"r" in it ? (
+                    // La foto conserva su proporcion (recorte < 15 %): el marco se ajusta a la foto.
+                    <div
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                      style={{ width: `min(100cqw, calc(100cqh * ${it.r}))`, aspectRatio: String(it.r) }}
+                    >
+                      {frame(it)}
+                    </div>
+                  ) : (
+                    frame(it)
+                  )}
                 </div>
               ))}
             </div>
@@ -132,7 +142,7 @@ export function Vivir() {
             {ITEMS.map((it) => (
               <li key={it.k} className="reveal">
                 <figure>
-                  <div className="aspect-[16/10]">{frame(it)}</div>
+                  <div className="aspect-[16/10]" style={"r" in it ? { aspectRatio: String(it.r) } : undefined}>{frame(it)}</div>
                   <figcaption className="mt-4">
                     <h3 className="font-display text-h3 text-ink">{t(`${it.k}.title`)}</h3>
                     <p className="mt-1 max-w-[40ch] text-small text-ink-2">{t(`${it.k}.text`)}</p>

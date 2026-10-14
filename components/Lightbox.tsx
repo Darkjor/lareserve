@@ -49,7 +49,7 @@ export function ZoomPane({ src, w, h, alt, sizes }: { src: string; w: number; h:
           if (e.ctrlKey || e.metaKey) setZoom((z) => clamp(z - e.deltaY * 0.01));
         }}
       >
-        <div style={{ width: `${zoom * 100}%` }} className="mx-auto">
+        <div style={{ width: `min(${zoom * 100}%, ${zoom * w}px)` }} className="mx-auto">
           <Image src={src} alt={alt} width={w} height={h} sizes={sizes} className="h-auto w-full" />
         </div>
       </div>

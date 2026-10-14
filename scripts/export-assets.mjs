@@ -60,7 +60,7 @@ jobs.push(
 );
 jobs.push(webp(B("p03_0_1011x1313"), "img/manifiesto.webp", 82));
 jobs.push(webp(B("p04_0_1276x1647"), "img/mahahual-tortuga.webp", 82, (s) => s.extract({ left: 0, top: 296, width: 1276, height: 547 })));
-jobs.push(webp(B("p04_0_1276x1647"), "img/mahahual-tortuga-43.webp", 82, (s) => s.extract({ left: 0, top: 98, width: 1276, height: 957 })));
+jobs.push(webp(B("p04_0_1276x1647"), "img/mahahual-tortuga-43.webp", 82, (s) => s.extract({ left: 0, top: 290, width: 1276, height: 957 })));
 jobs.push(webp(P("p04_0_1661x947"), "img/albercas.webp", 82));
 jobs.push(webp(B("p06_0_977x1272"), "img/roof-garden.webp", 82));
 jobs.push(webp(B("p07_0_1274x1647"), "img/hamaca.webp", 80));
