@@ -6,7 +6,7 @@ import { LEAD_FIELDS, leadSchema, type LeadField, type LeadFormState } from "@/l
 /** Cliente de Supabase solo si hay variables de entorno; si no, null (el formulario sigue respondiendo ok). */
 function getSupabase() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY; // clave publicable: RLS solo permite insertar
   if (!url || !key) return null;
   return createClient(url, key, { auth: { persistSession: false } });
 }
@@ -36,8 +36,8 @@ export async function sendLead(_prev: LeadFormState, formData: FormData): Promis
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { consent, empresa, mensaje, ...rest } = parsed.data;
   const { error } = await supabase
-    .from("leads")
-    .insert({ ...rest, mensaje: empresa ? `[${empresa}] ${mensaje ?? ""}`.trim() : mensaje });
+    .from("lareserve_leads")
+    .insert({ ...rest, mensaje: (empresa ? `[${empresa}] ${mensaje ?? ""}`.trim() : mensaje)?.slice(0, 2000) });
   if (error) {
     console.error("[leads] insert fallo:", error.message);
     const values: Record<string, string> = {};
