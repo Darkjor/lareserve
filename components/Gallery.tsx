@@ -75,7 +75,7 @@ export function Gallery() {
         ref={strip}
         onScroll={onScroll}
         aria-label={t("label")}
-        className="no-scrollbar reveal mt-10 flex snap-x snap-mandatory gap-8 overflow-x-auto px-[var(--gutter)] py-3 scroll-px-[var(--gutter)] md:mt-12"
+        className="no-scrollbar reveal mt-10 flex items-start snap-x snap-mandatory gap-8 overflow-x-auto px-[var(--gutter)] py-3 scroll-px-[var(--gutter)] md:mt-12"
       >
         {ITEMS.map((it, i) => (
           <li key={it.k} className="relative shrink-0 snap-start">
