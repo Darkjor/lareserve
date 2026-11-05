@@ -75,25 +75,89 @@
       "tagline": "Architecture that blends with nature.",
       "beds": "2",
       "baths": "2",
-      "spaces": "Kitchen, living-dining room and laundry room. Lock-Off suite with bath, kitchenette and dressing area."
+      "spaces": "Kitchen, living-dining room and laundry room. Lock-Off suite with bath, kitchenette and dressing area.",
+      "features": [
+        "Kitchen and living-dining room",
+        "Laundry room",
+        "Lock-Off suite with bath, kitchenette and dressing area"
+      ]
     },
     "b": {
       "tagline": "Privacy in every space.",
       "beds": "3",
       "baths": "3",
-      "spaces": "Primary bedroom with bath, kitchen, living-dining room and terrace. Lock-Off suite with bath, kitchenette and dressing area."
+      "spaces": "Primary bedroom with bath, kitchen, living-dining room and terrace. Lock-Off suite with bath, kitchenette and dressing area.",
+      "features": [
+        "Primary bedroom with bath",
+        "Kitchen and living-dining room",
+        "Terrace",
+        "Lock-Off suite with bath, kitchenette and dressing area"
+      ]
     },
     "c": {
       "tagline": "Every detail finds its place.",
       "beds": "3",
       "baths": "3",
-      "spaces": "Bedroom with bath, kitchen-bar, living-dining room, terrace and bar. Lock-Off suite with bath, kitchenette and dressing area."
+      "spaces": "Bedroom with bath, kitchen-bar, living-dining room, terrace and bar. Lock-Off suite with bath, kitchenette and dressing area.",
+      "features": [
+        "Bedroom with bath",
+        "Kitchen-bar and living-dining room",
+        "Terrace and bar",
+        "Lock-Off suite with bath, kitchenette and dressing area"
+      ]
     },
     "d": {
       "tagline": "An architecture that invites you to stay.",
       "beds": "2 + Lock-Off",
       "baths": "3.5",
-      "spaces": "Open living-dining-kitchen, bar, terrace and laundry room. Includes a Lock-Off bedroom."
+      "spaces": "Open living-dining-kitchen, bar, terrace and laundry room. Includes a Lock-Off bedroom.",
+      "features": [
+        "Open living-dining-kitchen",
+        "Bar and terrace",
+        "Laundry room",
+        "Lock-Off bedroom included"
+      ]
+    },
+    "tabFrom": "from",
+    "announce": "Type {letter}, {area}",
+    "compare": {
+      "toggle": "Compare all four",
+      "label": "Type comparison",
+      "area": "Area",
+      "beds": "Bedrooms",
+      "baths": "Bathrooms",
+      "from": "From",
+      "lockoff": "All include a Lock-Off suite",
+      "tip": "Type {letter}"
+    },
+    "carousel": {
+      "label": "Images of Type {letter}",
+      "slide": "{n} of {total}",
+      "counter": "{n} / {total}",
+      "prev": "Previous image",
+      "next": "Next image",
+      "enlarge": "Enlarge image",
+      "unavailable": "Image not available",
+      "renderCaption": "Illustrative image, shared by all types.",
+      "thumb": "View {name}",
+      "thumbs": "Thumbnails"
+    },
+    "slides": {
+      "plan": "Floor plan",
+      "fachada": "Facade at sunset",
+      "sala": "Living room and kitchen",
+      "recamara": "Bedroom with window wall",
+      "bano": "Bathroom",
+      "cocina": "Kitchen"
+    },
+    "nojs": "Illustrative images of the residence",
+    "banda": {
+      "c1": "from, Type A",
+      "c2": "m² of area",
+      "c3": "residences",
+      "v1": "$2.54 M",
+      "v2": "86 to 159",
+      "cta": "Book your presentation"
     }
   },
   "lockoff": {

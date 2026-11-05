@@ -75,25 +75,89 @@
       "tagline": "Arquitectura que se integra a la naturaleza.",
       "beds": "2",
       "baths": "2",
-      "spaces": "Cocina, sala-comedor y cuarto de lavado. Suite Lock-Off con baño, cocineta y vestidor."
+      "spaces": "Cocina, sala-comedor y cuarto de lavado. Suite Lock-Off con baño, cocineta y vestidor.",
+      "features": [
+        "Cocina y sala-comedor",
+        "Cuarto de lavado",
+        "Suite Lock-Off con baño, cocineta y vestidor"
+      ]
     },
     "b": {
       "tagline": "Privacidad en cada espacio.",
       "beds": "3",
       "baths": "3",
-      "spaces": "Recámara principal con baño, cocina, sala-comedor y terraza. Suite Lock-Off con baño, cocineta y vestidor."
+      "spaces": "Recámara principal con baño, cocina, sala-comedor y terraza. Suite Lock-Off con baño, cocineta y vestidor.",
+      "features": [
+        "Recámara principal con baño",
+        "Cocina y sala-comedor",
+        "Terraza",
+        "Suite Lock-Off con baño, cocineta y vestidor"
+      ]
     },
     "c": {
       "tagline": "Cada detalle encuentra su lugar.",
       "beds": "3",
       "baths": "3",
-      "spaces": "Recámara con baño, cocina-bar, sala-comedor, terraza y barra. Suite Lock-Off con baño, cocineta y vestidor."
+      "spaces": "Recámara con baño, cocina-bar, sala-comedor, terraza y barra. Suite Lock-Off con baño, cocineta y vestidor.",
+      "features": [
+        "Recámara con baño",
+        "Cocina-bar y sala-comedor",
+        "Terraza y barra",
+        "Suite Lock-Off con baño, cocineta y vestidor"
+      ]
     },
     "d": {
       "tagline": "Una arquitectura que invita a quedarse.",
       "beds": "2 + Lock-Off",
       "baths": "3 y medio",
-      "spaces": "Sala-comedor-cocina, barra, terraza y cuarto de lavado. Incluye recámara Lock-Off."
+      "spaces": "Sala-comedor-cocina, barra, terraza y cuarto de lavado. Incluye recámara Lock-Off.",
+      "features": [
+        "Sala-comedor-cocina",
+        "Barra y terraza",
+        "Cuarto de lavado",
+        "Recámara Lock-Off incluida"
+      ]
+    },
+    "tabFrom": "desde",
+    "announce": "Tipología {letter}, {area}",
+    "compare": {
+      "toggle": "Comparar las cuatro",
+      "label": "Comparativo de tipologías",
+      "area": "Superficie",
+      "beds": "Recámaras",
+      "baths": "Baños",
+      "from": "Desde",
+      "lockoff": "Todas incluyen suite Lock-Off",
+      "tip": "Tipología {letter}"
+    },
+    "carousel": {
+      "label": "Imágenes de la tipología {letter}",
+      "slide": "{n} de {total}",
+      "counter": "{n} / {total}",
+      "prev": "Imagen anterior",
+      "next": "Imagen siguiente",
+      "enlarge": "Ampliar imagen",
+      "unavailable": "Imagen no disponible",
+      "renderCaption": "Imagen ilustrativa, común a todas las tipologías.",
+      "thumb": "Ver {name}",
+      "thumbs": "Miniaturas"
+    },
+    "slides": {
+      "plan": "Planta",
+      "fachada": "Fachada al atardecer",
+      "sala": "Sala y cocina",
+      "recamara": "Recámara con ventanal",
+      "bano": "Baño",
+      "cocina": "Cocina"
+    },
+    "nojs": "Imágenes ilustrativas de la residencia",
+    "banda": {
+      "c1": "desde, tipología A",
+      "c2": "m² de superficie",
+      "c3": "residencias",
+      "v1": "$2.54 M",
+      "v2": "86 a 159",
+      "cta": "Agenda tu presentación"
     }
   },
   "lockoff": {

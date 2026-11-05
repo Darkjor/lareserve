@@ -1,4 +1,5 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { BandaCifras } from "@/components/BandaCifras";
 import { Vivir } from "@/components/Vivir";
 import { Gallery } from "@/components/Gallery";
 import { Faq } from "@/components/Faq";
@@ -10,11 +11,12 @@ import { Legal } from "@/components/Legal";
 import { Availability } from "@/components/Availability";
 import { Brokers } from "@/components/Brokers";
 import { FinalCta } from "@/components/FinalCta";
-import { resumenTipologia, type Tipologia } from "@/lib/inventory";
+import { resumenTipologia, totalResidencias, type Tipologia } from "@/lib/inventory";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale });
 
   const data = Object.fromEntries(
     (["A", "B", "C", "D"] as Tipologia[]).map((l) => {
@@ -29,7 +31,18 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <Hero locale={locale} />
       <Manifesto />
       <Vivir />
-      <Residences data={data} locale={locale} />
+      <Residences data={data} locale={locale}>
+        <BandaCifras
+          src="/img/renders/interior-recamara.webp"
+          cifras={[
+            { value: t("residences.banda.v1"), label: t("residences.banda.c1") },
+            { value: t("residences.banda.v2"), label: t("residences.banda.c2") },
+            { value: String(totalResidencias), label: t("residences.banda.c3") },
+          ]}
+          cta={t("residences.banda.cta")}
+          caption={t("common.imageCaption")}
+        />
+      </Residences>
       <Location />
       <Gallery />
       <Legal />
