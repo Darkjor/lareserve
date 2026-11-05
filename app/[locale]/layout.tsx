@@ -10,6 +10,7 @@ import { ContactProvider } from "@/components/ContactProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { MobileBar } from "@/components/MobileBar";
 import { RevealObserver } from "@/components/RevealObserver";
 import { ALLOW_INDEXING, SITE_URL, site } from "@/lib/site";
 
@@ -105,6 +106,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
             <main id="contenido">{children}</main>
             <Footer />
             <WhatsAppFloat />
+            <MobileBar />
             <RevealObserver />
           </ContactProvider>
         </NextIntlClientProvider>

@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { loadGsap, prefersReducedMotion } from "@/lib/gsap";
 
 /**
- * Hero al hacer scroll: la imagen sube 4 % (parallax) y una capa extra de velo se oscurece de 0 a .25.
- * El velo base (.hero-veil) no se anima: el contraste bajo el texto no depende del scroll. Sin movimiento reducido.
+ * Hero al hacer scroll (sin pin): la imagen sube 6 % (parallax suave) y el contenido se desvanece.
+ * El velo base no se anima. Sin movimiento reducido.
  */
 export function HeroEffects() {
   useEffect(() => {
@@ -15,9 +15,16 @@ export function HeroEffects() {
     loadGsap().then(({ gsap }) => {
       if (cancelled) return;
       ctx = gsap.context(() => {
-        const trigger = { trigger: "[data-hero-photo]", start: "top top", end: "bottom top", scrub: true };
-        gsap.to("[data-hero-img]", { yPercent: -4, ease: "none", scrollTrigger: trigger });
-        gsap.to("[data-hero-dim]", { opacity: 0.25, ease: "none", scrollTrigger: trigger });
+        gsap.to("[data-hero-img]", {
+          yPercent: -6,
+          ease: "none",
+          scrollTrigger: { trigger: "[data-hero-photo]", start: "top top", end: "bottom top", scrub: true },
+        });
+        gsap.to("[data-hero-content]", {
+          opacity: 0,
+          ease: "none",
+          scrollTrigger: { trigger: "[data-hero-photo]", start: "18% top", end: "72% top", scrub: true },
+        });
       });
     });
     return () => {

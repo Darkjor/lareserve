@@ -1,89 +1,91 @@
 import { getImageProps } from "next/image";
 import { getTranslations } from "next-intl/server";
+import { AgendaLink } from "./AgendaLink";
 import { HeroEffects } from "./HeroEffects";
-import { LeadForm } from "./LeadForm";
-import { DrawFrame } from "./ui/DrawFrame";
+import { LeadBand } from "./LeadBand";
 import { LinkButton } from "./ui/LinkButton";
 
+// Distancia de cada lama al centro (0 a 4): la celosia se abre desde el medio hacia los lados.
+const SLATS = Array.from({ length: 9 }, (_, i) => ({ i, d: Math.abs(i - 4) }));
+
 /**
- * Hero con formulario en linea. Escritorio (lg): foto a sangre, texto a la izquierda y tarjeta de papel con
- * el formulario a la derecha, ambos alineados abajo. Movil: foto de 86dvh con el texto y la tarjeta entra debajo.
+ * Inicio: imagen a sangre de 100svh (LCP, ya pintada debajo) cubierta al cargar por una celosia de 9 lamas que giran en 3D
+ * y la descubren; luego deriva lenta (scale 1.06 a 1 en 18 s). Titular por linea con mascara; al hacer scroll, parallax y
+ * el contenido se desvanece (sin pin). Sin movimiento reducido o sin CSS queda la imagen final. Debajo, LeadBand.
  */
 export async function Hero({ locale }: { locale: string }) {
   const t = await getTranslations("hero");
-  const tc = await getTranslations("common");
   const tcta = await getTranslations("cta");
-  const tp = await getTranslations("panel");
 
-  // Direccion de arte: aerea horizontal en escritorio, fachada vertical en movil.
+  // Direccion de arte: render de la fachada al atardecer en escritorio, fachada vertical en movil.
   const {
     props: { srcSet: desktop },
-  } = getImageProps({ src: "/img/hero-aerea.webp", alt: "", width: 1828, height: 860, sizes: "100vw", quality: 82 });
+  } = getImageProps({ src: "/img/renders/fachada-atardecer.webp", alt: "", width: 1672, height: 941, sizes: "100vw", quality: 82 });
   const {
     props: { srcSet: mobile, ...img },
-  } = getImageProps({
-    src: "/img/hero-vertical.webp",
-    alt: t("alt"),
-    width: 1275,
-    height: 1646,
-    sizes: "100vw",
-    quality: 75,
-    priority: true,
-  });
+  } = getImageProps({ src: "/img/hero-vertical.webp", alt: t("alt"), width: 1275, height: 1646, sizes: "100vw", quality: 75, priority: true });
 
   return (
-    <section id="inicio" data-hero className="relative isolate z-0">
-      <div data-hero-photo className="absolute inset-x-0 top-0 -z-10 h-[86dvh] overflow-hidden lg:h-full">
-        {/* Parallax (GSAP) en el contenedor externo; la escala de carga (CSS) en el interno. */}
-        <div data-hero-img className="absolute inset-x-0 top-0 -bottom-[8%] will-change-transform">
-          <div className="hero-sun size-full">
+    <section id="inicio" data-hero>
+      <div data-hero-photo className="on-dark relative isolate z-0 flex min-h-[100svh] flex-col overflow-hidden">
+        <div data-hero-img className="absolute inset-x-0 top-0 -bottom-[8%] -z-10 will-change-transform">
+          <div className="hero-drift size-full">
             <picture>
-              <source media="(min-width: 1101px)" srcSet={desktop} />
-              <source media="(max-width: 1100px)" srcSet={mobile} />
-              <img {...img} alt={t("alt")} className="size-full object-cover object-[28%_40%] min-[1101px]:object-[52%_50%]" />
+              <source media="(min-width: 768px)" srcSet={desktop} />
+              <source media="(max-width: 767px)" srcSet={mobile} />
+              <img {...img} alt={t("alt")} className="size-full object-cover object-[50%_40%] md:object-[56%_55%]" />
             </picture>
           </div>
         </div>
-        {/* Velo fijo (alfa >= .66 bajo el texto) y capa extra que oscurece al salir (la anima HeroEffects). */}
-        <div aria-hidden className="hero-veil absolute inset-0" />
-        <div aria-hidden className="hero-emerge absolute inset-0 bg-veil opacity-0" />
-        <div aria-hidden data-hero-dim className="absolute inset-0 bg-veil opacity-0" />
-      </div>
-
-      <div className="wrap relative lg:grid lg:min-h-dvh lg:grid-cols-12 lg:items-end lg:gap-x-6 lg:pt-28 lg:pb-16">
-        <div className="on-dark flex min-h-[86dvh] flex-col justify-end pt-28 pb-14 lg:col-span-6 lg:min-h-0 lg:p-0">
-          <span aria-hidden className="thread hero-thread mb-6 !w-16" />
-          <h1 className="text-display-xl text-paper">
-            <span className="hero-line">
-              <span>{t.rich("title", { em: (c) => <em className="text-oro-300">{c}</em> })}</span>
-            </span>
-          </h1>
-          <p className="hero-fade mt-6 max-w-[40ch] text-body-l text-paper/92" style={{ ["--d" as string]: "700ms" }}>
-            {t("subtitle")}
-          </p>
-          <div className="hero-fade mt-8 flex flex-col gap-3 sm:flex-row" style={{ ["--d" as string]: "950ms" }}>
-            {/* Movil: el primario lleva a la tarjeta. En escritorio el formulario es el CTA. */}
-            <LinkButton href="#agenda" className="w-full justify-between sm:w-auto lg:hidden">
-              {tcta("book")}
-            </LinkButton>
-            <LinkButton href={`/${locale}#residencias`} variant="ghost" className="w-full sm:w-auto">
-              {tcta("residences")}
-            </LinkButton>
-          </div>
+        {/* Velo fijo (alfa >= .66 bajo el texto). */}
+        <div aria-hidden className="hero-veil absolute inset-0 -z-10" />
+        <div aria-hidden className="celosia">
+          {SLATS.map((s) => (
+            <span key={s.i} className="celosia-slat" style={{ ["--i" as string]: s.i, ["--d" as string]: s.d }} />
+          ))}
         </div>
 
-        <div className="relative -mt-10 md:max-w-[560px] lg:col-span-5 lg:col-start-8 lg:mt-0 lg:w-[440px] lg:max-w-none lg:justify-self-end">
-          <div id="agenda" className="hero-card hero-fade relative scroll-mt-24 rounded-surface bg-paper shadow-photo" style={{ ["--d" as string]: "900ms" }}>
-            <DrawFrame inset={10} mode="load" delay={900} duration={1100} />
-            <h2 className="text-h4 text-ink">{tp("heroTitle")}</h2>
-            <div className="mt-5">
-              <LeadForm variant="panel" tipo="presentacion" layout="compact" />
+        <div data-hero-content className="wrap relative z-10 flex flex-1 flex-col justify-end pt-28 pb-24 lg:grid lg:grid-cols-12 lg:items-end lg:gap-x-6 lg:pb-28">
+          <div className="lg:col-span-7">
+            <h1 className="text-hero text-paper">
+              <span className="hero-line">
+                <span style={{ ["--i" as string]: 6 }}>{t.rich("title", { em: (c) => <em className="text-oro-300">{c}</em> })}</span>
+              </span>
+            </h1>
+            <p className="hero-fade mt-6 max-w-[40ch] text-body-l text-paper/92" style={{ ["--d" as string]: "1700ms" }}>
+              {t("subtitle")}
+            </p>
+            <div className="hero-fade mt-8 flex flex-col gap-3 sm:flex-row" style={{ ["--d" as string]: "1900ms" }}>
+              <AgendaLink className="w-full justify-between sm:w-auto">{tcta("book")}</AgendaLink>
+              <LinkButton href={`/${locale}#residencias`} variant="ghost" className="w-full sm:w-auto">
+                {tcta("residences")}
+              </LinkButton>
             </div>
           </div>
-          <p className="caption mt-3 lg:text-paper/92">{tc("imageCaption")}</p>
+
+          <div className="hero-fade mt-10 flex items-stretch gap-7 sm:gap-9 lg:col-span-5 lg:col-start-8 lg:mt-0 lg:justify-self-end" style={{ ["--d" as string]: "2100ms" }}>
+            <div>
+              <p className="font-display text-[clamp(1.75rem,1.2rem+1.6vw,2.5rem)] leading-none text-paper">
+                {t("priceFigure")} <span className="text-[0.55em] tracking-wide">{t("priceUnit")}</span>
+              </p>
+              <p className="mt-2 text-small text-paper/92">{t("priceNote")}</p>
+            </div>
+            <span aria-hidden className="w-px self-stretch bg-oro-300/50" />
+            <div>
+              <p className="font-display text-[clamp(1.75rem,1.2rem+1.6vw,2.5rem)] leading-none text-paper">
+                {t("areaFigure")} <span className="text-[0.55em] tracking-wide">{t("areaUnit")}</span>
+              </p>
+              <p className="mt-2 text-small text-paper/92">{t("areaNote")}</p>
+            </div>
+          </div>
         </div>
+
+        <div className="wrap absolute inset-x-0 bottom-0 z-10 pb-5">
+          <p className="text-caption text-paper/92">{t("legal")}</p>
+        </div>
+        <HeroEffects />
       </div>
-      <HeroEffects />
+      <LeadBand />
     </section>
   );
 }

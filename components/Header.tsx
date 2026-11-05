@@ -9,7 +9,7 @@ import { loadGsap } from "@/lib/gsap";
 import { ContactButton, useContact } from "./ContactProvider";
 import { useDialog } from "./ui/useDialog";
 
-// Orden de la pagina (spec de Direccion). Los ids sin bloque todavia (vivir, faq) los monta el dev 2.
+// Orden de la pagina; max. 6 enlaces + CTA (FAQ queda en el pie).
 const LINKS = [
   ["amenities", "vivir"],
   ["residences", "residencias"],
@@ -17,7 +17,6 @@ const LINKS = [
   ["legal", "legal"],
   ["availability", "disponibilidad"],
   ["brokers", "aliados"],
-  ["faq", "faq"],
 ] as const;
 
 function LangSwitch({ className = "" }: { className?: string }) {

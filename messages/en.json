@@ -13,7 +13,8 @@
     "planNote": "Layout subject to change; ask your advisor for the full spec sheet.",
     "priceNote": "2026 list prices in MXN, subject to change without notice.",
     "whatsappAria": "Message us on WhatsApp",
-    "from": "From"
+    "from": "From",
+    "whatsappBar": "WhatsApp"
   },
   "cta": {
     "whatsapp": "WhatsApp",
@@ -43,8 +44,15 @@
   "hero": {
     "eyebrow": "Mahahual, Quintana Roo",
     "title": "A different way to live the <em>Caribbean</em>",
-    "subtitle": "Residences from 86 to 159 m² with a Lock-Off suite. From MXN 2.54 M.",
-    "alt": "La Reserve facade at sunset with an illuminated rooftop and pool"
+    "subtitle": "Residences with a Lock-Off suite in Mahahual, Quintana Roo.",
+    "alt": "La Reserve facade at sunset with an illuminated rooftop and pool",
+    "legal": "Illustrative images.",
+    "priceFigure": "$2.54 M",
+    "priceNote": "From · Type A",
+    "areaFigure": "86 to 159",
+    "areaUnit": "m²",
+    "areaNote": "Area",
+    "priceUnit": "MXN"
   },
   "manifesto": {
     "title": "When was the last time a place changed the way you see life?",
@@ -165,7 +173,16 @@
     "alt": "Night map showing the location of La Reserve in Mahahual",
     "zoomIn": "Zoom in",
     "zoomOut": "Zoom out",
-    "sources": "Sources: Rome2rio, Mexico Desconocido."
+    "sources": "Sources: Rome2rio, Mexico Desconocido.",
+    "address": "Mahahual, Quintana Roo",
+    "tabsLabel": "Map type",
+    "tabMap": "Map",
+    "tabSat": "Satellite",
+    "titleMap": "Map of La Reserve",
+    "titleSat": "Satellite view of La Reserve",
+    "activate": "Activate map to move it",
+    "openMaps": "Open in Google Maps",
+    "openMapsAria": "Open in Google Maps (new tab)"
   },
   "brokers": {
     "title": "Partnering with advisors and brokers",
@@ -233,7 +250,8 @@
     "legalIntro": "An advisor will send it to you. Leave your details below.",
     "brochureTitle": "Request the brochure",
     "brochureIntro": "We will send it by WhatsApp or email.",
-    "heroTitle": "Leave your details"
+    "heroTitle": "Leave your details",
+    "leadLine": "An advisor will contact you; you can also message us on WhatsApp."
   },
   "footer": {
     "about": "Grand Mayahual La Reserve is a limited collection of residences in Mahahual, Quintana Roo.",

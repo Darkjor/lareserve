@@ -28,7 +28,7 @@ export function WhatsAppFloat() {
         rel="noopener noreferrer"
         aria-label={t("common.whatsappAria")}
         data-show={show}
-        className="wa-float fixed right-4 bottom-4 z-30 grid size-14 place-items-center rounded-ui bg-verde-700 text-paper opacity-0 ring-2 ring-paper shadow-photo transition-[opacity,transform] duration-[320ms] data-[show=true]:opacity-100 pointer-events-none data-[show=true]:pointer-events-auto hover:scale-105 active:scale-95 md:right-6 md:bottom-6"
+        className="wa-float max-xl:hidden fixed right-4 bottom-4 z-30 grid size-14 place-items-center rounded-ui bg-verde-700 text-paper opacity-0 ring-2 ring-paper shadow-photo transition-[opacity,transform] duration-[320ms] data-[show=true]:opacity-100 pointer-events-none data-[show=true]:pointer-events-auto hover:scale-105 active:scale-95 md:right-6 md:bottom-6"
         tabIndex={show ? 0 : -1}
       >
         <WhatsappLogo size={28} weight="light" aria-hidden />

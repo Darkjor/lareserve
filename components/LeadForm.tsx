@@ -7,17 +7,19 @@ import { sendLead } from "@/lib/leads";
 import type { LeadFormState } from "@/lib/lead-schema";
 import { whatsappLink } from "@/lib/site";
 
-export type FormVariant = "panel" | "final" | "broker";
+export type FormVariant = "panel" | "inline" | "final" | "broker";
 export type LeadTipo = "presentacion" | "legal" | "brochure" | "broker";
 /** stack: una columna. compact: tarjeta del hero (nombre y telefono en 2 columnas desde lg). pairs: 2 columnas desde md (Aliados). */
-export type FormLayout = "stack" | "compact" | "pairs";
+/** band: franja bajo el hero (3 columnas desde lg, sin tarjeta). */
+export type FormLayout = "stack" | "compact" | "pairs" | "band";
 
 const GRID: Record<FormLayout, string> = {
   stack: "grid gap-5",
   compact: "grid gap-4 lg:grid-cols-2 lg:gap-3",
   pairs: "grid gap-5 md:grid-cols-2 md:gap-x-4",
+  band: "grid gap-5 md:grid-cols-2 md:gap-x-4 lg:grid-cols-3",
 };
-const FULL: Record<FormLayout, string> = { stack: "", compact: "lg:col-span-2", pairs: "md:col-span-2" };
+const FULL: Record<FormLayout, string> = { stack: "", compact: "lg:col-span-2", pairs: "md:col-span-2", band: "md:col-span-2 lg:col-span-3" };
 
 const WA_KEY: Record<LeadTipo, string> = {
   presentacion: "presentation",
@@ -57,7 +59,12 @@ export function LeadForm({ variant, tipo, layout = "stack" }: Props) {
   const errors = state.status === "invalid" ? state.errors : {};
   const errorCount = Object.keys(errors).length;
   const full = FULL[layout];
-  const emailSpan = layout === "pairs" ? "" : full;
+  const band = layout === "band";
+  const emailSpan = layout === "pairs" ? "" : band ? "md:col-span-2 lg:col-span-1" : full;
+  // Los campos con select/radio de la franja ocupan una columna; el consentimiento dos y el boton una.
+  const half = band ? "" : full;
+  const consentSpan = band ? "md:col-span-2" : full;
+  const submitSpan = band ? "" : full;
 
   useEffect(() => {
     if (state.status === "invalid") {
@@ -158,7 +165,7 @@ export function LeadForm({ variant, tipo, layout = "stack" }: Props) {
       </div>
 
       {variant !== "broker" && (
-        <fieldset className={full}>
+        <fieldset className={band ? "md:col-span-2" : full}>
           <legend className="field-label">{t("form.contact")}</legend>
           <div role="radiogroup" aria-label={t("form.contact")} className="seg w-full">
             {(["whatsapp", "llamada", "correo"] as const).map((v) => (
@@ -177,8 +184,8 @@ export function LeadForm({ variant, tipo, layout = "stack" }: Props) {
         </fieldset>
       )}
 
-      {variant === "panel" && (
-        <div className={full}>
+      {(variant === "panel" || variant === "inline") && (
+        <div className={half}>
           <label htmlFor={id("horario")} className="field-label">
             {t("form.schedule")}
           </label>
@@ -217,7 +224,7 @@ export function LeadForm({ variant, tipo, layout = "stack" }: Props) {
         </div>
       )}
 
-      <div className={full}>
+      <div className={consentSpan}>
         <div className="flex items-start gap-3">
           <input
             id={id("consent")}
@@ -238,7 +245,7 @@ export function LeadForm({ variant, tipo, layout = "stack" }: Props) {
         <FieldError id={id("consent-err")} message={msg("consent")} />
       </div>
 
-      <button type="submit" className={`btn btn-primary relative w-full justify-between overflow-hidden ${full}`} disabled={pending} aria-disabled={pending}>
+      <button type="submit" className={`btn btn-primary relative w-full justify-between overflow-hidden ${submitSpan}`} disabled={pending} aria-disabled={pending}>
         {pending ? t("form.sending") : t(SUBMIT_KEY[tipo])}
         <span className="btn-icon" aria-hidden>
           <ArrowUpRight size={18} weight="light" />
