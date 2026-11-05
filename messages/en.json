@@ -395,18 +395,19 @@
     "terraces": {
       "title": "Private terraces with jacuzzi",
       "text": "Your own outdoor space, right at home. Varies by layout.",
-      "alt": "Terrace with jacuzzi in the Type B layout"
+      "alt": "Aerial view of a La Reserve tower at sunset, with roof garden, terraces and pools"
     },
     "lockoff": {
       "title": "Lock-Off suite",
       "text": "Three ways to live: a complete residence, room for guests or an independent suite.",
-      "alt": "Type B floor plan with a Lock-Off suite, bath and kitchenette"
+      "alt": "Illustrative render of the Lock-Off suite kitchenette"
     },
     "mahahual": {
       "title": "Mahahual",
       "text": "A destination that still has the privilege of evolving without losing its essence.",
       "alt": "Sea turtle swimming under Caribbean water"
-    }
+    },
+    "open": "Enlarge image"
   },
   "gallery": {
     "title": "La Reserve in pictures",
@@ -429,14 +430,23 @@
       "type1": {
         "alt": "Illustrated cutaway of tower type 1: two commercial spaces on the ground floor, three levels of residences and a roof garden"
       },
-      "type2": {
-        "alt": "Illustrated cutaway of tower type 2: one commercial space on the ground floor, three levels of residences and a roof garden"
-      },
       "hammock": {
         "alt": "Hammock facing the sea at sunset"
       },
-      "coconut": {
-        "alt": "Woman holding a coconut at sunset by the sea in Mahahual"
+      "sala": {
+        "alt": "Illustrative render of a residence living room"
+      },
+      "sala2": {
+        "alt": "Illustrative render of the living room, second view"
+      },
+      "recibidor": {
+        "alt": "Illustrative render of a residence entryway"
+      },
+      "cocinaPequena": {
+        "alt": "Illustrative render of a compact kitchen"
+      },
+      "bano": {
+        "alt": "Illustrative render of a bathroom"
       }
     }
   },

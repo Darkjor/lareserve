@@ -5,7 +5,9 @@ import { LeadForm } from "./LeadForm";
 export async function Brokers() {
   const t = await getTranslations("brokers");
   return (
-    <section id="aliados" className="section-y">
+    <section id="aliados" className="section-y relative overflow-hidden">
+      {/* S5: isotipo en oro al 8 %, recortado por el borde derecho (solo escritorio, decorativo). */}
+      <span aria-hidden className="brokers-mark pointer-events-none absolute -right-[7%] top-1/2 hidden aspect-[41/42] w-[520px] -translate-y-1/2 lg:block" />
       <div className="wrap">
         <div className="mx-auto max-w-[640px]">
           <h2 className="reveal text-display-l text-ink">{t("title")}</h2>

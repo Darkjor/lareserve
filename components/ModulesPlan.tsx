@@ -13,7 +13,7 @@ export function ModulesPlan({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="reveal mt-10">
-      <div role="region" aria-label={t("alt")} tabIndex={0} className="overflow-x-auto rounded-surface border border-line bg-paper md:overflow-visible">
+      <div role="region" aria-label={t("alt")} tabIndex={0} className="overflow-x-auto md:overflow-visible">
         <div className="relative aspect-[2/1] min-w-[760px] md:min-w-0">
           <Image src="/img/plano-modulos.webp" alt={t("alt")} fill sizes="(min-width: 1360px) 1328px, (min-width: 768px) 92vw, 760px" className="object-cover" />
           <PlanMarkers />

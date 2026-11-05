@@ -806,61 +806,23 @@
   }
 }
 /* ---- Parte 2: marco dorado, Vivir (escena fijada) y FAQ ---- */
-.frame-out {
-  outline: 1px solid var(--color-oro-500);
-  outline-offset: 7px;
-  border-radius: var(--radius-surface);
+/* Vivir: banner de pantalla completa y rejilla a sangre. Velos >= .66 donde hay texto. */
+.vz-veil-banner {
+  background: linear-gradient(
+    to top,
+    rgb(var(--veil-rgb) / 0.88) 0%,
+    rgb(var(--veil-rgb) / 0.7) 36%,
+    rgb(var(--veil-rgb) / 0.28) 62%,
+    rgb(var(--veil-rgb) / 0) 84%
+  );
 }
-/* Vivir: arbol fijado solo en escritorio, con JS y movimiento permitido; si no, piezas apiladas. */
-.vz-stage {
-  display: none;
-}
-@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-  .reveal-ready .vz-stage {
-    display: block;
-  }
-  .reveal-ready .vz-stack {
-    display: none;
-  }
-}
-.vz-img {
-  clip-path: inset(100% 0 0 0);
-  opacity: 0;
-  transition:
-    clip-path 0s linear 1200ms,
-    opacity 400ms var(--ease-soft) 800ms;
-}
-.vz-img[data-on="true"] {
-  clip-path: inset(0);
-  opacity: 1;
-  z-index: 1;
-  transition:
-    clip-path 1100ms var(--ease-out-expo),
-    opacity 0s;
-}
-.vz-thread {
-  display: block;
-  flex: none;
-  width: 40px;
-  height: 1px;
-  background: var(--color-oro-500);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 600ms var(--ease-soft);
-}
-[aria-current="true"] > .vz-thread {
-  transform: scaleX(1);
-}
-.vz-phrase {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 500ms var(--ease-soft);
-}
-.vz-phrase > * {
-  overflow: hidden;
-}
-[data-on="true"] > .vz-phrase {
-  grid-template-rows: 1fr;
+.vz-veil-tile {
+  background: linear-gradient(
+    to top,
+    rgb(var(--veil-rgb) / 0.84) 0%,
+    rgb(var(--veil-rgb) / 0.7) 30%,
+    rgb(var(--veil-rgb) / 0) 66%
+  );
 }
 /* FAQ */
 .faq details {
@@ -1150,4 +1112,12 @@ html:not(.reveal-ready) .tip-js {
 }
 .reveal-ready .tip-nojs {
   display: none;
+}
+
+/* S5 gráfico: isotipo de marca en oro-500 al 8 %, estático. */
+.brokers-mark {
+  background: var(--color-oro-500);
+  opacity: 0.08;
+  -webkit-mask: url("/brand/isotipo.svg") center / contain no-repeat;
+  mask: url("/brand/isotipo.svg") center / contain no-repeat;
 }

@@ -395,18 +395,19 @@
     "terraces": {
       "title": "Terrazas privadas con jacuzzi",
       "text": "Aire libre propio, sin salir de casa. Según tipología.",
-      "alt": "Terraza con jacuzzi de la tipología B"
+      "alt": "Vista aérea de una torre de La Reserve al atardecer, con roof garden, terrazas y albercas"
     },
     "lockoff": {
       "title": "Suite Lock-Off",
       "text": "Tres formas de vivir: residencia completa, espacio para invitados o suite independiente.",
-      "alt": "Planta de la tipología B con suite Lock-Off, baño y cocineta"
+      "alt": "Render ilustrativo de la cocineta de la suite Lock-Off"
     },
     "mahahual": {
       "title": "Mahahual",
       "text": "Un destino que todavía conserva el privilegio de evolucionar sin perder su esencia.",
       "alt": "Tortuga marina nadando bajo el agua del Caribe"
-    }
+    },
+    "open": "Ampliar imagen"
   },
   "gallery": {
     "title": "La Reserve en imágenes",
@@ -429,14 +430,23 @@
       "type1": {
         "alt": "Corte ilustrado de la torre tipo 1: dos locales en planta baja, tres niveles de residencias y roof garden"
       },
-      "type2": {
-        "alt": "Corte ilustrado de la torre tipo 2: un local en planta baja, tres niveles de residencias y roof garden"
-      },
       "hammock": {
         "alt": "Hamaca frente al mar al atardecer"
       },
-      "coconut": {
-        "alt": "Mujer con un coco al atardecer frente al mar de Mahahual"
+      "sala": {
+        "alt": "Render ilustrativo de la sala de una residencia"
+      },
+      "sala2": {
+        "alt": "Render ilustrativo de la sala, segunda vista"
+      },
+      "recibidor": {
+        "alt": "Render ilustrativo del recibidor de una residencia"
+      },
+      "cocinaPequena": {
+        "alt": "Render ilustrativo de una cocina compacta"
+      },
+      "bano": {
+        "alt": "Render ilustrativo de un baño"
       }
     }
   },

@@ -15,7 +15,7 @@ export async function Availability() {
   const t = await getTranslations("availability");
   const tw = await getTranslations("wa");
   return (
-    <section id="disponibilidad" className="section-y bg-wash">
+    <section id="disponibilidad" className="section-y surface-piedra">
       <div className="wrap">
         <h2 className="reveal max-w-[16ch] text-display-l text-ink">{t("title")}</h2>
         <ul className="reveal mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-14">

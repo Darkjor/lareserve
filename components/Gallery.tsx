@@ -5,20 +5,22 @@ import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/ssr";
 import { Lightbox, ZoomPane } from "./Lightbox";
-import { DrawFrame } from "./ui/DrawFrame";
 
-/** Carrusel de imagenes propias: orden de Marketing, proporciones alternadas para dar ritmo. */
+/** Tira de imagenes propias y renders ilustrativos: alternan fachadas, interiores y entorno (sin repetir contiguas). */
 const ITEMS = [
-  { k: "aerial", src: "/img/hero-aerea.webp", w: 1828, h: 860, r: "3 / 2" },
-  { k: "roof", src: "/img/roof-garden.webp", w: 977, h: 1272, r: "4 / 5" },
-  { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947, r: "3 / 2" },
-  { k: "type1", src: "/img/fachada-tipo1.webp", w: 1920, h: 1080, r: "16 / 9" },
-  { k: "type2", src: "/img/fachada-tipo2.webp", w: 1920, h: 1080, r: "16 / 9" },
-  { k: "hammock", src: "/img/hamaca.webp", w: 1274, h: 1647, r: "4 / 5" },
-  { k: "coconut", src: "/img/manifiesto.webp", w: 1011, h: 1313, r: "4 / 5" },
+  { k: "aerial", src: "/img/hero-aerea.webp", w: 1828, h: 860 },
+  { k: "sala", src: "/img/renders/interior-sala.webp", w: 1402, h: 1122 },
+  { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947 },
+  { k: "sala2", src: "/img/renders/interior-sala-2.webp", w: 1672, h: 941 },
+  { k: "roof", src: "/img/roof-garden.webp", w: 977, h: 1272 },
+  { k: "recibidor", src: "/img/renders/interior-recibidor.webp", w: 1672, h: 941 },
+  { k: "type1", src: "/img/fachada-tipo1.webp", w: 1920, h: 1080 },
+  { k: "cocinaPequena", src: "/img/renders/interior-cocina-pequena.webp", w: 1254, h: 1254 },
+  { k: "hammock", src: "/img/hamaca.webp", w: 1274, h: 1647 },
+  { k: "bano", src: "/img/renders/interior-bano.webp", w: 1254, h: 1254 },
 ] as const;
 
-/** Familia F: tira horizontal con snap nativo (sin JS funciona), marcos finos dorados y Lightbox. */
+/** Familia F: tira horizontal con snap nativo (sin JS funciona), a sangre y Lightbox. */
 export function Gallery() {
   const t = useTranslations("gallery");
   const strip = useRef<HTMLUListElement>(null);
@@ -33,7 +35,7 @@ export function Gallery() {
     let best = 0;
     let dist = Infinity;
     Array.from(el.children).forEach((c, i) => {
-      const d = Math.abs((c as HTMLElement).offsetLeft - 12 - left);
+      const d = Math.abs((c as HTMLElement).offsetLeft - left);
       if (d < dist) {
         dist = d;
         best = i;
@@ -54,7 +56,7 @@ export function Gallery() {
   const cur = open === null ? null : ITEMS[open];
 
   return (
-    <section id="galeria" className="section-y bg-wash">
+    <section id="galeria" className="bg-wash pt-[clamp(4.5rem,3rem+5vw,7.5rem)]">
       <div className="wrap">
         <div className="reveal flex items-end justify-between gap-6">
           <h2 className="max-w-[16ch] text-display-l text-ink">{t("title")}</h2>
@@ -75,24 +77,23 @@ export function Gallery() {
         ref={strip}
         onScroll={onScroll}
         aria-label={t("label")}
-        className="no-scrollbar reveal mt-10 flex items-start snap-x snap-mandatory gap-8 overflow-x-auto px-[var(--gutter)] py-3 scroll-px-[var(--gutter)] md:mt-12"
+        className="no-scrollbar reveal mt-10 flex snap-x snap-mandatory gap-[6px] overflow-x-auto md:mt-12"
       >
         {ITEMS.map((it, i) => (
           <li key={it.k} className="relative shrink-0 snap-start">
-            <DrawFrame inset={-7} duration={1200} delay={(i % 3) * 120} />
             <button
               type="button"
               onClick={() => setOpen(i)}
               aria-label={`${t("open")}: ${t(`items.${it.k}.alt`)}`}
-              className="group block w-[78vw] cursor-zoom-in overflow-hidden rounded-surface md:h-[460px] md:w-auto"
-              style={{ aspectRatio: it.r }}
+              className="group block h-[320px] cursor-zoom-in overflow-hidden md:h-[460px]"
+              style={{ aspectRatio: `${it.w} / ${it.h}` }}
             >
               <span className="relative block size-full overflow-hidden">
                 <Image
                   src={it.src}
                   alt=""
                   fill
-                  sizes="(min-width: 768px) 700px, 78vw"
+                  sizes="(min-width: 768px) 820px, 80vw"
                   className="object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] motion-safe:[@media(hover:hover)]:group-hover:scale-[1.03]"
                 />
               </span>
@@ -101,7 +102,7 @@ export function Gallery() {
         ))}
       </ul>
       <div className="wrap">
-        <p className="caption mt-6">{t("caption")}</p>
+        <p className="caption py-5">{t("caption")}</p>
       </div>
       {cur && (
         <Lightbox label={t(`items.${cur.k}.alt`)} onClose={() => setOpen(null)}>

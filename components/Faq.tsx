@@ -15,7 +15,7 @@ export async function Faq() {
     mainEntity: items.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
   };
   return (
-    <section id="faq" className="section-y bg-wash">
+    <section id="faq" className="section-y surface-piedra">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, "\\u003c") }} />
       <div className="wrap grid-12 gap-y-10">
         <div className="reveal col-span-12 lg:col-span-4">

@@ -3,156 +3,124 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { loadGsap } from "@/lib/gsap";
+import { loadGsap, prefersReducedMotion } from "@/lib/gsap";
+import { Lightbox, ZoomPane } from "./Lightbox";
 
-/** Cinco piezas de Vivir. Imagenes y textos reutilizados de Amenidades, Lock-Off y Destino. */
-const ITEMS = [
-  { k: "roof", src: "/img/roof-garden.webp", w: 977, h: 1272, fit: "cover", r: 0.8 },
-  { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947, fit: "cover", r: 1.5 },
-  { k: "terraces", src: "/img/plantas/terraza-b.webp", w: 850, h: 205, fit: "contain" },
-  { k: "lockoff", src: "/img/plantas/planta-b.webp", w: 945, h: 941, fit: "contain" },
-  { k: "mahahual", src: "/img/mahahual-tortuga-43.webp", w: 1276, h: 957, fit: "cover", r: 4 / 3 },
+/** Baldosas de la rejilla: renders ilustrativos y fotos del proyecto. Textos reutilizados de Amenidades, Lock-Off y Destino. */
+const TILES = [
+  { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947, pos: "50% 50%" },
+  { k: "terraces", src: "/img/hero-aerea.webp", w: 1828, h: 860, pos: "62% 50%" },
+  { k: "lockoff", src: "/img/renders/interior-cocina-pequena.webp", w: 1254, h: 1254, pos: "50% 50%" },
+  { k: "mahahual", src: "/img/mahahual-tortuga-43.webp", w: 1276, h: 957, pos: "50% 50%" },
 ] as const;
 
-type Item = (typeof ITEMS)[number];
+// Fila 1 = 7/5 columnas, fila 2 = 5/7 (escritorio). Movil: tira horizontal con snap.
+const SPAN = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7"];
 
 /**
- * Familia C. Escritorio con movimiento: encuadre fijo (unico pin, 200vh en total) con indice de 5 piezas.
- * Movil, movimiento reducido y sin JS: las 5 piezas apiladas. El CSS (.vz-stage / .vz-stack) elige el arbol.
+ * Familia C. Cabecera, banner de la amenidad principal a pantalla completa (parallax suave, sin pin) y rejilla
+ * asimetrica de fotos a sangre con el nombre encima. Cada baldosa abre el Lightbox. Sin JS: todo visible.
  */
 export function Vivir() {
   const t = useTranslations("vivir");
   const tn = useTranslations("nav");
-  const root = useRef<HTMLDivElement>(null);
-  const st = useRef<{ start: number; end: number; scroll: (n: number) => void } | null>(null);
-  const [active, setActive] = useState(0);
+  const tc = useTranslations("common");
+  const banner = useRef<HTMLElement>(null);
+  const shift = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState<number | null>(null);
 
   useEffect(() => {
-    const el = root.current;
-    if (!el) return;
-    const mq = window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)");
-    if (!mq.matches) return;
+    const host = banner.current;
+    const img = shift.current;
+    if (!host || !img || prefersReducedMotion()) return;
     let ctx: { revert: () => void } | undefined;
     let cancelled = false;
-    loadGsap().then(({ gsap, ScrollTrigger }) => {
+    loadGsap().then(({ gsap }) => {
       if (cancelled) return;
       ctx = gsap.context(() => {
-        st.current = ScrollTrigger.create({
-          trigger: el,
-          start: "top 72px",
-          end: "+=100%",
-          pin: true,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => setActive(Math.min(ITEMS.length - 1, Math.floor(self.progress * ITEMS.length))),
-        });
-      }, el);
-      // Las imagenes son lazy: refrescar al decodificar para no desfasar el pin.
-      el.querySelectorAll("img").forEach((img) => img.addEventListener("load", () => ScrollTrigger.refresh(), { once: true }));
+        // Parallax: la imagen mide 110 % del alto y se desplaza +-4 % mientras el banner cruza la pantalla.
+        gsap.fromTo(
+          img,
+          { yPercent: 4 },
+          { yPercent: -4, ease: "none", scrollTrigger: { trigger: host, start: "top bottom", end: "bottom top", scrub: true } },
+        );
+      }, host);
     });
     return () => {
       cancelled = true;
-      st.current = null;
       ctx?.revert();
     };
   }, []);
 
-  const go = (i: number) => {
-    const s = st.current;
-    if (s) s.scroll(s.start + ((i + 0.5) / ITEMS.length) * (s.end - s.start));
-    else setActive(i);
-  };
-
-  const heading = (
-    <>
-      <p className="eyebrow">{tn("amenities")}</p>
-      <h2 className="mt-4 text-display-l text-ink">{t("title")}</h2>
-    </>
-  );
-
-  const frame = (it: Item, cls = "") => (
-    <div className={`relative size-full overflow-hidden rounded-surface ${it.fit === "contain" ? "bg-wash" : ""} ${cls}`}>
-      <Image
-        src={it.src}
-        alt={t(`${it.k}.alt`)}
-        fill
-        sizes="(min-width: 1024px) 56vw, 100vw"
-        className={it.fit === "contain" ? "object-contain p-6 drop-shadow-[0_18px_24px_rgb(21_26_23/0.18)]" : "object-cover"}
-      />
-    </div>
-  );
+  const cur = open === null ? null : TILES[open];
 
   return (
     <section id="vivir" className="relative">
-      {/* Escritorio con movimiento y JS: escena fijada */}
-      <div ref={root} className="vz-stage">
-        <div className="wrap grid h-[calc(100dvh-72px)] grid-cols-12 items-center gap-x-6">
-          <div className="col-span-5">
-            {heading}
-            <ol aria-label={t("listLabel")} className="mt-9 grid gap-1">
-              {ITEMS.map((it, i) => {
-                const on = i === active;
-                return (
-                  <li key={it.k} data-on={on}>
-                    <h3 className="font-display text-h3">
-                      <button
-                        type="button"
-                        aria-current={on ? "true" : undefined}
-                        onClick={() => go(i)}
-                        className={`flex min-h-11 w-full items-center gap-4 text-left transition-colors duration-300 ${on ? "text-ink" : "text-ink-3 hover:text-ink"}`}
-                      >
-                        <span aria-hidden className="vz-thread" />
-                        {t(`${it.k}.title`)}
-                      </button>
-                    </h3>
-                    <div className="vz-phrase" aria-hidden={!on}>
-                      <p className="pl-14 text-small text-ink-2">{t(`${it.k}.text`)}</p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
-          <div className="col-span-7">
-            <div className="frame-out relative h-[min(calc(100dvh-168px),700px)] w-full [container-type:size]">
-              {ITEMS.map((it, i) => (
-                <div key={it.k} className="vz-img absolute inset-0" data-on={i === active} aria-hidden={i !== active}>
-                  {"r" in it ? (
-                    // La foto conserva su proporcion (recorte < 15 %): el marco se ajusta a la foto.
-                    <div
-                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                      style={{ width: `min(100cqw, calc(100cqh * ${it.r}))`, aspectRatio: String(it.r) }}
-                    >
-                      {frame(it)}
-                    </div>
-                  ) : (
-                    frame(it)
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      <div className="wrap section-y pb-12 lg:pb-16">
+        <p className="eyebrow reveal">{tn("amenities")}</p>
+        <h2 className="reveal mt-4 max-w-[18ch] text-display-l text-ink" style={{ ["--d" as string]: "80ms" }}>
+          {t("title")}
+        </h2>
       </div>
 
-      {/* Movil, movimiento reducido y sin JS: piezas apiladas */}
-      <div className="vz-stack section-y">
-        <div className="wrap">
-          {heading}
-          <ul aria-label={t("listLabel")} className="mt-10 grid gap-10 md:grid-cols-2 md:gap-x-8 md:gap-y-12">
-            {ITEMS.map((it) => (
-              <li key={it.k} className="reveal">
-                <figure>
-                  <div className="aspect-[16/10]" style={"r" in it ? { aspectRatio: String(it.r) } : undefined}>{frame(it)}</div>
-                  <figcaption className="mt-4">
-                    <h3 className="font-display text-h3 text-ink">{t(`${it.k}.title`)}</h3>
-                    <p className="mt-1 max-w-[40ch] text-small text-ink-2">{t(`${it.k}.text`)}</p>
-                  </figcaption>
-                </figure>
-              </li>
-            ))}
-          </ul>
+      <figure ref={banner} className="on-dark m-0">
+        <div className="relative isolate flex min-h-[80svh] items-end overflow-hidden lg:min-h-[min(88dvh,820px)]">
+          <div ref={shift} className="absolute inset-x-0 -inset-y-[5%] -z-10">
+            <Image src="/img/roof-garden.webp" alt={t("roof.alt")} fill sizes="100vw" className="object-cover object-[40%_82%] lg:object-[50%_80%]" />
+          </div>
+          <div aria-hidden className="vz-veil-banner absolute inset-0 -z-10" />
+          <div className="wrap pb-10 pt-32 lg:pb-14">
+            <h3 className="reveal max-w-[16ch] text-display-l text-paper">{t("roof.title")}</h3>
+            <p className="reveal mt-4 max-w-[40ch] text-body-l text-paper/92" style={{ ["--d" as string]: "100ms" }}>
+              {t("roof.text")}
+            </p>
+          </div>
         </div>
-      </div>
+        <figcaption className="wrap bg-paper py-3 text-caption text-ink-3">{tc("imageCaption")}</figcaption>
+      </figure>
+
+      <ul
+        aria-label={t("listLabel")}
+        className="no-scrollbar on-dark mt-3 flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-px-[var(--gutter)] px-[var(--gutter)] lg:mt-0 lg:grid lg:snap-none lg:grid-cols-12 lg:gap-[6px] lg:overflow-visible lg:px-0"
+      >
+        {TILES.map((it, i) => (
+          <li
+            key={it.k}
+            className={`reveal group relative aspect-[4/5] w-[78vw] shrink-0 snap-start overflow-hidden md:w-[46vw] lg:aspect-auto lg:h-[480px] lg:w-auto ${SPAN[i]}`}
+            style={{ ["--d" as string]: `${i * 100}ms` }}
+          >
+            <figure className="relative m-0 size-full">
+              <button
+                type="button"
+                onClick={() => setOpen(i)}
+                aria-label={`${t("open")}: ${t(`${it.k}.title`)}`}
+                className="absolute inset-0 cursor-zoom-in focus-visible:outline-offset-[-6px]"
+              >
+                <Image
+                  src={it.src}
+                  alt={t(`${it.k}.alt`)}
+                  fill
+                  sizes="(min-width: 1024px) 58vw, (min-width: 768px) 46vw, 78vw"
+                  style={{ objectPosition: it.pos }}
+                  className="object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] motion-safe:[@media(hover:hover)]:group-hover:scale-[1.03]"
+                />
+                <span aria-hidden className="vz-veil-tile absolute inset-0" />
+              </button>
+              <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 p-5 lg:p-7">
+                <h3 className="font-display text-h3 text-paper">{t(`${it.k}.title`)}</h3>
+                <p className="mt-1 max-w-[44ch] text-small text-paper/92">{t(`${it.k}.text`)}</p>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+      <p className="wrap caption py-3">{tc("imageCaption")}</p>
+
+      {cur && (
+        <Lightbox label={t(`${cur.k}.alt`)} onClose={() => setOpen(null)}>
+          <ZoomPane src={cur.src} w={cur.w} h={cur.h} alt={t(`${cur.k}.alt`)} sizes="90vw" />
+        </Lightbox>
+      )}
     </section>
   );
 }
