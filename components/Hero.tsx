@@ -1,4 +1,5 @@
 import { getImageProps } from "next/image";
+import ReactDOM from "react-dom";
 import { getTranslations } from "next-intl/server";
 import { AgendaLink } from "./AgendaLink";
 import { HeroEffects } from "./HeroEffects";
@@ -19,11 +20,16 @@ export async function Hero({ locale }: { locale: string }) {
 
   // Direccion de arte: render de la fachada al atardecer en escritorio, fachada vertical en movil.
   const {
-    props: { srcSet: desktop },
+    props: { srcSet: desktop, src: desktopSrc },
   } = getImageProps({ src: "/img/renders/fachada-atardecer.webp", alt: "", width: 1672, height: 941, sizes: "100vw", quality: 82 });
   const {
-    props: { srcSet: mobile, ...img },
-  } = getImageProps({ src: "/img/hero-vertical.webp", alt: t("alt"), width: 1275, height: 1646, sizes: "100vw", quality: 75, priority: true });
+    props: { srcSet: mobile, src: mobileSrc, ...img },
+  } = getImageProps({ src: "/img/hero-vertical.webp", alt: t("alt"), width: 1275, height: 1646, sizes: "100vw", quality: 75, priority: true, fetchPriority: "high", loading: "eager" });
+  void desktopSrc;
+  void mobileSrc;
+  // Descarga temprana de la imagen del hero (solo la del ancho que aplica).
+  ReactDOM.preload(mobileSrc, { as: "image", imageSrcSet: mobile, imageSizes: "100vw", media: "(max-width: 767px)", fetchPriority: "high" });
+  ReactDOM.preload(desktopSrc, { as: "image", imageSrcSet: desktop, imageSizes: "100vw", media: "(min-width: 768px)", fetchPriority: "high" });
 
   return (
     <section id="inicio" data-hero>
@@ -31,9 +37,9 @@ export async function Hero({ locale }: { locale: string }) {
         <div data-hero-img className="absolute inset-x-0 top-0 -bottom-[8%] -z-10 will-change-transform">
           <div className="hero-drift size-full">
             <picture>
-              <source media="(min-width: 768px)" srcSet={desktop} />
-              <source media="(max-width: 767px)" srcSet={mobile} />
-              <img {...img} alt={t("alt")} className="size-full object-cover object-[50%_40%] md:object-[56%_55%]" />
+              <source media="(min-width: 768px)" srcSet={desktop} sizes="100vw" />
+              <source media="(max-width: 767px)" srcSet={mobile} sizes="100vw" />
+              <img {...img} src={mobileSrc} alt={t("alt")} className="size-full object-cover object-[50%_40%] md:object-[56%_55%]" />
             </picture>
           </div>
         </div>

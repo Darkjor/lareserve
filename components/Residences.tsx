@@ -92,7 +92,7 @@ export function Residences({ data, locale, children }: { data: Record<Tipologia,
     const k = l.toLowerCase();
     return [
       formatM2(data[l].m2, locale),
-      t("residences.rooms", { beds: t(`residences.${k}.beds`), baths: t(`residences.${k}.baths`) }),
+      t(k === "d" ? "residences.roomsLockoff" : "residences.rooms", { beds: t(`residences.${k}.beds`), baths: t(`residences.${k}.baths`) }),
       ...(t.raw(`residences.${k}.features`) as string[]),
     ];
   };
@@ -203,7 +203,7 @@ export function Residences({ data, locale, children }: { data: Record<Tipologia,
               <div className="mt-5 border-t border-line pt-4 data-[off=true]:invisible" data-off={!onPlan} inert={!onPlan}>
                 <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
                   <div className="min-w-0">
-                    <h4 className="font-display text-h4 text-ink">{t("lockoff.title")}</h4>
+                    <h3 className="font-display text-h4 text-ink">{t("lockoff.title")}</h3>
                     <p className="mt-1 text-small text-ink-2" aria-live="polite">
                       {split ? t("lockoff.splitText") : t("lockoff.fullText")}
                     </p>
@@ -284,7 +284,7 @@ export function Residences({ data, locale, children }: { data: Record<Tipologia,
           <ul aria-label={t("residences.nojs")} className="no-scrollbar -mx-[var(--gutter)] flex snap-x snap-mandatory gap-3 overflow-x-auto px-[var(--gutter)]">
             {RENDERS.map((r) => (
               <li key={r.key} className="w-[82%] shrink-0 snap-center sm:w-[56%]">
-                <Image src={`/img/renders/${r.file}-960.webp`} alt={`${t(`residences.slides.${r.key}`)}. ${t("residences.carousel.renderCaption")}`} width={r.w} height={r.h} sizes="82vw" className="h-auto w-full" />
+                <Image src={`/img/renders/${r.file}-960.webp`} alt={`${t(`residences.slides.${r.key}`)}`} width={r.w} height={r.h} sizes="82vw" className="h-auto w-full" />
               </li>
             ))}
           </ul>
@@ -302,7 +302,7 @@ export function Residences({ data, locale, children }: { data: Record<Tipologia,
               src={`/img/renders/${zoomSlide.file}.webp`}
               w={zoomSlide.w}
               h={zoomSlide.h}
-              alt={`${t(`residences.slides.${zoomSlide.key}`)}. ${t("residences.carousel.renderCaption")}`}
+              alt={`${t(`residences.slides.${zoomSlide.key}`)}`}
               sizes="90vw"
             />
           )}

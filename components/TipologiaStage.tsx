@@ -93,7 +93,7 @@ export function TipologiaStage({
         {SLIDES.map((s, i) => {
           const active = i === index;
           const state = active ? "is-active" : i === prev ? "is-prev" : "";
-          const alt = s.kind === "render" ? `${nameOf(s)}. ${t("carousel.renderCaption")}` : "";
+          const alt = s.kind === "render" ? nameOf(s) : "";
           return (
             <div
               key={i}
@@ -155,7 +155,7 @@ export function TipologiaStage({
           <p className="font-figure text-[0.8125rem] font-semibold tabular-nums text-ink">
             {t("carousel.counter", { n: index + 1, total })} <span className="ml-2 font-body font-normal text-ink-2">{nameOf(SLIDES[index])}</span>
           </p>
-          <p className="caption mt-1 max-w-[60ch]">{SLIDES[index].kind === "plan" ? tc("planNote") : t("carousel.renderCaption")}</p>
+          <p className="caption mt-1 max-w-[60ch]">{SLIDES[index].kind === "plan" ? tc("planNote") : index === 0 ? t("carousel.renderCaption") : " "}</p>
         </div>
         <button type="button" onClick={onZoom} className="link-gold inline-flex min-h-11 shrink-0 items-center gap-2 text-small text-ink">
           <MagnifyingGlassPlus size={18} weight="light" aria-hidden />

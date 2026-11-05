@@ -67,6 +67,7 @@
     "tabs": "Layouts",
     "type": "Type {letter}",
     "rooms": "{beds} bed · {baths} bath",
+    "roomsLockoff": "2 bed + Lock-Off · {baths} bath",
     "expand": "Enlarge plan",
     "dNote": "Available in the Estrella, Sol and Jungla towers.",
     "dLink": "See availability",
@@ -109,7 +110,7 @@
     "d": {
       "tagline": "An architecture that invites you to stay.",
       "beds": "2 + Lock-Off",
-      "baths": "3.5",
+      "baths": "3½",
       "spaces": "Open living-dining-kitchen, bar, terrace and laundry room. Includes a Lock-Off bedroom.",
       "features": [
         "Open living-dining-kitchen",

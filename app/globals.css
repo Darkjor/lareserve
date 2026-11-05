@@ -1121,3 +1121,8 @@ html:not(.reveal-ready) .tip-js {
   -webkit-mask: url("/brand/isotipo.svg") center / contain no-repeat;
   mask: url("/brand/isotipo.svg") center / contain no-repeat;
 }
+
+/* Roof garden: velo localizado desde abajo (solo bajo el texto), sin losa oscura en movil. */
+.vz-veil-banner {
+  background: linear-gradient(to top, rgb(var(--veil-rgb) / 0.86) 0%, rgb(var(--veil-rgb) / 0.7) 28%, rgb(var(--veil-rgb) / 0.28) 52%, rgb(var(--veil-rgb) / 0) 72%);
+}

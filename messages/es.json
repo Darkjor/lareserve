@@ -67,6 +67,7 @@
     "tabs": "Tipologías",
     "type": "Tipología {letter}",
     "rooms": "{beds} rec · {baths} baños",
+    "roomsLockoff": "2 rec. + Lock-Off · {baths} baños",
     "expand": "Ampliar planta",
     "dNote": "Disponible en torres Estrella, Sol y Jungla.",
     "dLink": "Ver disponibilidad",
@@ -109,7 +110,7 @@
     "d": {
       "tagline": "Una arquitectura que invita a quedarse.",
       "beds": "2 + Lock-Off",
-      "baths": "3 y medio",
+      "baths": "3½",
       "spaces": "Sala-comedor-cocina, barra, terraza y cuarto de lavado. Incluye recámara Lock-Off.",
       "features": [
         "Sala-comedor-cocina",

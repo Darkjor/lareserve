@@ -63,7 +63,7 @@ export function Vivir() {
         </h2>
       </div>
 
-      <figure ref={banner} className="on-dark m-0">
+      <figure ref={banner} className="on-dark m-0 lg:mx-auto lg:max-w-[1124px]">
         <div className="relative isolate flex min-h-[80svh] items-end overflow-hidden lg:min-h-[min(88dvh,820px)]">
           <div ref={shift} className="absolute inset-x-0 -inset-y-[5%] -z-10">
             <Image src="/img/roof-garden.webp" alt={t("roof.alt")} fill sizes="100vw" className="object-cover object-[40%_82%] lg:object-[50%_80%]" />

@@ -32,7 +32,7 @@ export async function Footer() {
             <ul className="mt-4 grid gap-1">
               {LINKS.map(([key, id]) => (
                 <li key={id}>
-                  <a href={`/${locale}#${id}`} className="inline-flex min-h-11 items-center text-small text-on-verde-2 transition-colors hover:text-oro-300">
+                  <a href={`/${locale}#${id}`} className="inline-flex min-h-11 min-w-11 items-center text-small text-on-verde-2 transition-colors hover:text-oro-300">
                     {t(`nav.${key}`)}
                   </a>
                 </li>
@@ -43,7 +43,7 @@ export async function Footer() {
             <h2 className="font-sans text-small font-semibold text-paper">{t("footer.contact")}</h2>
             <ul className="mt-4 grid min-w-0 gap-1 [overflow-wrap:anywhere] text-small text-on-verde-2">
               <li>
-                <a href={whatsappLink(t("wa.general"))} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center transition-colors hover:text-oro-300">
+                <a href={whatsappLink(t("wa.general"))} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 min-w-11 items-center transition-colors hover:text-oro-300">
                   {site.whatsappDisplay}
                 </a>
               </li>
@@ -54,7 +54,7 @@ export async function Footer() {
             <h2 className="font-sans text-small font-semibold text-paper">{t("footer.legal")}</h2>
             <ul className="mt-4 grid justify-items-start gap-1 text-small text-on-verde-2">
               <li>
-                <a href={`/${locale}/privacidad`} className="inline-flex min-h-11 items-center transition-colors hover:text-oro-300">
+                <a href={`/${locale}/privacidad`} className="inline-flex min-h-11 min-w-11 items-center transition-colors hover:text-oro-300">
                   {t("footer.privacy")}
                 </a>
               </li>

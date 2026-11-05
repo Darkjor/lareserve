@@ -105,7 +105,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
             <Header />
             <main id="contenido">{children}</main>
             <Footer />
-            <WhatsAppFloat />
+            <aside aria-label="WhatsApp"><WhatsAppFloat /></aside>
             <MobileBar />
             <RevealObserver />
           </ContactProvider>
