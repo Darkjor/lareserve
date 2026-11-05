@@ -52,6 +52,41 @@ async function planta(src, rect, dest, q = 90) {
   await img.webp({ quality: q, alphaQuality: 95, effort: 6 }).toFile(out(dest));
 }
 
+// Renders nuevos (nov 2026) -> public/img/renders/<nombre>.webp (+ variante -960).
+// Sin ampliar: el ancho es min(original, 1920 apaisado / 1600 cuadrado-vertical).
+// Uso solo de esto: node scripts/export-assets.mjs --solo-renders
+const RENDERS_DIR = `${M}/renders-2026-11/Renders la reserve`;
+const RENDERS = {
+  "4.png": "fachada-atardecer",
+  "2.png": "fachada-dia",
+  "INT sala.png": "interior-sala",
+  "INT sala cocina.png": "interior-sala-cocina",
+  "INT cocina pequeña.png": "interior-cocina-pequena",
+  "INT.png": "interior-recibidor",
+  "sala 2.png": "interior-sala-2",
+  "sala 3.png": "interior-recamara",
+  "Baño minimalista en tonos cálidos.png": "interior-bano",
+  "Cocina rústica minimalista en tonos cálidos.png": "interior-cocina",
+};
+async function exportRenders() {
+  for (const [file, name] of Object.entries(RENDERS)) {
+    const src = path.join(RENDERS_DIR, file);
+    const { width, height } = await sharp(src).metadata();
+    const full = width > height * 1.3 ? 1920 : 1600;
+    for (const [w, suffix] of [[full, ""], [960, "-960"]]) {
+      await sharp(src)
+        .resize({ width: w, withoutEnlargement: true })
+        .webp({ quality: 80, effort: 6 })
+        .toFile(out(`img/renders/${name}${suffix}.webp`));
+    }
+  }
+  console.log("renders ok:", Object.keys(RENDERS).length);
+}
+if (process.argv.includes("--solo-renders")) {
+  await exportRenders();
+  process.exit(0);
+}
+
 const jobs = [];
 jobs.push(webp(P("p02_0_1828x860"), "img/hero-aerea.webp", 82));
 jobs.push(webp(B("p02_0_1275x1646"), "img/hero-vertical.webp", 80));
