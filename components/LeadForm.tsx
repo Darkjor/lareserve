@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight, CheckCircle, WarningCircle } from "@phosphor-icons/react/ssr";
 import { sendLead } from "@/lib/leads";
 import type { LeadFormState } from "@/lib/lead-schema";
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 
 export type FormVariant = "panel" | "inline" | "final" | "broker";
 export type LeadTipo = "presentacion" | "legal" | "brochure" | "broker";
@@ -81,12 +81,27 @@ export function LeadForm({ variant, tipo, layout = "stack" }: Props) {
       <div role="status" className="py-2">
         <CheckCircle size={44} weight="light" className="text-verde-700" aria-hidden />
         <h3 className="mt-5 text-h3 text-ink">{t("form.successTitle")}</h3>
-        <p className="mt-3 text-body text-ink-2">{t("form.successBody")}</p>
-        <a href={wa} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-8 w-full justify-between">
+        <p className="mt-3 text-body text-ink-2">{t(tipo === "legal" ? "form.successBodyLegal" : "form.successBody")}</p>
+        {tipo === "legal" && (
+          <a href={site.legalPackUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-8 w-full justify-between">
+            {t("form.successCtaLegal")}
+            <span className="btn-icon" aria-hidden>
+              <ArrowUpRight size={18} weight="light" />
+            </span>
+          </a>
+        )}
+        <a
+          href={wa}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={tipo === "legal" ? "link-gold mt-5 inline-block text-ink" : "btn btn-primary mt-8 w-full justify-between"}
+        >
           {t("form.successCta")}
-          <span className="btn-icon" aria-hidden>
-            <ArrowUpRight size={18} weight="light" />
-          </span>
+          {tipo !== "legal" && (
+            <span className="btn-icon" aria-hidden>
+              <ArrowUpRight size={18} weight="light" />
+            </span>
+          )}
         </a>
       </div>
     );

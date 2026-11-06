@@ -305,6 +305,8 @@
     "successBody": "A La Reserve advisor will be in touch shortly. If you prefer, start the conversation on WhatsApp.",
     "successSummary": "Your request",
     "successCta": "Message us on WhatsApp",
+    "successBodyLegal": "You can now view the Legal Pack. A La Reserve advisor will reach out to answer your questions.",
+    "successCtaLegal": "View the Legal Pack",
     "retry": "Try again",
     "waAlt": "Or message us directly on WhatsApp"
   },
@@ -312,7 +314,7 @@
     "title": "Book a presentation",
     "intro": "Leave your details and an advisor will get in touch. You can also message us on WhatsApp.",
     "legalTitle": "Request the Legal Pack",
-    "legalIntro": "An advisor will send it to you. Leave your details below.",
+    "legalIntro": "Leave your details and open it right away.",
     "brochureTitle": "Request the brochure",
     "brochureIntro": "We will send it by WhatsApp or email.",
     "heroTitle": "Leave your details",
@@ -469,7 +471,7 @@
       },
       "legal": {
         "q": "What legal backing does the project have?",
-        "a": "An Environmental Impact Statement (MIA), authorized land use and a deed for every owner. You can request the Legal Pack: leave your details and an advisor will send it to you."
+        "a": "An Environmental Impact Statement (MIA), authorized land use and a deed for every owner. You can view the Legal Pack: leave your details and open it right away."
       },
       "payment": {
         "q": "What payment plans are available?",

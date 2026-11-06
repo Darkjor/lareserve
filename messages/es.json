@@ -305,6 +305,8 @@
     "successBody": "Un asesor de La Reserve te escribirá pronto. Si prefieres, adelanta la conversación por WhatsApp.",
     "successSummary": "Tu solicitud",
     "successCta": "Escribir por WhatsApp",
+    "successBodyLegal": "Ya puedes ver el Pack Legal. Un asesor de La Reserve te escribirá para resolver tus dudas.",
+    "successCtaLegal": "Ver el Pack Legal",
     "retry": "Reintentar",
     "waAlt": "O escríbenos directo por WhatsApp"
   },
@@ -312,7 +314,7 @@
     "title": "Agenda tu presentación",
     "intro": "Déjanos tus datos y un asesor te contacta. También puedes escribirnos por WhatsApp.",
     "legalTitle": "Solicita el Pack Legal",
-    "legalIntro": "Te lo hacemos llegar a través de un asesor. Déjanos tus datos.",
+    "legalIntro": "Déjanos tus datos y ábrelo al instante.",
     "brochureTitle": "Pide el brochure",
     "brochureIntro": "Te lo enviamos por WhatsApp o correo.",
     "heroTitle": "Déjanos tus datos",
@@ -469,7 +471,7 @@
       },
       "legal": {
         "q": "¿Qué respaldo legal tiene el proyecto?",
-        "a": "Manifestación de Impacto Ambiental (MIA), uso de suelo autorizado y escrituración para cada propietario. Puedes solicitar el Pack Legal: déjanos tus datos y un asesor te lo hace llegar."
+        "a": "Manifestación de Impacto Ambiental (MIA), uso de suelo autorizado y escrituración para cada propietario. Puedes consultar el Pack Legal: déjanos tus datos y ábrelo al instante."
       },
       "payment": {
         "q": "¿Qué esquemas de pago hay?",

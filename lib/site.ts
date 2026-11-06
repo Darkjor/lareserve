@@ -7,6 +7,8 @@ export const site = {
   /** WhatsApp comercial, formato internacional sin "+" ni espacios. */
   whatsapp: "529987042445",
   whatsappDisplay: "+52 998 704 2445",
+  /** Carpeta de Drive del Pack Legal; se abre al enviar el formulario de tipo "legal". */
+  legalPackUrl: "https://drive.google.com/drive/folders/18jm9Y9ZbcsmSgd8uHJ8xEQyfH78XGoMI",
 } as const;
 
 // Dominio publico: variable explicita, luego el dominio de produccion de Vercel, luego localhost.
