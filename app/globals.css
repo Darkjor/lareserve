@@ -617,7 +617,7 @@
 /* Hero: la foto emerge y el titular se asienta (CSS puro, no depende de JS). */
 @keyframes line-rise {
   from {
-    transform: translateY(60%);
+    transform: translateY(var(--rise, 60%));
   }
   to {
     transform: translateY(0);
@@ -638,6 +638,12 @@
     display: block;
     animation: line-rise 1300ms cubic-bezier(0.22, 1, 0.36, 1) both;
     animation-delay: calc(var(--i, 0) * 140ms + 400ms);
+  }
+  /* Titular del hero: ya visible al ~70 % en el primer frame (LCP) y sin retraso largo. */
+  [data-hero] .hero-line > span {
+    --rise: 30%;
+    animation-duration: 1000ms;
+    animation-delay: 250ms;
   }
   .hero-fade {
     animation: fade-up 900ms var(--ease-out-expo) both;

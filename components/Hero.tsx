@@ -58,10 +58,10 @@ export async function Hero({ locale }: { locale: string }) {
                 <span style={{ ["--i" as string]: 6 }}>{t.rich("title", { em: (c) => <em className="text-oro-300">{c}</em> })}</span>
               </span>
             </h1>
-            <p className="hero-fade mt-6 max-w-[40ch] text-body-l text-paper/92" style={{ ["--d" as string]: "1700ms" }}>
+            <p className="hero-fade mt-6 max-w-[40ch] text-body-l text-paper/92" style={{ ["--d" as string]: "800ms" }}>
               {t("subtitle")}
             </p>
-            <div className="hero-fade mt-8 flex flex-col gap-3 sm:flex-row" style={{ ["--d" as string]: "1900ms" }}>
+            <div className="hero-fade mt-8 flex flex-col gap-3 sm:flex-row" style={{ ["--d" as string]: "950ms" }}>
               <AgendaLink className="w-full justify-between sm:w-auto">{tcta("book")}</AgendaLink>
               <LinkButton href={`/${locale}#residencias`} variant="ghost" className="w-full sm:w-auto">
                 {tcta("residences")}
@@ -69,7 +69,7 @@ export async function Hero({ locale }: { locale: string }) {
             </div>
           </div>
 
-          <div className="hero-fade mt-10 flex items-stretch gap-7 sm:gap-9 lg:col-span-5 lg:col-start-8 lg:mt-0 lg:justify-self-end" style={{ ["--d" as string]: "2100ms" }}>
+          <div className="hero-fade mt-10 flex items-stretch gap-7 sm:gap-9 lg:col-span-5 lg:col-start-8 lg:mt-0 lg:justify-self-end" style={{ ["--d" as string]: "1100ms" }}>
             <div>
               <p className="font-display text-[clamp(1.75rem,1.2rem+1.6vw,2.5rem)] leading-none text-paper">
                 {t("priceFigure")} <span className="text-[0.55em] tracking-wide">{t("priceUnit")}</span>

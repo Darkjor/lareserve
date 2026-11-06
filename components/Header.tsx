@@ -117,11 +117,11 @@ export function Header() {
         <nav aria-label={t("nav.label")} className="wrap relative flex h-full items-center justify-between gap-4">
           <a href={`/${locale}`} aria-label={t("nav.home")} className="shrink-0">
             <span className="logo-white">
-              <Image src="/brand/logo-blanco-h.svg" alt="" width={153} height={28} unoptimized priority className="hidden h-7 w-auto xl:block" />
+              <Image src="/brand/logo-blanco-h.svg" alt="" width={153} height={28} unoptimized loading="lazy" className="hidden h-7 w-auto xl:block" />
               <Image src="/brand/logo-blanco-c.svg" alt="" width={70} height={28} unoptimized priority className="h-[26px] w-auto xl:hidden" />
             </span>
             <span className="logo-gold">
-              <Image src="/brand/logo-dorado-h.svg" alt="" width={153} height={28} unoptimized loading="eager" className="hidden h-7 w-auto xl:block" />
+              <Image src="/brand/logo-dorado-h.svg" alt="" width={153} height={28} unoptimized loading="lazy" className="hidden h-7 w-auto xl:block" />
               <Image src="/brand/logo-dorado-c.svg" alt="" width={70} height={28} unoptimized loading="eager" className="h-[26px] w-auto xl:hidden" />
             </span>
           </a>
