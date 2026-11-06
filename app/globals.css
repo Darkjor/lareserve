@@ -428,8 +428,6 @@
       z-index: 5;
       overflow: hidden;
       pointer-events: none;
-      perspective: 1500px;
-      perspective-origin: 50% 50%;
       animation: celosia-gone 1ms linear 2400ms both;
     }
     .celosia-slat {
@@ -439,12 +437,14 @@
       animation: hero-drift 18s cubic-bezier(0.25, 1, 0.5, 1) both;
     }
   }
+  /* Perspectiva propia de cada lama (no la del contenedor): cada una se ve de frente sobre su eje y a 90 grados queda
+     de canto, invisible. Con una perspectiva compartida las lamas laterales quedaban como barras visibles. */
   @keyframes slat-open {
     from {
-      transform: rotateY(0deg);
+      transform: perspective(1500px) rotateY(0deg);
     }
     to {
-      transform: rotateY(90deg);
+      transform: perspective(1500px) rotateY(90deg);
     }
   }
   @keyframes celosia-gone {

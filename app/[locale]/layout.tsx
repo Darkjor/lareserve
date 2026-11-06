@@ -80,11 +80,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
     >
       <head>
         {/* Activa los reveals antes del primer render. Sin JS el contenido queda visible;
-            si el observador no actua en 3 s, se muestra todo. */}
+            si el observador no actua en 3 s, se muestra todo. Sin ancla en la URL, recargar abre arriba (se ve el hero). */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "document.documentElement.classList.add('reveal-ready');setTimeout(function(){if(!window.__reveal){document.querySelectorAll('.reveal,.reveal-clip,.reveal-thread,.reveal-frame').forEach(function(e){e.classList.add('is-visible')})}},3000);",
+              "try{if(!location.hash)history.scrollRestoration='manual'}catch(e){}document.documentElement.classList.add('reveal-ready');setTimeout(function(){if(!window.__reveal){document.querySelectorAll('.reveal,.reveal-clip,.reveal-thread,.reveal-frame').forEach(function(e){e.classList.add('is-visible')})}},3000);",
           }}
         />
       </head>

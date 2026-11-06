@@ -44,9 +44,6 @@ export function Residences({ data, locale, children }: { data: Record<Tipologia,
       setMoved(true);
       setTick((n) => n + 1);
       setAnnounce(t("residences.announce", { letter: l, area: formatM2(data[l].m2, locale) }));
-      try {
-        history.replaceState(null, "", `#residencias-${l.toLowerCase()}`);
-      } catch {}
       if (focus) document.getElementById(`${uid}-tab-${l}`)?.focus();
     },
     [data, locale, t, uid],
