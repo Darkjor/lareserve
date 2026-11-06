@@ -104,7 +104,7 @@ export function Header() {
       <header
         data-over-hero={overHero}
         data-hidden={hidden && !menu}
-        className="group/header fixed inset-x-0 top-0 z-40 h-[72px] transition-transform duration-[320ms] ease-[var(--ease-soft)] data-[hidden=true]:-translate-y-full"
+        className="site-header group/header fixed inset-x-0 top-0 z-40 h-[72px] transition-transform duration-[320ms] ease-[var(--ease-soft)] data-[hidden=true]:-translate-y-full"
       >
         <div
           aria-hidden

@@ -425,7 +425,7 @@
       display: block;
       position: absolute;
       inset: 0;
-      z-index: 5;
+      z-index: 20; /* sobre el contenido del hero (z-10): el titular aparece al abrirse */
       overflow: hidden;
       pointer-events: none;
       animation: celosia-gone 1ms linear 2400ms both;
@@ -435,6 +435,19 @@
     }
     .hero-drift {
       animation: hero-drift 18s cubic-bezier(0.25, 1, 0.5, 1) both;
+    }
+    /* El header fijo queda fuera del hero: en la portada entra con fundido cuando la celosia ya abrio (solo opacidad,
+       el ocultar al hacer scroll usa transform). */
+    html:has([data-hero]) .site-header {
+      animation: header-in 700ms var(--ease-out-expo) 1500ms both;
+    }
+  }
+  @keyframes header-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
   /* Perspectiva propia de cada lama (no la del contenedor): cada una se ve de frente sobre su eje y a 90 grados queda
