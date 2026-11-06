@@ -11,6 +11,7 @@ import { Legal } from "@/components/Legal";
 import { Availability } from "@/components/Availability";
 import { Brokers } from "@/components/Brokers";
 import { FinalCta } from "@/components/FinalCta";
+import { MovilScroll } from "@/components/MovilScroll";
 import { resumenTipologia, totalResidencias, type Tipologia } from "@/lib/inventory";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -50,6 +51,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <Brokers />
       <Faq />
       <FinalCta />
+      <MovilScroll />
     </>
   );
 }

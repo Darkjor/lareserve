@@ -42,7 +42,9 @@ export function Gallery() {
       }
     });
     setIndex(best);
-    setEdge({ start: left < 8, end: left + el.clientWidth >= el.scrollWidth - 8 });
+    const start = left < 8;
+    const end = left + el.clientWidth >= el.scrollWidth - 8;
+    setEdge((p) => (p.start === start && p.end === end ? p : { start, end })); // sin re-render si no cambia (scroll ligado)
   };
 
   const move = (dir: 1 | -1) => {
@@ -77,6 +79,7 @@ export function Gallery() {
         ref={strip}
         onScroll={onScroll}
         aria-label={t("label")}
+        data-strip
         className="no-scrollbar reveal mt-10 flex snap-x snap-mandatory gap-[6px] overflow-x-auto md:mt-12"
       >
         {ITEMS.map((it, i) => (
@@ -94,7 +97,8 @@ export function Gallery() {
                   alt=""
                   fill
                   sizes="(min-width: 768px) 820px, 80vw"
-                  className="object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] motion-safe:[@media(hover:hover)]:group-hover:scale-[1.03]"
+                  data-strip-img
+                  className="object-cover max-lg:transition-none transition-transform duration-[900ms] ease-[var(--ease-out-expo)] motion-safe:[@media(hover:hover)]:group-hover:scale-[1.03]"
                 />
               </span>
             </button>

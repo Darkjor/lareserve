@@ -37,14 +37,17 @@ export function Vivir() {
     let cancelled = false;
     loadGsap().then(({ gsap }) => {
       if (cancelled) return;
-      ctx = gsap.context(() => {
+      // Solo escritorio: en < 1024 px el banner lo mueve MovilScroll (escala + yPercent) via [data-bleed].
+      const mm = gsap.matchMedia();
+      ctx = mm;
+      mm.add("(min-width: 1024px)", () => {
         // Parallax: la imagen mide 110 % del alto y se desplaza +-4 % mientras el banner cruza la pantalla.
         gsap.fromTo(
           img,
           { yPercent: 4 },
           { yPercent: -4, ease: "none", scrollTrigger: { trigger: host, start: "top bottom", end: "bottom top", scrub: true } },
         );
-      }, host);
+      });
     });
     return () => {
       cancelled = true;
@@ -65,8 +68,10 @@ export function Vivir() {
 
       <figure ref={banner} className="on-dark m-0 lg:mx-auto lg:max-w-[1124px]">
         <div className="relative isolate flex min-h-[80svh] items-end overflow-hidden lg:min-h-[min(88dvh,820px)]">
-          <div ref={shift} className="absolute inset-x-0 -inset-y-[5%] -z-10">
-            <Image src="/img/roof-garden.webp" alt={t("roof.alt")} fill sizes="100vw" className="object-cover object-[40%_82%] lg:object-[50%_80%]" />
+          <div ref={shift} className="absolute inset-x-0 -inset-y-[8%] -z-10 lg:-inset-y-[5%]">
+            <div data-bleed className="absolute inset-0">
+              <Image src="/img/roof-garden.webp" alt={t("roof.alt")} fill sizes="100vw" className="object-cover object-[40%_82%] lg:object-[50%_80%]" />
+            </div>
           </div>
           <div aria-hidden className="vz-veil-banner absolute inset-0 -z-10" />
           <div className="wrap pb-10 pt-32 lg:pb-14">
@@ -81,6 +86,7 @@ export function Vivir() {
 
       <ul
         aria-label={t("listLabel")}
+        data-strip
         className="no-scrollbar on-dark mt-3 flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-px-[var(--gutter)] px-[var(--gutter)] lg:mt-0 lg:grid lg:snap-none lg:grid-cols-12 lg:gap-[6px] lg:overflow-visible lg:px-0"
       >
         {TILES.map((it, i) => (
@@ -102,7 +108,8 @@ export function Vivir() {
                   fill
                   sizes="(min-width: 1024px) 58vw, (min-width: 768px) 46vw, 78vw"
                   style={{ objectPosition: it.pos }}
-                  className="object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] motion-safe:[@media(hover:hover)]:group-hover:scale-[1.03]"
+                  data-strip-img
+                  className="object-cover max-lg:transition-none transition-transform duration-[900ms] ease-[var(--ease-out-expo)] motion-safe:[@media(hover:hover)]:group-hover:scale-[1.03]"
                 />
                 <span aria-hidden className="vz-veil-tile absolute inset-0" />
               </button>

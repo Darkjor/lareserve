@@ -28,7 +28,9 @@ export async function Manifesto() {
       </div>
       <figure className="m-0">
         <div className="relative h-[clamp(380px,34vw,520px)] w-full overflow-hidden">
-          <Image src="/img/renders/fachada-dia.webp" alt="" fill sizes="100vw" className="object-cover object-[50%_42%]" />
+          <div data-bleed className="absolute -inset-y-[8%] inset-x-0 lg:inset-y-0">
+            <Image src="/img/renders/fachada-dia.webp" alt="" fill sizes="100vw" className="object-cover object-[50%_42%]" />
+          </div>
         </div>
         <figcaption className="wrap py-3 text-caption text-ink-3">{tc("imageCaption")}</figcaption>
       </figure>

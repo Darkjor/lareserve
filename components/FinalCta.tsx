@@ -12,8 +12,10 @@ export async function FinalCta() {
   return (
     <section id="contacto" className="on-dark relative isolate flex aspect-[4/5] items-end overflow-hidden md:aspect-auto md:min-h-[78dvh]">
       <div className="absolute inset-0 -z-10">
-        <Image src="/img/cta-final-45.webp" alt={t("alt")} fill sizes="100vw" className="object-cover md:hidden" />
-        <Image src="/img/cta-final.webp" alt={t("alt")} fill sizes="100vw" className="hidden object-cover md:block" />
+        <div data-bleed className="absolute -inset-y-[8%] inset-x-0 lg:inset-y-0">
+          <Image src="/img/cta-final-45.webp" alt={t("alt")} fill sizes="100vw" className="object-cover md:hidden" />
+          <Image src="/img/cta-final.webp" alt={t("alt")} fill sizes="100vw" className="hidden object-cover md:block" />
+        </div>
         <div aria-hidden className="cta-veil absolute inset-0" />
       </div>
       <div className="wrap pt-24 pb-12 md:pb-16">

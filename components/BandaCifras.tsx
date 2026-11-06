@@ -37,7 +37,9 @@ export function BandaCifras({
   return (
     <figure className="on-dark relative isolate m-0 bg-veil">
       <div className="relative flex min-h-[clamp(480px,48vw,640px)] items-center overflow-hidden">
-        <Image src={src} alt={alt} fill sizes="100vw" className="-z-10 object-cover" />
+        <div data-bleed className="absolute -inset-y-[8%] inset-x-0 -z-10 lg:inset-y-0">
+          <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
+        </div>
         <div aria-hidden className="cta-veil absolute inset-0 -z-10" />
         <div className="wrap py-16">
           {title && <h3 className="mb-8 max-w-[30ch] font-display text-h3 text-paper">{title}</h3>}
