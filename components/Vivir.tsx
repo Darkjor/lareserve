@@ -9,13 +9,12 @@ import { Lightbox, ZoomPane } from "./Lightbox";
 /** Baldosas de la rejilla: renders ilustrativos y fotos del proyecto. Textos reutilizados de Amenidades, Lock-Off y Destino. */
 const TILES = [
   { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947, pos: "50% 50%" },
-  { k: "terraces", src: "/img/renders/fachada-dia.webp", w: 1447, h: 1087, pos: "50% 55%" },
   { k: "lockoff", src: "/img/renders/interior-cocina-pequena.webp", w: 1254, h: 1254, pos: "50% 50%" },
   { k: "mahahual", src: "/img/hamaca.webp", w: 1274, h: 1647, pos: "50% 42%" },
 ] as const;
 
-// Fila 1 = 7/5 columnas, fila 2 = 5/7 (escritorio). Movil: tira horizontal con snap.
-const SPAN = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7"];
+// Tres baldosas de 4 columnas (escritorio). Movil: tira horizontal con snap.
+const SPAN = ["lg:col-span-4", "lg:col-span-4", "lg:col-span-4"];
 
 /**
  * Familia C. Cabecera, banner de la amenidad principal a pantalla completa (parallax suave, sin pin) y rejilla
