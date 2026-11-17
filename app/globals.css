@@ -397,73 +397,12 @@
       );
     }
   }
-  /* Celosia del hero: 9 lamas verticales que giran en 3D (rotateY) desde el centro y descubren la imagen.
-     Solo CSS y solo con movimiento permitido; sin movimiento o sin CSS la imagen queda final y estatica. */
-  .celosia {
-    display: none;
-  }
-  .celosia-slat {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: calc(var(--i) * 100% / 9);
-    width: calc(100% / 9 + 1px);
-    background: var(--slat-a);
-    backface-visibility: hidden;
-    transform-origin: center;
-  }
-  .celosia-slat:nth-child(even) {
-    background: var(--slat-b);
-  }
   .hero-drift {
     transform-origin: 56% 60%;
   }
   @media (prefers-reduced-motion: no-preference) {
-    .celosia {
-      --slat-a: color-mix(in srgb, var(--color-oro-500) 52%, var(--color-paper));
-      --slat-b: color-mix(in srgb, var(--color-oro-500) 62%, var(--color-paper));
-      display: block;
-      position: absolute;
-      inset: 0;
-      z-index: 20; /* sobre el contenido del hero (z-10): el titular aparece al abrirse */
-      overflow: hidden;
-      pointer-events: none;
-      animation: celosia-gone 1ms linear 2400ms both;
-    }
-    .celosia-slat {
-      animation: slat-open 1500ms var(--ease-out-expo) calc(var(--d) * 130ms + 300ms) both;
-    }
     .hero-drift {
       animation: hero-drift 18s cubic-bezier(0.25, 1, 0.5, 1) both;
-    }
-    /* El header fijo queda fuera del hero: en la portada entra con fundido cuando la celosia ya abrio (solo opacidad,
-       el ocultar al hacer scroll usa transform). */
-    html:has([data-hero]) .site-header {
-      animation: header-in 700ms var(--ease-out-expo) 1500ms both;
-    }
-  }
-  @keyframes header-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  /* Perspectiva propia de cada lama (no la del contenedor): cada una se ve de frente sobre su eje y a 90 grados queda
-     de canto, invisible. Con una perspectiva compartida las lamas laterales quedaban como barras visibles. */
-  @keyframes slat-open {
-    from {
-      transform: perspective(1500px) rotateY(0deg);
-    }
-    to {
-      transform: perspective(1500px) rotateY(90deg);
-    }
-  }
-  @keyframes celosia-gone {
-    to {
-      opacity: 0;
-      visibility: hidden;
     }
   }
   @keyframes hero-drift {
@@ -1077,18 +1016,6 @@ fieldset {
   .tip-ind {
     transition: none;
   }
-}
-.tip-compare {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 500ms var(--ease-out-expo);
-}
-.tip-compare[data-open="true"] {
-  grid-template-rows: 1fr;
-}
-.tip-compare > div {
-  min-height: 0;
-  overflow: hidden;
 }
 .tip-li {
   position: relative;

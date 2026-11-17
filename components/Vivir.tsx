@@ -9,9 +9,9 @@ import { Lightbox, ZoomPane } from "./Lightbox";
 /** Baldosas de la rejilla: renders ilustrativos y fotos del proyecto. Textos reutilizados de Amenidades, Lock-Off y Destino. */
 const TILES = [
   { k: "pools", src: "/img/albercas.webp", w: 1661, h: 947, pos: "50% 50%" },
-  { k: "terraces", src: "/img/hero-aerea.webp", w: 1828, h: 860, pos: "62% 50%" },
+  { k: "terraces", src: "/img/renders/fachada-dia.webp", w: 1447, h: 1087, pos: "50% 55%" },
   { k: "lockoff", src: "/img/renders/interior-cocina-pequena.webp", w: 1254, h: 1254, pos: "50% 50%" },
-  { k: "mahahual", src: "/img/mahahual-tortuga-43.webp", w: 1276, h: 957, pos: "50% 50%" },
+  { k: "mahahual", src: "/img/hamaca.webp", w: 1274, h: 1647, pos: "50% 42%" },
 ] as const;
 
 // Fila 1 = 7/5 columnas, fila 2 = 5/7 (escritorio). Movil: tira horizontal con snap.

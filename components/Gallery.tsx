@@ -14,7 +14,6 @@ const ITEMS = [
   { k: "sala2", src: "/img/renders/interior-sala-2.webp", w: 1672, h: 941 },
   { k: "roof", src: "/img/roof-garden.webp", w: 977, h: 1272 },
   { k: "recibidor", src: "/img/renders/interior-recibidor.webp", w: 1672, h: 941 },
-  { k: "type1", src: "/img/fachada-tipo1.webp", w: 1920, h: 1080 },
   { k: "cocinaPequena", src: "/img/renders/interior-cocina-pequena.webp", w: 1254, h: 1254 },
   { k: "hammock", src: "/img/hamaca.webp", w: 1274, h: 1647 },
   { k: "bano", src: "/img/renders/interior-bano.webp", w: 1254, h: 1254 },

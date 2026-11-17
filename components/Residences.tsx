@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useId, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowUpRight, CaretDown } from "@phosphor-icons/react/ssr";
+import { ArrowUpRight } from "@phosphor-icons/react/ssr";
 import type { Tipologia } from "@/lib/inventory";
 import { PLANS } from "@/lib/plans";
 import { formatM2, formatMXN, whatsappLink } from "@/lib/site";
@@ -17,8 +17,7 @@ export type TypeSummary = { unidades: number; m2: number; precioDesde: number };
 const compact = (p: number) => `$${(p / 1_000_000).toFixed(2)} M`;
 
 /**
- * Tipologias interactivas (bloque central). Selector de 4 columnas con m2 y "desde", comparador desplegable en
- * filas con filetes, escenario (planta + 5 renders ilustrativos) con barrido de luz, ficha sin tarjeta y
+ * Tipologias interactivas (bloque central). Selector de 4 columnas con m2 y "desde", escenario (planta + 5 renders ilustrativos) con barrido de luz, ficha sin tarjeta y
  * Lock-Off como fila bajo la planta. Sin JS: cuatro fichas apiladas con su planta, caracteristicas y Cotizar.
  */
 export function Residences({ data, locale, children }: { data: Record<Tipologia, TypeSummary>; locale: string; children?: ReactNode }) {
@@ -28,7 +27,6 @@ export function Residences({ data, locale, children }: { data: Record<Tipologia,
   const [slide, setSlide] = useState(0);
   const [split, setSplit] = useState(false);
   const [zoom, setZoom] = useState<number | null>(null);
-  const [compare, setCompare] = useState(false);
   const [moved, setMoved] = useState(false);
   const [tick, setTick] = useState(0);
   const [announce, setAnnounce] = useState("");
@@ -54,7 +52,7 @@ export function Residences({ data, locale, children }: { data: Record<Tipologia,
     setTick((n) => n + 1);
   };
 
-  // Hash compartible (#residencias-b) y estado del comparador en la sesion.
+  // Hash compartible (#residencias-b).
   useEffect(() => {
     const raf = requestAnimationFrame(() => {
       const m = /^#residencias-([abcd])$/i.exec(window.location.hash);
@@ -62,21 +60,9 @@ export function Residences({ data, locale, children }: { data: Record<Tipologia,
         setActive(m[1].toUpperCase() as Tipologia);
         document.getElementById("residencias")?.scrollIntoView();
       }
-      try {
-        if (sessionStorage.getItem("tip-compare") === "1") setCompare(true);
-      } catch {}
     });
     return () => cancelAnimationFrame(raf);
   }, []);
-  const toggleCompare = () => {
-    setCompare((v) => {
-      try {
-        sessionStorage.setItem("tip-compare", v ? "0" : "1");
-      } catch {}
-      return !v;
-    });
-  };
-
   const onKey = (e: React.KeyboardEvent, i: number) => {
     const move = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
     const edge = e.key === "Home" ? 0 : e.key === "End" ? LETTERS.length - 1 : -1;
@@ -102,13 +88,6 @@ export function Residences({ data, locale, children }: { data: Record<Tipologia,
       ))}
     </ul>
   );
-
-  const rows: { id: string; label: string; val: (l: Tipologia) => string }[] = [
-    { id: "area", label: t("residences.compare.area"), val: (l) => formatM2(data[l].m2, locale) },
-    { id: "beds", label: t("residences.compare.beds"), val: (l) => t(`residences.${l.toLowerCase()}.beds`) },
-    { id: "baths", label: t("residences.compare.baths"), val: (l) => t(`residences.${l.toLowerCase()}.baths`) },
-    { id: "from", label: t("residences.compare.from"), val: (l) => compact(data[l].precioDesde) },
-  ];
 
   const onPlan = slide === 0;
   const zoomSlide = zoom != null ? SLIDES[zoom] : null;
@@ -151,44 +130,6 @@ export function Residences({ data, locale, children }: { data: Record<Tipologia,
                 );
               })}
               <span aria-hidden className="tip-ind" style={{ "--i": LETTERS.indexOf(active) } as React.CSSProperties} />
-            </div>
-          </div>
-
-          {/* Comparador en filas con filetes */}
-          <div className="mt-2">
-            <button
-              type="button"
-              aria-expanded={compare}
-              aria-controls={`${uid}-compare`}
-              onClick={toggleCompare}
-              className="link-gold inline-flex min-h-11 items-center gap-2 text-small text-ink"
-            >
-              {t("residences.compare.toggle")}
-              <CaretDown size={16} weight="light" aria-hidden className={`transition-transform duration-500 ease-[var(--ease-out-expo)] ${compare ? "rotate-180" : ""}`} />
-            </button>
-            <div id={`${uid}-compare`} className="tip-compare" data-open={compare} inert={!compare} role="group" aria-label={t("residences.compare.label")}>
-              <div>
-                <dl className="pb-4">
-                  {rows.map((r) => (
-                    <div key={r.id} className="border-b border-line py-3">
-                      <dt className="text-[0.75rem] leading-none text-ink-3">{r.label}</dt>
-                      <dd className="mt-2 grid grid-cols-4">
-                        {LETTERS.map((l) => (
-                          <span
-                            key={l}
-                            onClick={() => select(l)}
-                            className={`cursor-pointer px-1 font-figure text-base font-semibold tabular-nums transition-colors duration-300 sm:px-4 sm:text-[1.0625rem] ${l === active ? "text-ink" : "text-ink-2 hover:text-ink"}`}
-                          >
-                            <span className="sr-only">{t("residences.compare.tip", { letter: l })}: </span>
-                            {r.val(l)}
-                          </span>
-                        ))}
-                      </dd>
-                    </div>
-                  ))}
-                  <p className="caption pt-3">{t("residences.compare.lockoff")}</p>
-                </dl>
-              </div>
             </div>
           </div>
 

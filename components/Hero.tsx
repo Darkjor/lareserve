@@ -6,12 +6,8 @@ import { HeroEffects } from "./HeroEffects";
 import { LeadBand } from "./LeadBand";
 import { LinkButton } from "./ui/LinkButton";
 
-// Distancia de cada lama al centro (0 a 4): la celosia se abre desde el medio hacia los lados.
-const SLATS = Array.from({ length: 9 }, (_, i) => ({ i, d: Math.abs(i - 4) }));
-
 /**
- * Inicio: imagen a sangre de 100svh (LCP, ya pintada debajo) cubierta al cargar por una celosia de 9 lamas que giran en 3D
- * y la descubren; luego deriva lenta (scale 1.06 a 1 en 18 s). Titular por linea con mascara; al hacer scroll, parallax y
+ * Inicio: imagen a sangre de 100svh (LCP) con deriva lenta (scale 1.06 a 1 en 18 s). Titular por linea con mascara; al hacer scroll, parallax y
  * el contenido se desvanece (sin pin). Sin movimiento reducido o sin CSS queda la imagen final. Debajo, LeadBand.
  */
 export async function Hero({ locale }: { locale: string }) {
@@ -45,11 +41,6 @@ export async function Hero({ locale }: { locale: string }) {
         </div>
         {/* Velo fijo (alfa >= .66 bajo el texto). */}
         <div aria-hidden className="hero-veil absolute inset-0 -z-10" />
-        <div aria-hidden className="celosia">
-          {SLATS.map((s) => (
-            <span key={s.i} className="celosia-slat" style={{ ["--i" as string]: s.i, ["--d" as string]: s.d }} />
-          ))}
-        </div>
 
         <div data-hero-content className="wrap relative z-10 flex flex-1 flex-col justify-end pt-28 pb-24 lg:grid lg:grid-cols-12 lg:items-end lg:gap-x-6 lg:pb-28">
           <div className="lg:col-span-7">

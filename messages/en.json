@@ -121,16 +121,6 @@
     },
     "tabFrom": "from",
     "announce": "Type {letter}, {area}",
-    "compare": {
-      "toggle": "Compare all four",
-      "label": "Type comparison",
-      "area": "Area",
-      "beds": "Bedrooms",
-      "baths": "Bathrooms",
-      "from": "From",
-      "lockoff": "All include a Lock-Off suite",
-      "tip": "Type {letter}"
-    },
     "carousel": {
       "label": "Images of Type {letter}",
       "slide": "{n} of {total}",
@@ -398,7 +388,7 @@
     "terraces": {
       "title": "Private terraces with jacuzzi",
       "text": "Your own outdoor space, right at home. Varies by layout.",
-      "alt": "Aerial view of a La Reserve tower at sunset, with roof garden, terraces and pools"
+      "alt": "Illustrative daytime render of La Reserve's facade, with private terraces on every level"
     },
     "lockoff": {
       "title": "Lock-Off suite",
@@ -408,7 +398,7 @@
     "mahahual": {
       "title": "Mahahual",
       "text": "A destination that still has the privilege of evolving without losing its essence.",
-      "alt": "Sea turtle swimming under Caribbean water"
+      "alt": "Hammock facing the Caribbean sea at sunset"
     },
     "open": "Enlarge image"
   },
@@ -429,9 +419,6 @@
       },
       "pools": {
         "alt": "Daytime facade with a pool"
-      },
-      "type1": {
-        "alt": "Illustrated cutaway of tower type 1: two commercial spaces on the ground floor, three levels of residences and a roof garden"
       },
       "hammock": {
         "alt": "Hammock facing the sea at sunset"
