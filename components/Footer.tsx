@@ -69,6 +69,12 @@ export async function Footer() {
         <div className="mt-16 grid gap-3 border-t border-paper/15 pt-8 max-lg:text-center">
           <p className="max-w-[90ch] text-caption text-on-verde-2 max-lg:mx-auto">{t("footer.disclaimer")}</p>
           <p className="text-caption text-on-verde-2">{t("footer.copyright")}</p>
+          <p className="text-caption text-on-verde-2">
+            {t("footer.madeBy")}{" "}
+            <a href="https://fabook-hub-portafolio.vercel.app/es" target="_blank" rel="noopener noreferrer" className="font-semibold text-paper underline-offset-4 hover:text-oro-300 hover:underline">
+              Fabook Hub
+            </a>
+          </p>
         </div>
       </div>
     </footer>
