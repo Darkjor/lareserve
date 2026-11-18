@@ -7,7 +7,7 @@ export const site = {
   /** WhatsApp comercial, formato internacional sin "+" ni espacios. */
   whatsapp: "529987042445",
   whatsappDisplay: "+52 998 704 2445",
-  /** Carpeta de Drive del Pack Legal; se abre al enviar el formulario de tipo "legal". */
+  /** Carpeta de Drive del Pack Legal; el boton "Solicitar Pack Legal" la abre directo, sin formulario. */
   legalPackUrl: "https://drive.google.com/drive/folders/1zRoqlMSuvlAkt-kaH2kK3MrXJ7_e0nxA",
 } as const;
 

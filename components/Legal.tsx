@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ContactButton } from "./ContactProvider";
+import { ArrowUpRight } from "@phosphor-icons/react/ssr";
+import { buttonClass } from "./ui/LinkButton";
+import { site } from "@/lib/site";
 
 const ITEMS = ["mia", "land", "deed"] as const;
 
@@ -43,9 +45,12 @@ export async function Legal() {
             ))}
           </ul>
           <div className="reveal mt-10">
-            <ContactButton kind="legal" className="w-full sm:w-auto">
+            <a href={site.legalPackUrl} target="_blank" rel="noopener noreferrer" className={`${buttonClass("primary")} w-full sm:w-auto`}>
               {tcta("legal")}
-            </ContactButton>
+              <span className="btn-icon" aria-hidden>
+                <ArrowUpRight size={18} weight="light" />
+              </span>
+            </a>
             <p className="caption mt-3">{t("note")}</p>
           </div>
         </div>

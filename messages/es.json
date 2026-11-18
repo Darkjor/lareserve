@@ -173,6 +173,7 @@
   },
   "availability": {
     "expand": "Ampliar plano",
+    "scrollHint": "Desliza para ver el plano completo",
     "eyebrow": "Disponibilidad",
     "title": "Encuentra tu residencia",
     "alt": "Plano de las 16 torres alrededor de la laguna interior",

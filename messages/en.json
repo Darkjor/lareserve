@@ -173,6 +173,7 @@
   },
   "availability": {
     "expand": "Enlarge plan",
+    "scrollHint": "Swipe to see the full plan",
     "eyebrow": "Availability",
     "title": "Find your residence",
     "alt": "Site plan of the 16 towers around the interior lagoon",
